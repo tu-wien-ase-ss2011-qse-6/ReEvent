@@ -1,0 +1,14 @@
+<configuration>
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{HH:mm:ss} [%-5p] %c{24} - %m%n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="reevent" level="debug"/>
+    <logger name="org.apache.wicket" level="info"/>
+
+    <root level="warn">
+        <appender-ref ref="console"/>
+    </root>
+</configuration>
