@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd"
+      xml:lang="en" lang="en">
+<head>
+    <wicket:head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <title>
+			<wicket:message key="title">[[ ReEvent ]]</wicket:message>
+		</title>
+        <link rel="stylesheet" href="/resource/blueprint-1.0/screen.css" media="screen, projection"/>
+        <link rel="stylesheet" href="/resource/blueprint-1.0/print.css" media="print"/>
+        <!--[if lt IE 8]>
+            <link rel="stylesheet" href="/resource/blueprint-1.0/ie.css" type="text/css" media="screen, projection">
+        <![endif]-->
+        <link rel="stylesheet" href="/resource/blueprint-1.0/plugins/buttons/screen.css"  media="screen, projection"/>
+        <link rel="stylesheet" href="/resource/blueprint-1.0/plugins/fancy-type/screen.css" media="screen, projection"/>
+        <link rel="stylesheet" href="/resource/jquery-ui-1.8.11/jquery-ui-1.8.11.custom.css"/>
+
+        <script type="text/javascript" src="/resource/jquery-1.4.4.min.js"></script>
+        <script type="text/javascript" src="/resource/jquery-ui-1.8.11/jquery-ui-1.8.11.custom.min.js"></script>
+
+        <style>
+            .vertical > * {
+                display: block;
+            }
+        </style>
+
+        <script>
+            $(function() {
+                $('input[type=date]').datepicker();
+            })
+        </script>
+    </wicket:head>
+</head>
+<body>
+<div class="container showgrid">
+    <div class="span-24" id="header">
+        <h1 class="alt">
+            <wicket:message key="title">[[ ReEvent ]]</wicket:message>
+        </h1>
+    </div>
+    <div class="span-18" id="content">
+        <wicket:child />
+    </div>
+    <div class="span-6 last" id="sidebar">
+        <input type="date"/>
+        <ul class="vertical">
+            <li>[[ item 1 ]]</li>
+            <li>[[ item 2 ]]</li>
+            <li>[[ item 3 ]]</li>
+        </ul>
+    </div>
+    <div class="span-24" id="footer">
+        Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit…
+    </div>
+</div>
+</body>
+</html>
