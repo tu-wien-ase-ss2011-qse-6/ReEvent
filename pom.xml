@@ -196,18 +196,30 @@
             <artifactId>hibernate-entitymanager</artifactId>
             <version>3.5.6-Final</version>
             <exclusions>
+                <!--
                 <exclusion>
-                    <artifactId>javassist</artifactId>
                     <groupId>javassist</groupId>
+                    <artifactId>javassist</artifactId>
+                </exclusion>
+                -->
+                <exclusion>
+                    <groupId>org.hibernate</groupId>
+                    <artifactId>hibernate-annotations</artifactId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>cglib</artifactId>
+                    <groupId>cglib</groupId>
                 </exclusion>
             </exclusions>
         </dependency>
 
+        <!--
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-annotations</artifactId>
             <version>3.5.6-Final</version>
         </dependency>
+        -->
 
         <dependency>
             <groupId>org.hibernate</groupId>
@@ -259,6 +271,12 @@
             <groupId>org.apache.wicket</groupId>
             <artifactId>wicket-spring</artifactId>
             <version>${org.apache.wicket.version}</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>cglib</artifactId>
+                    <groupId>cglib</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <dependency>
