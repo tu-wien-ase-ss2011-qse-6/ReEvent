@@ -6,6 +6,7 @@ import org.apache.wicket.RuntimeConfigurationType;
 import org.apache.wicket.authroles.authentication.AuthenticatedWebApplication;
 import org.apache.wicket.authroles.authentication.AuthenticatedWebSession;
 import org.apache.wicket.markup.html.WebPage;
+import org.apache.wicket.spring.injection.annot.SpringComponentInjector;
 import org.apache.wicket.util.time.Duration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,6 +22,8 @@ public class ReEventApplication extends AuthenticatedWebApplication {
         }
         this.getMarkupSettings().setStripComments(true);
         this.getMarkupSettings().setStripWicketTags(true);
+
+        this.getComponentInstantiationListeners().add(new SpringComponentInjector(this));
     }
 
     public static ReEventApplication get() {
