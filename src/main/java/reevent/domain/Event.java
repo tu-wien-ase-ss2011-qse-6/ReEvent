@@ -11,4 +11,12 @@ public class Event extends EntityBase {
 
     @Column
     private Date start;
+
+    public Event() {
+    }
+
+    public Event(String name, Date start) {
+        this.name = name;
+        this.start = start;
+    }
 }
