@@ -271,12 +271,6 @@
             <groupId>org.apache.wicket</groupId>
             <artifactId>wicket-spring</artifactId>
             <version>${org.apache.wicket.version}</version>
-            <exclusions>
-                <exclusion>
-                    <artifactId>cglib</artifactId>
-                    <groupId>cglib</groupId>
-                </exclusion>
-            </exclusions>
         </dependency>
 
         <dependency>
