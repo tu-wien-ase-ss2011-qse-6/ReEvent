@@ -1,5 +1,7 @@
 package reevent.domain;
 
+import org.apache.commons.lang.builder.ToStringBuilder;
+
 import javax.persistence.Column;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
@@ -46,5 +48,21 @@ public abstract class EntityBase implements Serializable {
     @Override
     public int hashCode() {
         return id != null ? id.hashCode() : 0;
+    }
+
+    /**
+     * Returns the first part of the UUID, for use in toString and such.
+     * @return
+     */
+    public String getShortId() {
+        return String.format("%x", id.getMostSignificantBits()>>32);
+    }
+
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this)
+                .append("id", getShortId())
+                .append("version", version)
+                .toString();
     }
 }
