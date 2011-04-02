@@ -4,19 +4,19 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>ase-qse6</groupId>
-    <artifactId>event-feedback</artifactId>
+    <groupId>ase.qse6</groupId>
+    <artifactId>reevent</artifactId>
     <version>0.1-SNAPSHOT</version>
     <packaging>war</packaging>
 
 
     <properties>
         <!-- Shared version number properties -->
-        <org.springframework.version>3.0.5.RELEASE</org.springframework.version>
-        <org.apache.wicket.version>1.5-rc2</org.apache.wicket.version>
+        <springframework.version>3.0.5.RELEASE</springframework.version>
+        <wicket.version>1.5-rc2</wicket.version>
         <logback.version>0.9.28</logback.version>
-        <org.slf4j.version>1.6.1</org.slf4j.version>
-
+        <slf4j.version>1.6.1</slf4j.version>
+        <querydsl.version>2.1.2</querydsl.version>
         <!-- Staging -->
         <environment>dev</environment>
     </properties>
@@ -37,6 +37,11 @@
             <name>java.net</name>
             <url>http://download.java.net/maven/1</url>
         </repository>
+        <repository>
+            <id>mysema</id>
+            <name>Mysema</name>
+            <url>http://source.mysema.com/maven2/releases</url>
+        </repository>
     </repositories>
 
     <dependencies>
@@ -47,7 +52,7 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
-            <version>${org.springframework.version}</version>
+            <version>${springframework.version}</version>
             <exclusions>
                 <exclusion>
                     <groupId>commons-logging</groupId>
@@ -73,7 +78,7 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-beans</artifactId>
-            <version>${org.springframework.version}</version>
+            <version>${springframework.version}</version>
         </dependency>
 
         <!--
@@ -83,7 +88,7 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-aop</artifactId>
-            <version>${org.springframework.version}</version>
+            <version>${springframework.version}</version>
         </dependency>
 
         <!--
@@ -93,7 +98,7 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
-            <version>${org.springframework.version}</version>
+            <version>${springframework.version}</version>
         </dependency>
 
         <!--
@@ -103,7 +108,7 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context-support</artifactId>
-            <version>${org.springframework.version}</version>
+            <version>${springframework.version}</version>
         </dependency>
 
         <!--
@@ -114,7 +119,7 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-tx</artifactId>
-            <version>${org.springframework.version}</version>
+            <version>${springframework.version}</version>
         </dependency>
 
         <!--
@@ -135,7 +140,7 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-orm</artifactId>
-            <version>${org.springframework.version}</version>
+            <version>${springframework.version}</version>
         </dependency>
 
         <!--
@@ -157,7 +162,7 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>
-            <version>${org.springframework.version}</version>
+            <version>${springframework.version}</version>
         </dependency>
 
         <!--
@@ -187,7 +192,7 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
-            <version>${org.springframework.version}</version>
+            <version>${springframework.version}</version>
             <scope>test</scope>
         </dependency>
 
@@ -252,25 +257,25 @@
         <dependency>
             <groupId>org.apache.wicket</groupId>
             <artifactId>wicket-core</artifactId>
-            <version>${org.apache.wicket.version}</version>
+            <version>${wicket.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.apache.wicket</groupId>
             <artifactId>wicket-auth-roles</artifactId>
-            <version>${org.apache.wicket.version}</version>
+            <version>${wicket.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.apache.wicket</groupId>
             <artifactId>wicket-extensions</artifactId>
-            <version>${org.apache.wicket.version}</version>
+            <version>${wicket.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.apache.wicket</groupId>
             <artifactId>wicket-spring</artifactId>
-            <version>${org.apache.wicket.version}</version>
+            <version>${wicket.version}</version>
         </dependency>
 
         <dependency>
@@ -288,13 +293,13 @@
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
-            <version>${org.slf4j.version}</version>
+            <version>${slf4j.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>jcl-over-slf4j</artifactId>
-            <version>${org.slf4j.version}</version>
+            <version>${slf4j.version}</version>
         </dependency>
 
         <dependency>
@@ -326,7 +331,7 @@
                 </exclusion>
             </exclusions>
         </dependency>
-        
+
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>servlet-api</artifactId>
@@ -335,10 +340,23 @@
         </dependency>
 
         <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-jpamodelgen</artifactId>
-            <version>1.1.1.Final</version>
+            <groupId>com.mysema.querydsl</groupId>
+            <artifactId>querydsl-apt</artifactId>
+            <version>${querydsl.version}</version>
+            <scope>provided</scope>
         </dependency>
+
+        <dependency>
+            <groupId>com.mysema.querydsl</groupId>
+            <artifactId>querydsl-jpa</artifactId>
+            <version>${querydsl.version}</version>
+        </dependency>
+
+        <!--<dependency>-->
+        <!--<groupId>org.hibernate</groupId>-->
+        <!--<artifactId>hibernate-jpamodelgen</artifactId>-->
+        <!--<version>1.1.1.Final</version>-->
+        <!--</dependency>-->
     </dependencies>
 
     <build>
@@ -351,7 +369,8 @@
                     <scanIntervalSeconds>1</scanIntervalSeconds>
                     <webAppConfig>
                         <contextPath>/</contextPath>
-                        <overrideDescriptor>${basedir}/src/main/webapp/WEB-INF/web.${environment}.xml</overrideDescriptor>
+                        <overrideDescriptor>${basedir}/src/main/webapp/WEB-INF/web.${environment}.xml
+                        </overrideDescriptor>
                     </webAppConfig>
                     <stopKey>reevent</stopKey>
                     <stopPort>9090</stopPort>
@@ -375,6 +394,23 @@
                     <encoding>UTF-8</encoding>
                     <outputDirectory/>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>com.mysema.maven</groupId>
+                <artifactId>maven-apt-plugin</artifactId>
+                <version>1.0</version>
+                <executions>
+                    <execution>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>process</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>target/generated-sources/java</outputDirectory>
+                            <processor>com.mysema.query.apt.jpa.JPAAnnotationProcessor</processor>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>

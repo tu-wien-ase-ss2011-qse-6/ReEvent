@@ -1,6 +1,10 @@
 package reevent.dao;
 
+import com.mysema.query.jpa.JPQLQuery;
+import com.mysema.query.jpa.impl.JPAQuery;
+import com.mysema.query.types.path.EntityPathBase;
 import reevent.domain.EntityBase;
+import reevent.domain.QEvent;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -65,13 +69,14 @@ public abstract class EntityDaoBase<T extends EntityBase> implements EntityDao<T
         em.remove(ref);
     }
 
+    protected JPQLQuery query() {
+        return new JPAQuery(em);
+    }
+    
     @Override
     public List<T> findAll(int first, int max) {
-        CriteriaBuilder builder = em.getCriteriaBuilder();
-        CriteriaQuery<T> q = builder.createQuery(entityClass);
-        Root<T> root = q.from(entityClass);
-        q.select(root);
-        return em.createQuery(q).setFirstResult(first).setMaxResults(max).getResultList();
+        EntityPathBase<T> path = new EntityPathBase<T>(entityClass, "obj");
+        return query().from(path).offset(first).limit(max).list(path);
     }
 
     @PersistenceContext
