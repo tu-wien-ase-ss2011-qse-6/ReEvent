@@ -28,4 +28,7 @@
     </bean>
 
     <bean id="txManager" class="org.springframework.orm.jpa.JpaTransactionManager"/>
+
+    <!-- Automagically enter some data into the database -->
+    <bean class="reevent.init.InitData" lazy-init="false"/>
 </beans>
