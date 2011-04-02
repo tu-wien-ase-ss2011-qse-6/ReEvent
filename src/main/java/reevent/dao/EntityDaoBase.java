@@ -6,6 +6,7 @@ import com.mysema.query.types.path.EntityPathBase;
 import reevent.domain.EntityBase;
 import reevent.domain.QEvent;
 
+import javax.annotation.PostConstruct;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.criteria.CriteriaBuilder;
@@ -18,6 +19,7 @@ import java.util.UUID;
 
 public abstract class EntityDaoBase<T extends EntityBase> implements EntityDao<T> {
     protected Class<T> entityClass;
+    protected EntityPathBase<T> root;
 
     public EntityDaoBase() {
         entityClass = getSuperTypeToken();
@@ -40,6 +42,12 @@ public abstract class EntityDaoBase<T extends EntityBase> implements EntityDao<T
         this.entityClass = entityClass;
     }
 
+    @PostConstruct
+    void initQueryDsl() {
+         root = new EntityPathBase<T>(entityClass, "root");
+    }
+
+    @PersistenceContext
     EntityManager em;
 
     @Override
@@ -70,17 +78,12 @@ public abstract class EntityDaoBase<T extends EntityBase> implements EntityDao<T
     }
 
     protected JPQLQuery query() {
-        return new JPAQuery(em);
+        return new JPAQuery(em).from(root);
     }
     
     @Override
     public List<T> findAll(int first, int max) {
-        EntityPathBase<T> path = new EntityPathBase<T>(entityClass, "obj");
-        return query().from(path).offset(first).limit(max).list(path);
+        return query().offset(first).limit(max).list(root);
     }
 
-    @PersistenceContext
-    public void setEntityManager(EntityManager em) {
-        this.em = em;
-    }
 }
