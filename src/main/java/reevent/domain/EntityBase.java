@@ -1,5 +1,6 @@
 package reevent.domain;
 
+import javax.persistence.Column;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.Version;
@@ -8,6 +9,7 @@ import java.util.UUID;
 @MappedSuperclass
 public abstract class EntityBase {
     @Id
+    @Column(columnDefinition = "UUID")
     protected UUID id = UUID.randomUUID();
     @Version
     protected Integer version;
