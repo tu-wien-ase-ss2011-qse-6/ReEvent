@@ -8,11 +8,20 @@ import java.util.Date;
 
 @Entity
 public class Event extends EntityBase {
-    @Column
-    private String name;
+    @Column(nullable = false)
+    String name;
+
+    /**
+     * Date and time when the event starts
+     */
+    @Column(nullable = false)
+    Date start;
 
     @Column
-    private Date start;
+    String genre;
+
+    @Column
+    String band;
 
     public Event() {
     }
@@ -29,5 +38,37 @@ public class Event extends EntityBase {
                 .append("name", name)
                 .append("start", start)
                 .toString();
+    }
+
+    public String getBand() {
+        return band;
+    }
+
+    public void setBand(String band) {
+        this.band = band;
+    }
+
+    public String getGenre() {
+        return genre;
+    }
+
+    public void setGenre(String genre) {
+        this.genre = genre;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Date getStart() {
+        return start;
+    }
+
+    public void setStart(Date start) {
+        this.start = start;
     }
 }
