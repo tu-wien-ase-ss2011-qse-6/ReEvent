@@ -1,10 +1,9 @@
 package reevent.domain;
 
 import javax.persistence.Column;
-import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
-import java.util.List;
+import java.util.Set;
 
 @Entity
 public class Venue extends EntityBase {
@@ -22,7 +21,7 @@ public class Venue extends EntityBase {
     Location location;
 
     @OneToMany(mappedBy="venue")
-    List<Event> events;
+    Set<Event> events;
 
     public Venue() {
     }
@@ -78,5 +77,13 @@ public class Venue extends EntityBase {
 
     public void setLocation(Location location) {
         this.location = location;
+    }
+
+    public Set<Event> getEvents() {
+        return events;
+    }
+
+    public void setEvents(Set<Event> events) {
+        this.events = events;
     }
 }
