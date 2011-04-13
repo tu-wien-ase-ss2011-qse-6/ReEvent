@@ -4,14 +4,10 @@ import com.mysema.query.jpa.JPQLQuery;
 import com.mysema.query.jpa.impl.JPAQuery;
 import com.mysema.query.types.path.EntityPathBase;
 import reevent.domain.EntityBase;
-import reevent.domain.Event;
 
 import javax.annotation.PostConstruct;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.List;
@@ -44,7 +40,9 @@ public abstract class EntityDaoBase<T extends EntityBase> implements EntityDao<T
 
     @PostConstruct
     void initQueryDsl() {
-         root = new EntityPathBase<T>(entityClass, "root");
+        StringBuffer entityName = new StringBuffer(entityClass.getSimpleName());
+        entityName.setCharAt(0, Character.toLowerCase(entityName.charAt(0)));
+        root = new EntityPathBase<T>(entityClass, entityName.toString());
     }
 
     @PersistenceContext
