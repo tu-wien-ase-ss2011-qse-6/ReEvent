@@ -4,7 +4,7 @@ import com.mysema.query.jpa.JPQLQuery;
 import com.mysema.query.jpa.impl.JPAQuery;
 import com.mysema.query.types.path.EntityPathBase;
 import reevent.domain.EntityBase;
-import reevent.domain.QEvent;
+import reevent.domain.Event;
 
 import javax.annotation.PostConstruct;
 import javax.persistence.EntityManager;
