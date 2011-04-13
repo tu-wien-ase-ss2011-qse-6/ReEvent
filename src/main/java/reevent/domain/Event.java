@@ -4,6 +4,7 @@ import org.apache.commons.lang.builder.ToStringBuilder;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import java.util.Date;
 
 @Entity
@@ -17,11 +18,12 @@ public class Event extends EntityBase {
     @Column(nullable = false)
     Date start;
 
-    @Column
     String genre;
 
-    @Column
     String band;
+
+    @ManyToOne
+    Venue venue;
 
     public Event() {
     }
@@ -70,5 +72,13 @@ public class Event extends EntityBase {
 
     public void setStart(Date start) {
         this.start = start;
+    }
+
+    public Venue getVenue() {
+        return venue;
+    }
+
+    public void setVenue(Venue venue) {
+        this.venue = venue;
     }
 }
