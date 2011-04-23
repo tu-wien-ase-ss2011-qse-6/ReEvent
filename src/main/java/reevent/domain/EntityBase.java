@@ -2,20 +2,23 @@ package reevent.domain;
 
 import org.apache.commons.lang.builder.ToStringBuilder;
 
-import javax.persistence.Column;
-import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
-import javax.persistence.Version;
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 import java.util.UUID;
 
 @MappedSuperclass
 public abstract class EntityBase implements Serializable {
     @Id
     @Column(columnDefinition = "UUID")
-    protected UUID id = UUID.randomUUID();
+    UUID id = UUID.randomUUID();
     @Version
-    protected Integer version;
+    Date updatedAt;
+
+    /**
+     * Time when entity was created.
+     */
+    Date createdAt = new Date();
 
     public UUID getId() {
         return id;
@@ -25,12 +28,16 @@ public abstract class EntityBase implements Serializable {
         this.id = id;
     }
 
-    public Integer getVersion() {
-        return version;
+    public Date getCreatedAt() {
+        return createdAt;
     }
 
-    public void setVersion(Integer version) {
-        this.version = version;
+    public Date getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(Date updatedAt) {
+        this.updatedAt = updatedAt;
     }
 
     @Override
@@ -62,7 +69,6 @@ public abstract class EntityBase implements Serializable {
     public String toString() {
         return new ToStringBuilder(this)
                 .append("id", getShortId())
-                .append("version", version)
                 .toString();
     }
 }
