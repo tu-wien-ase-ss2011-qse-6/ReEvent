@@ -25,6 +25,11 @@
                 <property name="database" value="H2"/>
             </bean>
         </property>
+        <property name="jpaProperties">
+            <props>
+                <prop key="hibernate.ejb.naming_strategy">org.hibernate.cfg.ImprovedNamingStrategy</prop>
+            </props>
+        </property>
     </bean>
 
     <bean id="txManager" class="org.springframework.orm.jpa.JpaTransactionManager"/>
