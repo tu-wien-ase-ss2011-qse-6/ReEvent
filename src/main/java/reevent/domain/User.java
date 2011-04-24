@@ -1,5 +1,6 @@
 package reevent.domain;
 
+import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import java.util.Collections;
@@ -7,6 +8,7 @@ import java.util.Set;
 
 @Entity
 public class User extends EntityBase {
+    @Column(unique=true, nullable=false)
     String username;
 
     /**
