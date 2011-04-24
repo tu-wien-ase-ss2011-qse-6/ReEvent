@@ -13,14 +13,12 @@ import static org.springframework.util.DigestUtils.md5DigestAsHex;
 
 @Service
 public class UserServiceImpl implements UserService {
-    static final String PASSWORD_SALT = "reevent$";
-
     @Resource
     UserDao userDao;
 
     @Override
-    public String hashPassword(String password) {
-        String salted = PASSWORD_SALT+password;
+    public String hashPassword(String salt, String password) {
+        String salted = salt+password;
         salted = normalize(salted, NFD);
         try {
             return md5DigestAsHex(salted.getBytes("UTF-8"));
@@ -29,14 +27,30 @@ public class UserServiceImpl implements UserService {
         }
     }
 
+    private String hashPassword(User user, String password) {
+        return hashPassword(user.getId().toString(), password);
+    }
+
     @Override
     public User register(User newUser, String password) {
-        newUser.setPasswordHash(hashPassword(password));
+        newUser.setPasswordHash(hashPassword(newUser, password));
         return userDao.save(newUser);
     }
 
     @Override
-    public boolean authenticate(String username, String password) {
-        return userDao.authenticate(username, hashPassword(password));
+    public User authenticate(String username, String password) {
+        User user = userDao.findByUsername(username);
+
+        if (user == null) {
+            // Unknown user name.
+            return null;
+        }
+        String pwHash = hashPassword(user, password);
+        if (user.getPasswordHash().equals(pwHash)) {
+            return user;
+        } else {
+            // invalid password
+            return null;
+        }
     }
 }

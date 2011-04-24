@@ -6,11 +6,9 @@ import reevent.domain.User;
 
 @Repository
 public class UserDaoJpa extends EntityDaoBase<User> implements UserDao {
+    QUser $ = QUser.user;
     @Override
-    public boolean authenticate(String username, String passwordHash) {
-        QUser _ = QUser.user;
-        return query().from(_).where(            _.username.eq(username)
-                .and(_.passwordHash.eq(passwordHash)))
-                .exists();
+    public User findByUsername(String username) {
+        return query().from($).where($.username.eq(username)).uniqueResult($);
     }
 }
