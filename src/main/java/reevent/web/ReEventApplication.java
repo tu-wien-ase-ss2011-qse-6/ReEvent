@@ -12,10 +12,14 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class ReEventApplication extends AuthenticatedWebApplication {
-    private Logger log = LoggerFactory.getLogger(this.getClass());
+    private Logger _log = LoggerFactory.getLogger(this.getClass());
+    private Logger log() {
+        return _log;
+    }
     
     @Override
     protected void init() {
+        log().debug(String.format("init()"));
         super.init();
         if (this.getConfigurationType() == RuntimeConfigurationType.DEVELOPMENT) {
             this.getResourceSettings().setResourcePollFrequency(Duration.ONE_SECOND);
