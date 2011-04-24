@@ -1,10 +1,10 @@
 package reevent.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import reevent.dao.UserDao;
 import reevent.domain.User;
 
-import javax.annotation.Resource;
 import java.io.UnsupportedEncodingException;
 
 import static java.text.Normalizer.Form.NFD;
@@ -13,7 +13,7 @@ import static org.springframework.util.DigestUtils.md5DigestAsHex;
 
 @Service
 public class UserServiceImpl implements UserService {
-    @Resource
+    @Autowired
     UserDao userDao;
 
     @Override
