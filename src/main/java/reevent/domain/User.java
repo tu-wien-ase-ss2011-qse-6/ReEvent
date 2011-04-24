@@ -10,7 +10,7 @@ public class User extends EntityBase {
     String username;
 
     /**
-     * Salted SHA1 hash of the password.
+     * Salted MD5 hash of the password.
      */
     String passwordHash;
 
