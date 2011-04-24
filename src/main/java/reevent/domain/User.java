@@ -1,8 +1,6 @@
 package reevent.domain;
 
-import javax.persistence.Column;
-import javax.persistence.ElementCollection;
-import javax.persistence.Entity;
+import javax.persistence.*;
 import java.util.Collections;
 import java.util.Set;
 
@@ -19,6 +17,7 @@ public class User extends EntityBase {
     String realName;
 
     @ElementCollection
+    @Enumerated(EnumType.STRING)
     Set<UserRole> roles = Collections.singleton(UserRole.USER);
 
     public String getPasswordHash() {
