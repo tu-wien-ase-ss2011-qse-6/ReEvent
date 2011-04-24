@@ -76,12 +76,12 @@ public abstract class EntityDaoBase<T extends EntityBase> implements EntityDao<T
     }
 
     protected JPQLQuery query() {
-        return new JPAQuery(em).from(root);
+        return new JPAQuery(em);
     }
     
     @Override
     public List<T> findAll(int first, int max) {
-        return query().offset(first).limit(max).list(root);
+        return query().from(root).offset(first).limit(max).list(root);
     }
 
 }
