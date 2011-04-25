@@ -13,7 +13,7 @@
     <properties>
         <!-- Shared version number properties -->
         <springframework.version>3.0.5.RELEASE</springframework.version>
-        <wicket.version>1.5-rc2</wicket.version>
+        <wicket.version>1.5-RC3</wicket.version>
         <logback.version>0.9.28</logback.version>
         <slf4j.version>1.6.1</slf4j.version>
         <querydsl.version>2.1.2</querydsl.version>
