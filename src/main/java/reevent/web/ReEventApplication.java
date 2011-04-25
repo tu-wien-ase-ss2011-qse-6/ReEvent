@@ -41,7 +41,8 @@ public class ReEventApplication extends AuthenticatedWebApplication {
 
     @Override
     protected Class<? extends WebPage> getSignInPageClass() {
-        return FacebookConnectPage.class;
+        //todo maybe do a dedicated sign in page --dV
+        return HomePage.class;
     }
 
     @Override

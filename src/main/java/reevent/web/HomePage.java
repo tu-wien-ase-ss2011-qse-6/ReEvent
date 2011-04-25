@@ -1,7 +1,6 @@
 package reevent.web;
 
 import org.apache.wicket.markup.html.basic.Label;
-import org.apache.wicket.markup.html.link.BookmarkablePageLink;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.model.PropertyModel;
@@ -15,16 +14,12 @@ import java.text.DateFormat;
 import java.util.Date;
 
 public class HomePage extends Template {
-    BookmarkablePageLink<?> signInLink;
     ListView<Event> upcomingEventList;
 
     @SpringBean
     EventDao eventDao;
 
     public HomePage() {
-        signInLink = new BookmarkablePageLink<Object>("signInLink", FacebookConnectPage.class);
-        add(signInLink);
-
         add(upcomingEventList = new ListView<Event>("upcomingEventList", eventDao.findAll(0, 10)) {
             @Override
             protected void populateItem(ListItem<Event> item) {
