@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd"
+      xml:lang="en" lang="en">
+<head></head>
+<body>
+<wicket:panel>
+    <div wicket:id="feedback">
+        [[ feedback messages ]]
+    </div>
+    <form wicket:id="signInForm">
+        <label>
+            <wicket:message key="username">[[ username: ]]</wicket:message><br/>
+            <input type="text" name="username" wicket:id="username"/>
+        </label><br/>
+        <label>
+            <wicket:message key="password">[[ password: ]]</wicket:message><br/>
+            <input type="password" name="password" wicket:id="password"/>
+        </label><br/>
+        <input type="submit" value="[[ sign in ]]" wicket:message='value:sign.in'/>
+    </form>
+</wicket:panel>
+</body>
+</html>
