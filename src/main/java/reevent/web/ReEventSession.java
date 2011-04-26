@@ -59,4 +59,8 @@ public class ReEventSession extends AuthenticatedWebSession {
         userSignedIn = null;
         super.signOut();    //To change body of overridden methods use File | Settings | File Templates.
     }
+
+    public User getUserSignedIn() {
+        return userSignedIn;
+    }
 }
