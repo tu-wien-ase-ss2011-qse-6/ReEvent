@@ -62,7 +62,7 @@ public abstract class EntityBase implements Serializable {
      * @return
      */
     public String getShortId() {
-        return String.format("%x", id.getMostSignificantBits()>>32);
+        return String.format("%x", id.getMostSignificantBits()>>>32);
     }
 
     @Override

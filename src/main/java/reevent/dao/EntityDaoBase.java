@@ -3,6 +3,7 @@ package reevent.dao;
 import com.mysema.query.jpa.JPQLQuery;
 import com.mysema.query.jpa.impl.JPAQuery;
 import com.mysema.query.types.path.EntityPathBase;
+import org.springframework.transaction.annotation.Transactional;
 import reevent.domain.EntityBase;
 
 import javax.annotation.PostConstruct;
@@ -13,6 +14,7 @@ import java.lang.reflect.Type;
 import java.util.List;
 import java.util.UUID;
 
+@Transactional
 public abstract class EntityDaoBase<T extends EntityBase> implements EntityDao<T> {
     protected Class<T> entityClass;
     protected EntityPathBase<T> root;

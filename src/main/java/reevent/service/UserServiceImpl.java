@@ -2,6 +2,7 @@ package reevent.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import reevent.dao.UserDao;
 import reevent.domain.User;
 
@@ -11,6 +12,7 @@ import static java.text.Normalizer.Form.NFD;
 import static java.text.Normalizer.normalize;
 import static org.springframework.util.DigestUtils.md5DigestAsHex;
 
+@Transactional
 @Service
 public class UserServiceImpl implements UserService {
     @Autowired
