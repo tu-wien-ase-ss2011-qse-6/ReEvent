@@ -3,6 +3,8 @@ package reevent.web.signinout;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.PasswordTextField;
 import org.apache.wicket.markup.html.form.TextField;
+import org.apache.wicket.markup.html.link.BookmarkablePageLink;
+import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.panel.ComponentFeedbackPanel;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.markup.html.panel.Panel;
@@ -15,6 +17,8 @@ public class SignInPanel extends Panel {
     Form<?> signInForm;
     TextField<String> username;
     TextField<String> password;
+
+    Link signUpLink;
 
     public SignInPanel(String id) {
         super(id);
@@ -39,5 +43,7 @@ public class SignInPanel extends Panel {
 
         signInForm.add(password = new PasswordTextField("password", new Model<String>()));
         password.setRequired(true);
+
+        add(signUpLink = new BookmarkablePageLink("signUpLink", SignUpPage.class));
     }
 }

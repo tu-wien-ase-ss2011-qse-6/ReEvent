@@ -1,0 +1,25 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd"
+      xml:lang="en" lang="en">
+<head></head>
+<body>
+<wicket:extend>
+    <form wicket:id='newUserForm'>
+        <label>[[ username ]]<br/>
+            <input name='username' wicket:id='username' type='text'/>
+        </label><br/>
+        <label>[[ password ]]<br/>
+            <input name='password' wicket:id='password' type='password'/>
+        </label><br/>
+        <label>[[ verify password ]]<br/>
+            <input name='passwordVerify' wicket:id='passwordVerify' type='password'/>
+        </label><br/>
+        <label>[[ full name ]]<br/>
+            <input name='realName' wicket:id='realName' type='text'/>
+        </label><br/>
+        <input type="submit" value="[[ sign up ]]"/>
+    </form>
+</wicket:extend>
+</body>
+</html>

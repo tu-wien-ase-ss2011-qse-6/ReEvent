@@ -31,4 +31,11 @@ public interface UserService {
      * fails, returns <code>null</code>
      */
     User authenticate(String username, String password);
+
+    /**
+     * Check if the given username is available.
+     * @param username The username to check
+     * @return
+     */
+    boolean isAvailable(String username);
 }

@@ -1,13 +1,18 @@
 package reevent.web;
 
 import org.apache.wicket.markup.html.WebPage;
+import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.markup.html.panel.Panel;
 import reevent.web.signinout.SignInPanel;
 import reevent.web.signinout.SignOutPanel;
 
 public class Template extends WebPage {
+    FeedbackPanel feedback;
     Panel signInOutPanel;
 
+    {
+        add(feedback = new FeedbackPanel("feedback"));
+    }
     @Override
     protected void onBeforeRender() {
         super.onBeforeRender();

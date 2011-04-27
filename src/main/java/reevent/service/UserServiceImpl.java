@@ -14,7 +14,7 @@ import static org.springframework.util.DigestUtils.md5DigestAsHex;
 @Service
 public class UserServiceImpl implements UserService {
     @Autowired
-    UserDao userDao;
+    UserDao dao;
 
     @Override
     public String hashPassword(String salt, String password) {
@@ -34,12 +34,12 @@ public class UserServiceImpl implements UserService {
     @Override
     public User register(User newUser, String password) {
         newUser.setPasswordHash(hashPassword(newUser, password));
-        return userDao.save(newUser);
+        return dao.save(newUser);
     }
 
     @Override
     public User authenticate(String username, String password) {
-        User user = userDao.findByUsername(username);
+        User user = dao.findByUsername(username);
 
         if (user == null) {
             // Unknown user name.
@@ -52,5 +52,10 @@ public class UserServiceImpl implements UserService {
             // invalid password
             return null;
         }
+    }
+
+    @Override
+    public boolean isAvailable(String username) {
+        return !dao.usernameExists(username);
     }
 }
