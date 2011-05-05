@@ -63,4 +63,6 @@ public class ReEventSession extends AuthenticatedWebSession {
     public User getUserSignedIn() {
         return userSignedIn;
     }
+    
+
 }
