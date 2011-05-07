@@ -1,4 +1,4 @@
-package reevent.web;
+package reevent.web.account;
 
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.model.AbstractReadOnlyModel;
@@ -20,6 +20,6 @@ public class myAccount extends Template {;
 		StringResourceModel realNameMessage =
 			new StringResourceModel("you.are.logged.in.as.user", realNameModel);
 		
-//		add(new Label("userSignedInLabel", realNameMessage));
+		add(new Label("userSignedInLabel", realNameMessage));
 	}
 }
