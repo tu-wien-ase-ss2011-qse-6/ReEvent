@@ -7,11 +7,11 @@ import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.AbstractReadOnlyModel;
 import org.apache.wicket.model.StringResourceModel;
+
+import reevent.web.HomePage;
 import reevent.web.ReEventSession;
-import reevent.web.myAccount;
-import reevent.web.myEvents;
-// todo uncomment after commiting file
-//import reevent.web.myLocations;
+import reevent.web.account.myAccount;
+import reevent.web.myEvents.myEvents;;
 
 public class SignOutPanel extends Panel {
     Label userSignedInLabel;
@@ -36,6 +36,7 @@ public class SignOutPanel extends Panel {
             @Override
             protected void onSubmit() {
                 ReEventSession.get().signOut();
+                setResponsePage(HomePage.class);
             }
         });
         
