@@ -5,9 +5,8 @@ import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.link.BookmarkablePageLink;
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.panel.Panel;
-import org.apache.wicket.model.AbstractReadOnlyModel;
+import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.model.StringResourceModel;
-
 import reevent.web.HomePage;
 import reevent.web.ReEventSession;
 import reevent.web.account.myAccount;
@@ -22,14 +21,10 @@ public class SignOutPanel extends Panel {
 
     public SignOutPanel(String id) {
         super(id);
-        AbstractReadOnlyModel<String> realNameModel = new AbstractReadOnlyModel<String>() {
-            @Override
-            public String getObject() {
-                return ReEventSession.get().getUserSignedIn().getFirstName();
-            }
-        };
+
+        PropertyModel<String> firstNameModel = new PropertyModel<String>(ReEventSession.userSignedInModel, "firstName");
         StringResourceModel realNameMessage =
-                new StringResourceModel("you.are.logged.in.as.user", realNameModel);
+                new StringResourceModel("you.are.logged.in.as.user", firstNameModel);
         add(userSignedInLabel = new Label("userSignedInLabel", realNameMessage));
         
         add(signOutForm = new Form("signOutForm"){

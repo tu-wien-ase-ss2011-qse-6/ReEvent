@@ -5,6 +5,8 @@ import org.apache.wicket.Session;
 import org.apache.wicket.authroles.authentication.AuthenticatedWebSession;
 import org.apache.wicket.authroles.authorization.strategies.role.Roles;
 import org.apache.wicket.injection.Injector;
+import org.apache.wicket.model.AbstractReadOnlyModel;
+import org.apache.wicket.model.IModel;
 import org.apache.wicket.request.Request;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 import reevent.domain.User;
@@ -63,6 +65,14 @@ public class ReEventSession extends AuthenticatedWebSession {
     public User getUserSignedIn() {
         return userSignedIn;
     }
+
+    public static IModel<User> userSignedInModel = new AbstractReadOnlyModel<User>() {
+        @Override
+        public User getObject() {
+            return ReEventSession.get().getUserSignedIn();
+        }
+    };
+
     
 
 }
