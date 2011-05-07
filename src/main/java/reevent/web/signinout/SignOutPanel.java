@@ -11,7 +11,7 @@ import org.apache.wicket.model.StringResourceModel;
 import reevent.web.HomePage;
 import reevent.web.ReEventSession;
 import reevent.web.account.myAccount;
-import reevent.web.myEvents;
+import reevent.web.myEvents.myEvents;;
 
 public class SignOutPanel extends Panel {
     Label userSignedInLabel;
