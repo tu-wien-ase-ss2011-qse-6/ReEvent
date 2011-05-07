@@ -9,9 +9,19 @@ public class Location {
 
     public Location() {
     }
-
-    public Location(int latitude, int longitude) {
-        this.latitude = latitude;
-        this.longitude = longitude;
+    
+    public void setLocation(Integer latitude, Integer longitude) {
+    	
+    	this.latitude = latitude;
+    	this.longitude = longitude;
+    	
+    }
+    
+    public Integer getLatitude() {
+    	return this.latitude;
+    }
+    
+    public Integer getLongitude() {
+    	return this.longitude;
     }
 }

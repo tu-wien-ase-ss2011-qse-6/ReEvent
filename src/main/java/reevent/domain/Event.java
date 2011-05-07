@@ -21,6 +21,8 @@ public class Event extends EntityBase {
     String genre;
 
     String band;
+    
+    Location location;
 
     @ManyToOne
     Venue venue;
@@ -31,6 +33,12 @@ public class Event extends EntityBase {
     public Event(String name, Date start) {
         this.name = name;
         this.start = start;
+    }
+    
+    public Event(String name, Date start, Location location) {
+        this.name = name;
+        this.start = start;
+        this.location = location;
     }
 
     @Override
@@ -73,7 +81,7 @@ public class Event extends EntityBase {
     public void setStart(Date start) {
         this.start = start;
     }
-
+    
     public Venue getVenue() {
         return venue;
     }
@@ -81,4 +89,13 @@ public class Event extends EntityBase {
     public void setVenue(Venue venue) {
         this.venue = venue;
     }
+    
+    public void setLocation(Location location) {
+    	this.location = location;
+    }
+    
+    public Location getLocation() {
+    	return location;
+    }
+
 }
