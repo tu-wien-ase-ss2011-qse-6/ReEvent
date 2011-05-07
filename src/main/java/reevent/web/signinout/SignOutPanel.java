@@ -10,7 +10,8 @@ import org.apache.wicket.model.StringResourceModel;
 import reevent.web.ReEventSession;
 import reevent.web.myAccount;
 import reevent.web.myEvents;
-import reevent.web.myLocations;
+// todo uncomment after commiting file
+//import reevent.web.myLocations;
 
 public class SignOutPanel extends Panel {
     Label userSignedInLabel;
