@@ -35,6 +35,8 @@ public class HomePage extends Template {
                 });
             }
         });
+        
+
     }
 
 
