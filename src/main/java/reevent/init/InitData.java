@@ -66,22 +66,26 @@ public class InitData {
 
         user = new User();
         user.setUsername("user1");
-        user.setRealName("User 1");
+        user.setFirstName("User 1");
+        user.setLastName("Us");
         userService.register(user, "user1");
 
         user = new User();
         user.setUsername("user2");
-        user.setRealName("User 2");
+        user.setFirstName("User 2");
+        user.setLastName("Us");
         userService.register(user, "user2");
 
         user = new User();
         user.setUsername("user3");
-        user.setRealName("User 3");
+        user.setFirstName("User 3");
+        user.setLastName("Us");
         userService.register(user, "user3");
 
         user = new User();
         user.setUsername("admin");
-        user.setRealName("Administrator");
+        user.setFirstName("Administrator");
+        user.setLastName("Us");
         Set<UserRole> adminRoles = new LinkedHashSet<UserRole>();
         adminRoles.add(UserRole.USER);
         adminRoles.add(UserRole.ADMIN);

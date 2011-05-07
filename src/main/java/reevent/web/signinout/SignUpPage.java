@@ -22,7 +22,8 @@ public class SignUpPage extends Template {
     TextField<String> username;
     TextField<String> password;
     TextField<String> passwordVerify;
-    TextField<String> realName;
+    TextField<String> firstName;
+    TextField<String> lastName;
 
     @SpringBean
     UserService users;
@@ -62,10 +63,12 @@ public class SignUpPage extends Template {
             }
         });
 
-        newUserForm.add(realName = new TextField<String>("realName", formModel.<String>bind("realName")));
+        newUserForm.add(firstName = new TextField<String>("firstName", formModel.<String>bind("firstName")));
+        
+        newUserForm.add(lastName = new TextField<String>("lastName", formModel.<String>bind("lastName")));
 
         // required fields
-        for (FormComponent fc : asList(username, password, passwordVerify, realName)) {
+        for (FormComponent fc : asList(username, password, passwordVerify, firstName, lastName)) {
             fc.setRequired(true);
         }
     }

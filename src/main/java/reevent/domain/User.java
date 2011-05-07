@@ -3,6 +3,7 @@ package reevent.domain;
 import javax.persistence.*;
 import java.util.Collections;
 import java.util.Set;
+import java.util.Date;
 
 @Entity
 public class User extends EntityBase {
@@ -14,7 +15,12 @@ public class User extends EntityBase {
      */
     String passwordHash;
 
-    String realName;
+	String firstName;
+	
+	String lastName;
+	
+	Date dayOfBirth;
+    
 
     @ElementCollection
     @Enumerated(EnumType.STRING)
@@ -36,14 +42,6 @@ public class User extends EntityBase {
         this.username = username;
     }
 
-    public String getRealName() {
-        return realName;
-    }
-
-    public void setRealName(String realName) {
-        this.realName = realName;
-    }
-
     public Set<UserRole> getRoles() {
         return roles;
     }
@@ -51,4 +49,29 @@ public class User extends EntityBase {
     public void setRoles(Set<UserRole> roles) {
         this.roles = roles;
     }
+    
+
+    public Date getDayOfBirth() {
+		return dayOfBirth;
+	}
+
+	public void setDayOfBirth(Date dayOfBirth) {
+		this.dayOfBirth = dayOfBirth;
+	}
+	
+    public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
 }

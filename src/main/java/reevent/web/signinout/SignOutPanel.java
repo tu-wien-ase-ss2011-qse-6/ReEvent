@@ -25,7 +25,7 @@ public class SignOutPanel extends Panel {
         AbstractReadOnlyModel<String> realNameModel = new AbstractReadOnlyModel<String>() {
             @Override
             public String getObject() {
-                return ReEventSession.get().getUserSignedIn().getRealName();
+                return ReEventSession.get().getUserSignedIn().getFirstName();
             }
         };
         StringResourceModel realNameMessage =
