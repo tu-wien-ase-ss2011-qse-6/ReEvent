@@ -14,13 +14,17 @@ public class Template extends WebPage {
     Panel signInOutPanel;
     {
         add(feedback = new FeedbackPanel("feedback"));
+
+        // Accept all messages not in sidebars.
         feedback.setFilter(new IFeedbackMessageFilter() {
             @Override
             public boolean accept(FeedbackMessage message) {
                 Component reporter = message.getReporter();
                 if (reporter == null) return true;
-                if (reporter == signInOutPanel) return true;
-                return signInOutPanel.contains(reporter, true);
+                
+                // Reject feedback messages from sign in / sign out panel
+                if (reporter == signInOutPanel) return false;
+                return !signInOutPanel.contains(reporter, true);
             }
         });
     }

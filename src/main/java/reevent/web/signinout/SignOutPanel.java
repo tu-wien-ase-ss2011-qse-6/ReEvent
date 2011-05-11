@@ -17,7 +17,6 @@ public class SignOutPanel extends Panel {
     Form<?> signOutForm;
     Link myAccount;
     Link myEvents;
-    Link myLocations;
 
     public SignOutPanel(String id) {
         super(id);
@@ -36,9 +35,7 @@ public class SignOutPanel extends Panel {
         });
         
         add(myAccount = new BookmarkablePageLink("myAccount", myAccount.class));
-        
         add(myEvents = new BookmarkablePageLink("myEvents", myEvents.class));
-         
     }
 
 }
