@@ -6,22 +6,22 @@
 <body>
 <wicket:extend>
     <form wicket:id='newUserForm'>
-        <label>[[ username ]]<br/>
-            <input name='username' wicket:id='username' type='text'/>
-        </label><br/>
-        <label>[[ password ]]<br/>
-            <input name='password' wicket:id='password' type='password'/>
-        </label><br/>
-        <label>[[ verify password ]]<br/>
-            <input name='passwordVerify' wicket:id='passwordVerify' type='password'/>
-        </label><br/>
-        <label>[[ first name ]]<br/>
-            <input name='firstName' wicket:id='firstName' type='text'/>
-        </label><br/>
-                <label>[[ Last name ]]<br/>
-            <input name='lastName' wicket:id='lastName' type='text'/>
-        </label><br/>
-        <input type="submit" value="[[ sign up ]]"/>
+        <label wicket:id='usernameLabel'>[[ username ]]</label><br/>
+        <input wicket:id='username' type='text'/><br/>
+
+        <label wicket:id='passwordLabel'>[[ password ]]</label><br/>
+        <input wicket:id='password' type='password'/><br/>
+
+        <label wicket:id='passwordVerifyLabel'>[[ verify password ]]</label><br/>
+        <input wicket:id='passwordVerify' type='password'/><br/>
+
+        <label wicket:id='firstNameLabel'>[[ first name ]]</label><br/>
+        <input wicket:id='firstName' type='text'/><br/>
+
+        <label wicket:id='lastNameLabel'>[[ Last name ]]</label><br/>
+        <input wicket:id='lastName' type='text'/><br/>
+        
+        <input wicket:message='value:submit' type="submit" value="[[ sign up ]]"/>
     </form>
 </wicket:extend>
 </body>

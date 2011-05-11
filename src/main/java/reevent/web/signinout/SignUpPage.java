@@ -1,11 +1,9 @@
 package reevent.web.signinout;
 
-import org.apache.wicket.markup.html.form.Form;
-import org.apache.wicket.markup.html.form.FormComponent;
-import org.apache.wicket.markup.html.form.PasswordTextField;
-import org.apache.wicket.markup.html.form.TextField;
+import org.apache.wicket.markup.html.form.*;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.Model;
+import org.apache.wicket.model.ResourceModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.apache.wicket.validation.IValidatable;
 import org.apache.wicket.validation.validator.AbstractValidator;
@@ -70,6 +68,9 @@ public class SignUpPage extends Template {
         // required fields
         for (FormComponent fc : asList(username, password, passwordVerify, firstName, lastName)) {
             fc.setRequired(true);
+            fc.setLabel(new ResourceModel(fc.getId()));
+            String labelId = fc.getId() + "Label";
+            newUserForm.add(new SimpleFormComponentLabel(labelId, fc));
         }
     }
 }
