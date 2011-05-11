@@ -1,6 +1,6 @@
 package reevent.dao;
 
-import reevent.domain.Venue;
+import reevent.domain.Location;
 
-public interface VenueDao extends EntityDao<Venue> {
+public interface VenueDao extends EntityDao<Location> {
 }
