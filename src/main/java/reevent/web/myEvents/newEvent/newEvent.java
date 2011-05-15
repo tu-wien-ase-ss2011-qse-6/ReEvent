@@ -6,6 +6,8 @@ import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.FormComponent;
 import org.apache.wicket.markup.html.form.SimpleFormComponentLabel;
 import org.apache.wicket.markup.html.form.TextField;
+import org.apache.wicket.markup.html.link.BookmarkablePageLink;
+import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.ResourceModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
@@ -20,6 +22,7 @@ import reevent.service.UserService;
 import reevent.web.ReEventApplication;
 import reevent.web.ReEventSession;
 import reevent.web.myEvents.myEvents;
+import reevent.web.myEvents.newLocation.newLocation;
 
 public class newEvent extends myEvents{
 
@@ -34,9 +37,13 @@ public class newEvent extends myEvents{
    /* @SpringBean
     EventService events;*/
     
+    Link newLocationLink;
+    
 	public newEvent(){
 		
 		CompoundPropertyModel<Event> formModel = new CompoundPropertyModel<Event>(new Event());
+		
+		add(newLocationLink = new BookmarkablePageLink("newLocationLink", newLocation.class));
 		
         add(newEventForm = new Form<Event>("newEventForm", formModel) {
         
