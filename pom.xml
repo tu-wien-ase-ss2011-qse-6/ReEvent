@@ -424,5 +424,40 @@
                 </excludes>
             </resource>
         </resources>
+        <pluginManagement>
+        	<plugins>
+        		<!--TODO TEXT. This plugin's configuration is used in m2e only.-->
+        		<plugin>
+        			<groupId>org.eclipse.m2e</groupId>
+        			<artifactId>lifecycle-mapping</artifactId>
+        			<version>1.0.0</version>
+        			<configuration>
+        				<lifecycleMappingMetadata>
+        					<pluginExecutions>
+        						<pluginExecution>
+        							<pluginExecutionFilter>
+        								<groupId>
+        									com.mysema.maven
+        								</groupId>
+        								<artifactId>
+        									maven-apt-plugin
+        								</artifactId>
+        								<versionRange>
+        									[1.0,)
+        								</versionRange>
+        								<goals>
+        									<goal>process</goal>
+        								</goals>
+        							</pluginExecutionFilter>
+        							<action>
+        								<ignore></ignore>
+        							</action>
+        						</pluginExecution>
+        					</pluginExecutions>
+        				</lifecycleMappingMetadata>
+        			</configuration>
+        		</plugin>
+        	</plugins>
+        </pluginManagement>
     </build>
 </project>

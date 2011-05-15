@@ -6,9 +6,17 @@
 <head></head>
 <body>
 	<wicket:extend>
-		<h2>
-			<wicket:message key="myEvents">[[ my Events ]]</wicket:message>
-		</h2>
+			 
+			<div id="event_menu">
+			<a wicket:id='newEventLink'>new Event</a> | <a>edit Events</a> | <a>delete Event</a>
+			</div>
+			
+			<p><hr></hr></p>
+			
+			<div id="myevents">
+			<wicket:child />
+			</div>
+			
 	</wicket:extend>
 </body>
 </html>

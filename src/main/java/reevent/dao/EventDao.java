@@ -3,4 +3,6 @@ package reevent.dao;
 import reevent.domain.Event;
 
 public interface EventDao extends EntityDao<Event> {
+
+	boolean eventNameExists(String eventname);
 }

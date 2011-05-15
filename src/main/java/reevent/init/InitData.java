@@ -13,6 +13,7 @@ import reevent.dao.UserDao;
 import reevent.domain.Event;
 import reevent.domain.User;
 import reevent.domain.UserRole;
+import reevent.service.EventService;
 import reevent.service.UserService;
 
 import javax.annotation.PostConstruct;
@@ -37,7 +38,7 @@ public class InitData {
     UserDao userDao;
     @Autowired
     UserService userService;
-
+    
     @PostConstruct
     public void initData() {
         TransactionTemplate txTemplate = new TransactionTemplate(txManager);

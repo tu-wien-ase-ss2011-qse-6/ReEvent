@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd"
+	xml:lang="en" lang="en">
+<head></head>
+<body>
+	<wicket:extend>
+			
+		<form wicket:id='newEventForm'>
+		
+        <label wicket:id='nameLabel'>[[ name ]]</label><br/>
+        <input wicket:id='name' type='text'/><br/>
+
+        <label wicket:id='bandLabel'>[[ band ]]</label><br/>
+        <input wicket:id='band' type='text'/><br/>
+
+        <label wicket:id='locationLabel'>[[ location ]]</label><br/>
+        <input wicket:id='location' type='text'/><br/>
+
+        <label wicket:id='genreLabel'>[[ genre ]]</label><br/>
+        <input wicket:id='genre' type='text'/><br/>
+
+        
+        <input wicket:message='value:submit' type="submit" value="[[ create ]]"/>
+    </form>
+				
+	</wicket:extend>
+</body>
+</html>
