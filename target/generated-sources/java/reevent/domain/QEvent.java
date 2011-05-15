@@ -1,7 +1,6 @@
-package java.reevent.domain;
+package reevent.domain;
 
 import static com.mysema.query.types.PathMetadataFactory.*;
-import reevent.domain.Event;
 
 import com.mysema.query.types.*;
 import com.mysema.query.types.path.*;
@@ -24,6 +23,8 @@ public class QEvent extends EntityPathBase<Event> {
 
     //inherited
     public final DateTimePath<java.util.Date> createdAt = _super.createdAt;
+
+    public final QUser createdBy;
 
     public final StringPath genre = createString("genre");
 
@@ -53,6 +54,7 @@ public class QEvent extends EntityPathBase<Event> {
 
     public QEvent(Class<? extends Event> type, PathMetadata<?> metadata, PathInits inits) {
         super(type, metadata, inits);
+        this.createdBy = inits.isInitialized("createdBy") ? new QUser(forProperty("createdBy")) : null;
         this.location = inits.isInitialized("location") ? new QLocation(forProperty("location"), inits.get("location")) : null;
     }
 
