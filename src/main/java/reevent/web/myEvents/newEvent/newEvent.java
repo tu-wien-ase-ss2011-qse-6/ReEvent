@@ -31,8 +31,8 @@ public class newEvent extends myEvents{
     TextField<String> name;
     //TODO date
     
-    @SpringBean
-    EventService events;
+   /* @SpringBean
+    EventService events;*/
     
 	public newEvent(){
 		
