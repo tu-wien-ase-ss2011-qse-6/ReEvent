@@ -6,8 +6,6 @@ import reevent.dao.EventDao;
 import reevent.domain.Event;
 
 public class EventServiceImpl implements EventService {
-
-	
 	@Autowired
     EventDao dao;
 	

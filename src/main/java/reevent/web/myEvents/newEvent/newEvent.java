@@ -1,25 +1,16 @@
 package reevent.web.myEvents.newEvent;
 
-import static java.util.Arrays.asList;
-
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.FormComponent;
 import org.apache.wicket.markup.html.form.SimpleFormComponentLabel;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.ResourceModel;
-import org.apache.wicket.spring.injection.annot.SpringBean;
-import org.apache.wicket.validation.IValidatable;
-import org.apache.wicket.validation.validator.AbstractValidator;
-
-import reevent.dao.EventDao;
 import reevent.domain.Event;
-import reevent.domain.User;
-import reevent.service.EventService;
-import reevent.service.UserService;
-import reevent.web.ReEventApplication;
 import reevent.web.ReEventSession;
 import reevent.web.myEvents.myEvents;
+
+import static java.util.Arrays.asList;
 
 public class newEvent extends myEvents{
 
@@ -30,9 +21,11 @@ public class newEvent extends myEvents{
     TextField<String> location;
     TextField<String> name;
     //TODO date
-    
-   /* @SpringBean
-    EventService events;*/
+
+    /*
+    @SpringBean
+    EventService events;
+    */
     
 	public newEvent(){
 		
@@ -42,8 +35,10 @@ public class newEvent extends myEvents{
         
         	@Override
             protected void onSubmit() {
-            	
-              // events.create(newEventForm.getModelObject());
+
+                Event event = newEventForm.getModelObject();
+                event.setCreatedBy(ReEventSession.get().getUserSignedIn());
+//                events.create(event);
                
             }
         });
