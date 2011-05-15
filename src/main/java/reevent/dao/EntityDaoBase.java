@@ -2,6 +2,7 @@ package reevent.dao;
 
 import com.mysema.query.jpa.JPQLQuery;
 import com.mysema.query.jpa.impl.JPAQuery;
+import com.mysema.query.types.EntityPath;
 import com.mysema.query.types.path.EntityPathBase;
 import org.springframework.transaction.annotation.Transactional;
 import reevent.domain.EntityBase;
@@ -79,6 +80,21 @@ public abstract class EntityDaoBase<T extends EntityBase> implements EntityDao<T
 
     protected JPQLQuery query() {
         return new JPAQuery(em);
+    }
+
+    protected JPQLQuery query(EntityPath<?> from) {
+        return query().from(from);
+    }
+
+    protected JPQLQuery query(EntityPath<?> from, Integer offset, Integer limit) {
+        JPQLQuery q = query(from);
+        if (offset != null) {
+            q = q.offset(offset);
+        }
+        if (limit != null) {
+            q = q.limit(limit);
+        }
+        return q;
     }
     
     @Override
