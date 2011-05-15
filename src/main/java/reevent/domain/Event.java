@@ -25,6 +25,8 @@ public class Event extends EntityBase {
     @ManyToOne
     Location location;
 
+    User createdBy;
+
     public Event() {
     }
 
@@ -87,5 +89,12 @@ public class Event extends EntityBase {
     public void setLocation(Location location) {
         this.location = location;
     }
-    
+
+    public User getCreatedBy() {
+        return createdBy;
+    }
+
+    public void setCreatedBy(User createdBy) {
+        this.createdBy = createdBy;
+    }
 }
