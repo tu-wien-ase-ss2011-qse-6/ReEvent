@@ -6,14 +6,14 @@
     <wicket:head>
         <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
         <title>
-			<wicket:message key="title">[[ ReEvent ]]</wicket:message>
-		</title>
+            <wicket:message key="title">[[ ReEvent ]]</wicket:message>
+        </title>
         <link rel="stylesheet" href="resource/blueprint-1.0/screen.css" media="screen, projection"/>
         <link rel="stylesheet" href="resource/blueprint-1.0/print.css" media="print"/>
         <!--[if lt IE 8]>
-            <link rel="stylesheet" href="/resource/blueprint-1.0/ie.css" type="text/css" media="screen, projection">
+        <link rel="stylesheet" href="/resource/blueprint-1.0/ie.css" type="text/css" media="screen, projection">
         <![endif]-->
-        <link rel="stylesheet" href="resource/blueprint-1.0/plugins/buttons/screen.css"  media="screen, projection"/>
+        <link rel="stylesheet" href="resource/blueprint-1.0/plugins/buttons/screen.css" media="screen, projection"/>
         <link rel="stylesheet" href="resource/blueprint-1.0/plugins/fancy-type/screen.css" media="screen, projection"/>
         <link rel="stylesheet" href="resource/jquery-ui-1.8.11/jquery-ui-1.8.11.custom.css"/>
 
@@ -36,22 +36,19 @@
 <body>
 <div class="container showgrid">
     <div class="span-24" id="header">
-    	<img src="resource/logo.png" alt="ReEvent Logo"/>
+        <img src="resource/logo.png" alt="ReEvent Logo"/>
     </div>
     <hr/>
     <div class="span-17 colborder" id="content">
         <div wicket:id='feedback'>
             [[ feedback messages ]]
         </div>
-        <wicket:child />
+        <wicket:child/>
     </div>
     <div class="span-6 last" id="sidebar" wicket:id='signInOutPanel'>
 
     </div>
     <hr/>
-    <div class="span-24" id="footer">
-        Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit…
-    </div>    
 </div>
 </body>
 </html>
