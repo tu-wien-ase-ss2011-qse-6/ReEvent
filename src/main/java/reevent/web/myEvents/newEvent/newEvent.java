@@ -8,7 +8,10 @@ import org.apache.wicket.markup.html.link.BookmarkablePageLink;
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.ResourceModel;
+import org.apache.wicket.spring.injection.annot.SpringBean;
+
 import reevent.domain.Event;
+import reevent.service.EventService;
 import reevent.web.ReEventSession;
 import reevent.web.myEvents.myEvents;
 import reevent.web.myEvents.newLocation.newLocation;
@@ -25,10 +28,10 @@ public class newEvent extends myEvents{
     TextField<String> name;
     //TODO date
 
-    /*
+    
     @SpringBean
     EventService events;
-    */
+    
     
     Link newLocationLink;
     
