@@ -1,20 +1,20 @@
+
 package reevent.web.myEvents.newEvent;
 
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.FormComponent;
-import org.apache.wicket.markup.html.form.SimpleFormComponentLabel;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.html.link.BookmarkablePageLink;
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.model.CompoundPropertyModel;
-import org.apache.wicket.model.ResourceModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
-
 import reevent.domain.Event;
 import reevent.service.EventService;
 import reevent.web.ReEventSession;
 import reevent.web.myEvents.myEvents;
 import reevent.web.myEvents.newLocation.newLocation;
+
+import java.util.List;
 
 import static java.util.Arrays.asList;
 
@@ -72,11 +72,10 @@ public class newEvent extends myEvents{
         newEventForm.add(genre = new TextField<String>("genre", formModel.<String>bind("genre")));
         
         // required fields
-        for (FormComponent fc : asList(name, band, location, genre)) {
+        List<TextField<String>> fields = asList(name, band, location, genre);
+        addLabels(fields);
+        for (FormComponent fc : fields) {
             fc.setRequired(true);
-            fc.setLabel(new ResourceModel(fc.getId()));
-            String labelId = fc.getId() + "Label";
-            newEventForm.add(new SimpleFormComponentLabel(labelId, fc));
         }
         
 	}

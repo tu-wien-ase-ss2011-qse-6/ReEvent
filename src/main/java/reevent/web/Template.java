@@ -4,14 +4,26 @@ import org.apache.wicket.Component;
 import org.apache.wicket.feedback.FeedbackMessage;
 import org.apache.wicket.feedback.IFeedbackMessageFilter;
 import org.apache.wicket.markup.html.WebPage;
+import org.apache.wicket.markup.html.form.FormComponent;
+import org.apache.wicket.markup.html.form.SimpleFormComponentLabel;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.markup.html.panel.Panel;
+import org.apache.wicket.model.ResourceModel;
 import reevent.web.signinout.SignInPanel;
 import reevent.web.signinout.SignOutPanel;
 
 public class Template extends WebPage {
     FeedbackPanel feedback;
     Panel signInOutPanel;
+
+    public static void addLabels(Iterable<? extends FormComponent<?>> fields) {
+        for (FormComponent field : fields) {
+            field.setLabel(new ResourceModel(field.getId()));
+            String labelId = field.getId() + "Label";
+            field.getParent().add(new SimpleFormComponentLabel(labelId, field));
+        }
+    }
+
     {
         add(feedback = new FeedbackPanel("feedback"));
 
