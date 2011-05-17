@@ -6,5 +6,5 @@ import reevent.domain.Location;
 
 @Transactional
 @Repository
-public class VenueDaoJpa extends EntityDaoBase<Location> implements VenueDao {
+public class LocationDaoJpa extends EntityDaoBase<Location> implements LocationDao {
 }
