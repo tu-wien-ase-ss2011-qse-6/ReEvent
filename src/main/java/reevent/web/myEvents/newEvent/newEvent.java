@@ -8,12 +8,17 @@ import org.apache.wicket.markup.html.link.BookmarkablePageLink;
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
+import org.apache.wicket.validation.IValidatable;
+import org.apache.wicket.validation.validator.AbstractValidator;
+
 import reevent.domain.Event;
 import reevent.service.EventService;
 import reevent.web.ReEventSession;
 import reevent.web.myEvents.myEvents;
 import reevent.web.myEvents.newLocation.newLocation;
 
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import static java.util.Arrays.asList;
@@ -28,7 +33,7 @@ public class newEvent extends myEvents{
     TextField<String> name;
     //TODO date
 
-    
+    List<Event> myEvents;
     @SpringBean
     EventService events;
     
@@ -41,14 +46,20 @@ public class newEvent extends myEvents{
 		
 		add(newLocationLink = new BookmarkablePageLink("newLocationLink", newLocation.class));
 		
+		myEvents= events.getByUser(ReEventSession.get().getUserSignedIn());
+		
         add(newEventForm = new Form<Event>("newEventForm", formModel) {
         
         	@Override
             protected void onSubmit() {
 
                 Event event = newEventForm.getModelObject();
-                event.setCreatedBy(ReEventSession.get().getUserSignedIn());
-//                events.create(event);
+                event.setStart(new Date());
+                
+                
+                
+                event.setCreatedBy(ReEventSession.userSignedInModel.getObject());
+                events.create(event);
                
             }
         });
@@ -56,7 +67,7 @@ public class newEvent extends myEvents{
         
         newEventForm.add(name = new TextField<String>("name", formModel.<String>bind("name")));
         
-        /*name.add(new AbstractValidator<String>(){
+        name.add(new AbstractValidator<String>(){
 
 			@Override
 			protected void onValidate(IValidatable<String> field) {
@@ -65,15 +76,19 @@ public class newEvent extends myEvents{
                 }
 			}
         	
-        });*/
+        });
         
         newEventForm.add(band = new TextField<String>("band", formModel.<String>bind("band")));
+        
         newEventForm.add(location = new TextField<String>("location", formModel.<String>bind("location")));
+        
+        
         newEventForm.add(genre = new TextField<String>("genre", formModel.<String>bind("genre")));
         
         // required fields
         List<TextField<String>> fields = asList(name, band, location, genre);
         addLabels(fields);
+       
         for (FormComponent fc : fields) {
             fc.setRequired(true);
         }

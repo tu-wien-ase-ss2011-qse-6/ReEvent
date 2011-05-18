@@ -1,6 +1,10 @@
 package reevent.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import reevent.domain.Event;
+import reevent.domain.User;
 
 public interface EventService {
 
@@ -17,4 +21,12 @@ public interface EventService {
      * @param event The event to create.
      */
     Event create(Event event);
+    
+    
+    
+    /**
+     * Find all events by User
+     * @param user 
+     */
+    public List<Event> getByUser(User user);
 }
