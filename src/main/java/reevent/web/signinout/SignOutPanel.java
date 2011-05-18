@@ -11,7 +11,7 @@ import reevent.web.HomePage;
 import reevent.web.ReEventSession;
 import reevent.web.account.myAccount;
 import reevent.web.myEvents.myEvents;
-import reevent.web.adminPanel.AdminPanel;
+import reevent.web.adminPanel.adminPanel;
 
 public class SignOutPanel extends Panel {
     Label userSignedInLabel;
@@ -38,7 +38,7 @@ public class SignOutPanel extends Panel {
         
         add(myAccount = new BookmarkablePageLink("myAccount", myAccount.class));
         add(myEvents = new BookmarkablePageLink("myEvents", myEvents.class));
-        add(adminPanel = new BookmarkablePageLink("adminPanel", AdminPanel.class));
+        add(adminPanel = new BookmarkablePageLink("adminPanel", adminPanel.class));
     }
 
 }

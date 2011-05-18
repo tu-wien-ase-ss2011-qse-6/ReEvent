@@ -16,12 +16,14 @@ public class myEvents extends Template{
 	
 	ListView<Event> myEventList;
 	Link newEventLink;
+	Link editEventLink;
+	Link deleteEventLink;
 	
 	public myEvents(){
 		
 		add(newEventLink = new BookmarkablePageLink("newEventLink", newEvent.class));
-		add(newEventLink = new BookmarkablePageLink("editEventLink", editEvent.class));
-		add(newEventLink = new BookmarkablePageLink("deleteEventLink", deleteEvent.class));
+		add(editEventLink = new BookmarkablePageLink("editEventLink", editEvent.class));
+		add(deleteEventLink = new BookmarkablePageLink("deleteEventLink", deleteEvent.class));
 		
 	}
 
