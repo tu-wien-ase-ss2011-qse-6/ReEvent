@@ -25,6 +25,7 @@ public class Event extends EntityBase {
     @ManyToOne
     Location location;
 
+    @ManyToOne
     User createdBy;
 
     public Event() {
@@ -40,6 +41,8 @@ public class Event extends EntityBase {
         this.start = start;
         this.location = location;
     }
+
+    
 
     @Override
     public String toString() {
