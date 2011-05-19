@@ -11,13 +11,11 @@ import reevent.web.myEvents.newEvent.newEvent;
 
 public class adminPanel extends Template{
 
-	Link newUserLink;
 	Link editUserLink;
 	Link deleteUserLink;
 	
 	public adminPanel() {
 		
-		add(newUserLink = new BookmarkablePageLink("newUserLink", newUser.class));
 		add(editUserLink = new BookmarkablePageLink("editUserLink", editUser.class));
 		add(deleteUserLink = new BookmarkablePageLink("deleteUserLink", deleteUser.class));
 		
