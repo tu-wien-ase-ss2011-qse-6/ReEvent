@@ -4,6 +4,7 @@ import java.text.DateFormat;
 import java.util.Date;
 
 import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.model.PropertyModel;
@@ -20,6 +21,9 @@ import reevent.web.myEvents.myEvents;
 public class editEvent extends myEvents {
 
 	ListView<Event> myEventList;
+	Link editEvent;
+	Link deleteEvent;
+	Link detailEvent;
 	
 	@SpringBean
 	EventService events;
@@ -28,10 +32,37 @@ public class editEvent extends myEvents {
 		
     User user = ReEventSession.get().getUserSignedIn();
     
+    
+   
     add(myEventList = new ListView<Event>("myEventList", events.getByUser(user)) {
         @Override
         protected void populateItem(ListItem<Event> item) {
             item.add(new Label("eventName", new PropertyModel(item.getModel(), "name")));
+            
+            item.add(deleteEvent = new Link("deleteEvent"){
+            	public void onClick() {
+            		
+            		
+            		
+            	}});
+            
+            item.add(editEvent = new Link("editEvent"){
+            	public void onClick() {
+            		
+            		
+            		
+            	}
+            });
+            
+            item.add(detailEvent = new Link("detailEvent"){
+            	public void onClick() {
+            		
+            		
+            		
+            	}
+            });
+            
+            
             item.add(new Label("eventStart", new PropertyModel(item.getModel(), "start")) {
                 @Override
                 public <C> IConverter<C> getConverter(Class<C> type) {

@@ -10,7 +10,6 @@ import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.apache.wicket.validation.IValidatable;
 import org.apache.wicket.validation.validator.AbstractValidator;
-
 import reevent.domain.Event;
 import reevent.service.EventService;
 import reevent.web.ReEventSession;
@@ -31,7 +30,7 @@ public class newEvent extends myEvents{
     TextField<String> band;
     TextField<String> location;
     TextField<String> name;
-    //TODO date
+    TextField<String> start;
 
     List<Event> myEvents;
     @SpringBean
@@ -42,11 +41,16 @@ public class newEvent extends myEvents{
     
 	public newEvent(){
 		
+		
+		 
+		 
+		 
+		 
+		 
+		
 		CompoundPropertyModel<Event> formModel = new CompoundPropertyModel<Event>(new Event());
 		
 		add(newLocationLink = new BookmarkablePageLink("newLocationLink", newLocation.class));
-		
-		
 		
         add(newEventForm = new Form<Event>("newEventForm", formModel) {
         
@@ -57,7 +61,6 @@ public class newEvent extends myEvents{
                 event.setStart(new Date());
                 
                 
-        
                 event.setCreatedBy(ReEventSession.userSignedInModel.getObject());
                 events.create(event);
                 
@@ -67,6 +70,8 @@ public class newEvent extends myEvents{
         
         
         newEventForm.add(name = new TextField<String>("name", formModel.<String>bind("name")));
+        
+        newEventForm.add(start = new TextField("start", formModel.<Date>bind("start")));
         
         name.add(new AbstractValidator<String>(){
 
@@ -87,12 +92,12 @@ public class newEvent extends myEvents{
         newEventForm.add(genre = new TextField<String>("genre", formModel.<String>bind("genre")));
         
         // required fields
-        List<TextField<String>> fields = asList(name, band, location, genre);
+        List<TextField<String>> fields = asList(name, band, start, location, genre);
         addLabels(fields);
        
-       /* for (FormComponent fc : fields) {
+        for (FormComponent fc : fields) {
             fc.setRequired(true);
-        }*/
+        }
         
 	}
 }

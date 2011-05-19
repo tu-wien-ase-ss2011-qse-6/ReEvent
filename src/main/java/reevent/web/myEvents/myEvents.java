@@ -23,7 +23,6 @@ public class myEvents extends Template{
 		
 		add(newEventLink = new BookmarkablePageLink("newEventLink", newEvent.class));
 		add(editEventLink = new BookmarkablePageLink("editEventLink", editEvent.class));
-		add(deleteEventLink = new BookmarkablePageLink("deleteEventLink", deleteEvent.class));
 		
 	}
 
