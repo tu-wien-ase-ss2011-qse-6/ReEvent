@@ -1,6 +1,8 @@
-package reevent.domain;
+package java.reevent.domain;
 
 import static com.mysema.query.types.PathMetadataFactory.*;
+import reevent.domain.User;
+import reevent.domain.UserRole;
 
 import com.mysema.query.types.*;
 import com.mysema.query.types.path.*;

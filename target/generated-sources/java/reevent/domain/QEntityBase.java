@@ -1,5 +1,7 @@
-package reevent.domain;
+package java.reevent.domain;
 
+
+import reevent.domain.EntityBase;
 
 import com.mysema.query.types.*;
 import com.mysema.query.types.path.*;

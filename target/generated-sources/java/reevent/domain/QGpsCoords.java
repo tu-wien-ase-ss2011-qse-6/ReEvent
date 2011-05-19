@@ -1,5 +1,7 @@
-package reevent.domain;
+package java.reevent.domain;
 
+
+import reevent.domain.GpsCoords;
 
 import com.mysema.query.types.*;
 import com.mysema.query.types.path.*;
