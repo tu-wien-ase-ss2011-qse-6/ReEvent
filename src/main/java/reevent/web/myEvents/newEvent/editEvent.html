@@ -8,7 +8,25 @@
 	<wicket:extend>
 			
 		<h2>Edit Event</h2>
-				
+		<div class="span-17">
+        <table>
+            <caption>
+                <wicket:message key="my.events">[[ upcoming events ]]</wicket:message>
+            </caption>
+            <thead>
+                <tr>
+                    <th><wicket:message key="myevent.name">[[ event name ]]</wicket:message></th>
+                    <th><wicket:message key="myevent.date">[[ event date ]]</wicket:message></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr wicket:id="myEventList">
+                    <td wicket:id="eventName">[[ event 1 ]]</td>
+                    <td wicket:id="eventStart">[[ 1.1.2011 18:00 ]]</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 	</wicket:extend>
 </body>
 </html>

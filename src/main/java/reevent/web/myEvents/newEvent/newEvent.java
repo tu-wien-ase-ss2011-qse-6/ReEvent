@@ -46,7 +46,7 @@ public class newEvent extends myEvents{
 		
 		add(newLocationLink = new BookmarkablePageLink("newLocationLink", newLocation.class));
 		
-		myEvents= events.getByUser(ReEventSession.get().getUserSignedIn());
+		
 		
         add(newEventForm = new Form<Event>("newEventForm", formModel) {
         
@@ -57,9 +57,10 @@ public class newEvent extends myEvents{
                 event.setStart(new Date());
                 
                 
-                
+        
                 event.setCreatedBy(ReEventSession.userSignedInModel.getObject());
                 events.create(event);
+                
                
             }
         });
@@ -72,7 +73,7 @@ public class newEvent extends myEvents{
 			@Override
 			protected void onValidate(IValidatable<String> field) {
 				if (!events.isAvailable(field.getValue())) {
-                    this.error(field, "username.not.available");
+                    this.error(field, "event.not.available");
                 }
 			}
         	
@@ -89,9 +90,9 @@ public class newEvent extends myEvents{
         List<TextField<String>> fields = asList(name, band, location, genre);
         addLabels(fields);
        
-        for (FormComponent fc : fields) {
+       /* for (FormComponent fc : fields) {
             fc.setRequired(true);
-        }
+        }*/
         
 	}
 }
