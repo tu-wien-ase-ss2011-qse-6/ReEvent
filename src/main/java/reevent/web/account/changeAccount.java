@@ -32,11 +32,11 @@ public class changeAccount extends Template {
 
 	public changeAccount(){
 		CompoundPropertyModel<User> formModel = new CompoundPropertyModel<User>(new User());
+		
         add(changeUserForm = new Form<User>("changeUserForm", formModel) {
             @Override
             protected void onSubmit() {
                 users.update(changeUserForm.getModelObject(), password.getModelObject());
-                ReEventSession.get().signIn(username.getModelObject(), password.getModelObject());
                 setResponsePage(ReEventApplication.get().getAccount());
             }
         });
