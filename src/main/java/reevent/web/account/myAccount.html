@@ -9,9 +9,13 @@
 			<h2>
 				<wicket:message key="account">[[ account ]]</wicket:message>
 			</h2>
+			<span wicket:id='userSignedInLabelNick'> [[ Nickname: {nick name} ]]</span>
+			<br/>
 			<span wicket:id='userSignedInLabelFirst'>[[ first name: {first name} ]]</span>
 			<br/>
 			<span wicket:id='userSignedInLabelLast'>[[ last name: {last name} ]]</span>
+			<br/>
+			<a wicket:id='changeAccountLink'><wicket:message key="change.Account">[[ change your Account]]</wicket:message></a>
 	</wicket:extend>
 </body>
 </html>

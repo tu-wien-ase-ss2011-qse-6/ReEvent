@@ -11,6 +11,8 @@ import org.apache.wicket.util.time.Duration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import reevent.web.account.changeAccount;
+
 public class ReEventApplication extends AuthenticatedWebApplication {
     private Logger _log = LoggerFactory.getLogger(this.getClass());
     private Logger log() {
@@ -48,5 +50,9 @@ public class ReEventApplication extends AuthenticatedWebApplication {
     @Override
     public Class<? extends Page> getHomePage() {
         return HomePage.class;
+    }
+    
+    public Class<? extends Page> getChangeAccount() {
+        return changeAccount.class;
     }
 }
