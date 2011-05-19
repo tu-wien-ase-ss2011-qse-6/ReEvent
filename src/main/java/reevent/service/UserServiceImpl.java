@@ -60,4 +60,10 @@ public class UserServiceImpl implements UserService {
     public boolean isAvailable(String username) {
         return !dao.usernameExists(username);
     }
+
+	@Override
+	public User update(User user, String password) {
+        user.setPasswordHash(hashPassword(user, password));
+        return dao.update(user);
+	}
 }

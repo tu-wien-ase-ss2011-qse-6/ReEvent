@@ -9,6 +9,25 @@
 			<h1>
 				<wicket:message key="changeAccount">[[ account ]]</wicket:message>
 			</h1>
+			
+			<form wicket:id='changeUserForm'>
+        <label wicket:id='usernameLabel'>[[ username ]]</label><br/>
+        <input wicket:id='username' type='text'/><br/>
+
+        <label wicket:id='passwordLabel'>[[ password ]]</label><br/>
+        <input wicket:id='password' type='password'/><br/>
+
+        <label wicket:id='passwordVerifyLabel'>[[ verify password ]]</label><br/>
+        <input wicket:id='passwordVerify' type='password'/><br/>
+
+        <label wicket:id='firstNameLabel'>[[ first name ]]</label><br/>
+        <input wicket:id='firstName' type='text'/><br/>
+
+        <label wicket:id='lastNameLabel'>[[ Last name ]]</label><br/>
+        <input wicket:id='lastName' type='text'/><br/>
+        
+<!--        <input wicket:message='value:submit' type="submit" value="[[ change ]]"/>    -->
+    </form>
 
 	</wicket:extend>
 </body>

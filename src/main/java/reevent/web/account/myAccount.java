@@ -16,7 +16,8 @@ public class myAccount extends Template {;
 	public myAccount(){
 		
 		BookmarkablePageLink changeAccountLink;
-
+		BookmarkablePageLink deleteAccountLink;
+		
 		StringResourceModel firstNameMessage =
 			new StringResourceModel("you.are.logged.in.as.user.firstName", ReEventSession.userSignedInModel);
 		
@@ -34,5 +35,8 @@ public class myAccount extends Template {;
 		
 		
 		add(changeAccountLink = new BookmarkablePageLink("changeAccountLink", changeAccount.class));
+		
+	
+		add(deleteAccountLink = new BookmarkablePageLink("deleteAccountLink", DeleteAccount.class));
 	}
 }
