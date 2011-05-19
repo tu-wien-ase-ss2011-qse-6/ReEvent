@@ -7,6 +7,7 @@ import reevent.dao.UserDao;
 import reevent.domain.User;
 
 import java.io.UnsupportedEncodingException;
+import java.util.UUID;
 
 import static java.text.Normalizer.Form.NFD;
 import static java.text.Normalizer.normalize;
@@ -65,5 +66,10 @@ public class UserServiceImpl implements UserService {
 	public User update(User user, String password) {
         user.setPasswordHash(hashPassword(user, password));
         return dao.update(user);
+	}
+
+	@Override
+	public void delete(UUID id) {
+		dao.delete(id);
 	}
 }

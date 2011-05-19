@@ -1,5 +1,7 @@
 package reevent.service;
 
+import java.util.UUID;
+
 import reevent.domain.User;
 
 public interface UserService {
@@ -21,7 +23,7 @@ public interface UserService {
      */
     
     User update (User newUser, String passwort);
-    
+        
     
     String hashPassword(String salt, String password);
 
@@ -42,4 +44,6 @@ public interface UserService {
      * @return
      */
     boolean isAvailable(String username);
+
+	void delete(UUID id);
 }

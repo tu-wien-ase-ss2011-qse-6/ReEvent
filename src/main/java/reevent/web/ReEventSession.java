@@ -9,6 +9,7 @@ import org.apache.wicket.model.AbstractReadOnlyModel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.request.Request;
 import org.apache.wicket.spring.injection.annot.SpringBean;
+
 import reevent.domain.User;
 import reevent.domain.UserRole;
 import reevent.service.UserService;
@@ -72,6 +73,11 @@ public class ReEventSession extends AuthenticatedWebSession {
             return ReEventSession.get().getUserSignedIn();
         }
     };
+
+	public void delete() {
+		userService.delete(userSignedIn.getId());
+		userSignedIn = null;
+	}
 
     
 
