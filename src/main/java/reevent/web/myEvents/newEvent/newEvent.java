@@ -42,12 +42,6 @@ public class newEvent extends myEvents{
 	public newEvent(){
 		
 		
-		 
-		 
-		 
-		 
-		 
-		
 		CompoundPropertyModel<Event> formModel = new CompoundPropertyModel<Event>(new Event());
 		
 		add(newLocationLink = new BookmarkablePageLink("newLocationLink", newLocation.class));
@@ -58,20 +52,16 @@ public class newEvent extends myEvents{
             protected void onSubmit() {
 
                 Event event = newEventForm.getModelObject();
-                event.setStart(new Date());
-                
                 
                 event.setCreatedBy(ReEventSession.userSignedInModel.getObject());
                 events.create(event);
-                
                
             }
         });
-        
-        
+         
         newEventForm.add(name = new TextField<String>("name", formModel.<String>bind("name")));
         
-        newEventForm.add(start = new TextField("start", formModel.<Date>bind("start")));
+        newEventForm.add(start = new TextField("start", formModel.<String>bind("start")));
         
         name.add(new AbstractValidator<String>(){
 
@@ -86,13 +76,13 @@ public class newEvent extends myEvents{
         
         newEventForm.add(band = new TextField<String>("band", formModel.<String>bind("band")));
         
-        newEventForm.add(location = new TextField<String>("location", formModel.<String>bind("location")));
+        //newEventForm.add(location = new TextField<String>("location", formModel.<String>bind("location")));
         
         
         newEventForm.add(genre = new TextField<String>("genre", formModel.<String>bind("genre")));
         
         // required fields
-        List<TextField<String>> fields = asList(name, band, start, location, genre);
+        List<TextField<String>> fields = asList(name, band,start, genre);
         addLabels(fields);
        
         for (FormComponent fc : fields) {

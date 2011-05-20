@@ -4,6 +4,7 @@ import java.text.DateFormat;
 import java.util.Date;
 
 import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.markup.html.link.BookmarkablePageLink;
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
@@ -37,6 +38,7 @@ public class editEvent extends myEvents {
     add(myEventList = new ListView<Event>("myEventList", events.getByUser(user)) {
         @Override
         protected void populateItem(ListItem<Event> item) {
+        	
             item.add(new Label("eventName", new PropertyModel(item.getModel(), "name")));
             
             item.add(deleteEvent = new Link("deleteEvent"){
@@ -57,7 +59,8 @@ public class editEvent extends myEvents {
             item.add(detailEvent = new Link("detailEvent"){
             	public void onClick() {
             		
-            		
+            		Event obj = (Event) getModelObject();
+                    setResponsePage(new detailEvent(obj));
             		
             	}
             });

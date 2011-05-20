@@ -3,7 +3,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd"
 	xml:lang="en" lang="en">
-<head></head>
+<head>
+ <script type="text/javascript" src="resource/jquery-1.4.4.min.js"></script>
+ <script type="text/javascript" src="resource/jquery-ui-1.8.11/jquery-ui-1.8.11.custom.min.js"></script>
+  <link rel="stylesheet" href="resource/blueprint-1.0/anytimec.css"/>
+  <wicket:link><script type="text/javascript" src="anytimec.js"></script></wicket:link>
+  
+</head>
 <body>
 	<wicket:extend>
 			
@@ -15,23 +21,20 @@
         <input wicket:id='name' type='text'/><br/>
 
 		<label wicket:id='startLabel'>[[ date ]]</label><br/>
-        <input wicket:id='start' type='text'/><br/>
+        <input id="date" wicket:id='start' type='text'/><br/>
 
         <label wicket:id='bandLabel'>[[ band ]]</label><br/>
         <input wicket:id='band' type='text'/><br/>
-
-        <label wicket:id='locationLabel'>[[ location ]]</label><br/>
-        <input wicket:id='location' type='text'/><br/>
-        
+ 
         <label wicket:id='genreLabel'>[[ genre ]]</label><br/>
         <input wicket:id='genre' type='text'/><br/>
 
-
 		<script>
             $(function() {
-                $('input[type=date]').datepicker();
+                $('input[id=date]').datepicker();
             })
         </script>
+        
         
         <input wicket:message='value:submit' type="submit" value="[[ create ]]"/>
     </form>

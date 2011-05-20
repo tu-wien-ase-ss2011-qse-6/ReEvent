@@ -6,7 +6,7 @@ import org.apache.wicket.markup.html.list.ListView;
 
 import reevent.domain.Event;
 import reevent.web.Template;
-import reevent.web.myEvents.newEvent.deleteEvent;
+import reevent.web.myEvents.newEvent.detailEvent;
 import reevent.web.myEvents.newEvent.editEvent;
 import reevent.web.myEvents.newEvent.newEvent;
 import reevent.web.signinout.SignUpPage;
