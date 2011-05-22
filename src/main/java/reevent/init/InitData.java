@@ -9,11 +9,13 @@ import org.springframework.transaction.support.TransactionCallbackWithoutResult;
 import org.springframework.transaction.support.TransactionTemplate;
 import reevent.dao.EntityDao;
 import reevent.dao.EventDao;
+import reevent.dao.MediaDao;
 import reevent.dao.UserDao;
 import reevent.domain.Event;
+import reevent.domain.Location;
 import reevent.domain.User;
 import reevent.domain.UserRole;
-import reevent.service.EventService;
+import reevent.domain.media.ExternalImage;
 import reevent.service.UserService;
 
 import javax.annotation.PostConstruct;
@@ -22,6 +24,7 @@ import javax.persistence.PersistenceContext;
 import java.util.Date;
 import java.util.LinkedHashSet;
 import java.util.Set;
+import java.util.UUID;
 
 
 public class InitData {
@@ -38,9 +41,17 @@ public class InitData {
     UserDao userDao;
     @Autowired
     UserService userService;
+
+    @Autowired
+    MediaDao mediaDao;
     
     @PostConstruct
     public void initData() {
+//        if (ReEventApplication.get().getConfigurationType() != RuntimeConfigurationType.DEVELOPMENT) {
+//            init data only in dev mode
+//            return;
+//        }
+
         TransactionTemplate txTemplate = new TransactionTemplate(txManager);
 
         txTemplate.execute(new TransactionCallbackWithoutResult() {
@@ -48,6 +59,7 @@ public class InitData {
             protected void doInTransactionWithoutResult(TransactionStatus status) {
                 initEvents();
                 initUsers();
+                initMedia();
             }
         });
     }
@@ -100,10 +112,21 @@ public class InitData {
             return;
         }
 
+        Location loc = new Location();
         log().debug(String.format("initEvents()"));
         eventDao.save(new Event("event 1", new Date()));
         eventDao.save(new Event("event 2", new Date()));
         eventDao.save(new Event("event 3", new Date()));
+    }
+
+    private void initMedia() {
+        if (!isEmpty(mediaDao)) {
+            return;
+        }
+
+        ExternalImage kittywig = new ExternalImage("http://www.kittywigs.com/img/pink2.jpg");
+        kittywig.setId(new UUID(0, 0));
+        mediaDao.save(kittywig);
     }
 
     private Logger _log = LoggerFactory.getLogger(this.getClass());

@@ -14,11 +14,11 @@ public class QLocation extends BeanPath<Location> {
 
     public final StringPath address = createString("address");
 
-    public final NumberPath<Integer> latitude = createNumber("latitude", Integer.class);
+    public final NumberPath<Double> latitude = createNumber("latitude", Double.class);
 
-    public final NumberPath<Integer> longitude = createNumber("longitude", Integer.class);
+    public final StringPath locationName = createString("locationName");
 
-    public final StringPath name = createString("name");
+    public final NumberPath<Double> longitude = createNumber("longitude", Double.class);
 
     public QLocation(BeanPath<? extends Location> entity) {
         super(entity.getType(), entity.getMetadata());

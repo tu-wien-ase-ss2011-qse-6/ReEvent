@@ -1,9 +1,11 @@
 package reevent.domain;
 
+import org.apache.commons.lang.builder.ToStringBuilder;
+
 import javax.persistence.*;
 import java.util.Collections;
-import java.util.Set;
 import java.util.Date;
+import java.util.Set;
 
 @Entity
 public class User extends EntityBase {
@@ -13,6 +15,7 @@ public class User extends EntityBase {
     /**
      * Salted MD5 hash of the password.
      */
+    @Column(nullable=false)
     String passwordHash;
 
 	String firstName;
@@ -25,6 +28,23 @@ public class User extends EntityBase {
     @ElementCollection
     @Enumerated(EnumType.STRING)
     Set<UserRole> roles = Collections.singleton(UserRole.USER);
+
+    public User() {
+    }
+
+    public User(String username, String passwordHash) {
+        this.username = username;
+        this.passwordHash = passwordHash;
+    }
+
+    public User(String username, String passwordHash, Set<UserRole> roles, String firstName, String lastName, Date dayOfBirth) {
+        this.dayOfBirth = dayOfBirth;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.passwordHash = passwordHash;
+        this.roles = roles;
+        this.username = username;
+    }
 
     public String getPasswordHash() {
         return passwordHash;
@@ -74,4 +94,18 @@ public class User extends EntityBase {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
+
+
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this).
+                append("username", username).
+                append("passwordHash", passwordHash).
+                append("dayOfBirth", dayOfBirth).
+                append("roles", roles).
+                append("firstName", firstName).
+                append("lastName", lastName).
+                appendSuper(super.toString()).
+                toString();
+    }
 }

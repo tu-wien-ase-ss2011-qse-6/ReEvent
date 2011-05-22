@@ -19,12 +19,14 @@ public class QEvent extends EntityPathBase<Event> {
 
     public final QEntityBase _super = new QEntityBase(this);
 
-    public final StringPath band = createString("band");
-
     //inherited
     public final DateTimePath<java.util.Date> createdAt = _super.createdAt;
 
     public final QUser createdBy;
+
+    public final StringPath description = createString("description");
+
+    public final SetPath<Feedback, QFeedback> feedbacks = this.<Feedback, QFeedback>createSet("feedbacks", Feedback.class, QFeedback.class);
 
     public final StringPath genre = createString("genre");
 
@@ -33,7 +35,11 @@ public class QEvent extends EntityPathBase<Event> {
 
     public final QLocation location;
 
+    public final SetPath<reevent.domain.media.MediaBase, reevent.domain.media.QMediaBase> media = this.<reevent.domain.media.MediaBase, reevent.domain.media.QMediaBase>createSet("media", reevent.domain.media.MediaBase.class, reevent.domain.media.QMediaBase.class);
+
     public final StringPath name = createString("name");
+
+    public final StringPath performer = createString("performer");
 
     public final DateTimePath<java.util.Date> start = createDateTime("start", java.util.Date.class);
 
