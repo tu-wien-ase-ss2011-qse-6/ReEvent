@@ -22,7 +22,6 @@ public class Event extends EntityBase {
 
     String band;
 
-    @ManyToOne
     Location location;
 
     @ManyToOne
