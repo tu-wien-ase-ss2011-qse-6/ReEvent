@@ -22,8 +22,7 @@ import reevent.web.myEvents.myEvents;
 public class editEvent extends myEvents {
 
 	ListView<Event> myEventList;
-	Link editEvent;
-	Link deleteEvent;
+	
 	Link detailEvent;
 	
 	@SpringBean
@@ -41,21 +40,6 @@ public class editEvent extends myEvents {
         	
             item.add(new Label("eventName", new PropertyModel(item.getModel(), "name")));
             
-            item.add(deleteEvent = new Link("deleteEvent"){
-            	public void onClick() {
-            		
-            		
-            		
-            	}});
-            
-            item.add(editEvent = new Link("editEvent"){
-            	public void onClick() {
-            		
-            		
-            		
-            	}
-            });
-            
             item.add(detailEvent = new Link("detailEvent"){
             	public void onClick() {
             		
@@ -64,7 +48,6 @@ public class editEvent extends myEvents {
             		
             	}
             });
-            
             
             item.add(new Label("eventStart", new PropertyModel(item.getModel(), "start")) {
                 @Override
@@ -75,6 +58,11 @@ public class editEvent extends myEvents {
                     return (IConverter<C>) DateTimeConverter.both(DateFormat.SHORT, DateFormat.SHORT);
                 }
             });
+            
+            
+            item.add(new Label("eventPerformer", new PropertyModel(item.getModel(), "performer")));
+            item.add(new Label("eventLocation", new PropertyModel(item.getModel(), "location")));
+            
         }
     });
 		

@@ -8,7 +8,7 @@ public class detailEvent extends myEvents {
 	
 	public detailEvent(Event o){
 		
-		o.getPerformer();
+		
 	}
 	
 }

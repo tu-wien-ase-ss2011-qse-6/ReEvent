@@ -27,7 +27,7 @@ public class newEvent extends myEvents{
 	Form<Event> newEventForm;
     
 	TextField<String> genre;
-    TextField<String> band;
+    TextField<String> performer;
     TextField<String> location;
     TextField<String> name;
     TextField<String> start;
@@ -35,12 +35,11 @@ public class newEvent extends myEvents{
     List<Event> myEvents;
     @SpringBean
     EventService events;
-    
+    Event event;
     
     Link newLocationLink;
     
 	public newEvent(){
-		
 		
 		CompoundPropertyModel<Event> formModel = new CompoundPropertyModel<Event>(new Event());
 		
@@ -51,9 +50,9 @@ public class newEvent extends myEvents{
         	@Override
             protected void onSubmit() {
 
-                Event event = newEventForm.getModelObject();
-                
+        		event = newEventForm.getModelObject();
                 event.setCreatedBy(ReEventSession.userSignedInModel.getObject());
+                
                 events.create(event);
                
             }
@@ -74,7 +73,7 @@ public class newEvent extends myEvents{
         	
         });
         
-        newEventForm.add(band = new TextField<String>("band", formModel.<String>bind("band")));
+        newEventForm.add(performer = new TextField<String>("performer", formModel.<String>bind("performer")));
         
         //newEventForm.add(location = new TextField<String>("location", formModel.<String>bind("location")));
         
@@ -82,7 +81,7 @@ public class newEvent extends myEvents{
         newEventForm.add(genre = new TextField<String>("genre", formModel.<String>bind("genre")));
         
         // required fields
-        List<TextField<String>> fields = asList(name, band,start, genre);
+        List<TextField<String>> fields = asList(name, performer,start, genre);
         addLabels(fields);
        
         for (FormComponent fc : fields) {

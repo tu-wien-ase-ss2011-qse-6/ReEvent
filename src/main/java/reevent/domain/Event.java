@@ -56,17 +56,25 @@ public class Event extends EntityBase {
     @Override
     public String toString() {
         return new ToStringBuilder(this).
-                append("band", performer).
+                append("performer", performer).
                 append("name", name).
                 append("start", start).
                 append("genre", genre).
                 append("location", location).
-                append("createdBy", createdBy.getUsername()).
+                //append("createdBy", createdBy.getUsername()).
                 appendSuper(super.toString()).
                 toString();
     }
 
-    public String getGenre() {
+    public void setFeedbacks(Set<Feedback> feedbacks) {
+		this.feedbacks = feedbacks;
+	}
+
+	public void setMedia(Set<MediaBase> media) {
+		this.media = media;
+	}
+
+	public String getGenre() {
         return genre;
     }
 

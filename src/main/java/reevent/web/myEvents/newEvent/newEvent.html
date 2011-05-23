@@ -4,14 +4,30 @@
 	xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd"
 	xml:lang="en" lang="en">
 <head>
+
+	<wicket:head>
+	
+	<script type="text/javascript" src="resource/jquery-ui-timepicker-addon.js"></script>
+ 		<script>
+            $(function() {
+                $('input[id=date]').datetimepicker();
+            })
+        </script>
+	</wicket:head>
+	
  <script type="text/javascript" src="resource/jquery-1.4.4.min.js"></script>
  <script type="text/javascript" src="resource/jquery-ui-1.8.11/jquery-ui-1.8.11.custom.min.js"></script>
-  <link rel="stylesheet" href="resource/blueprint-1.0/anytimec.css"/>
-  <wicket:link><script type="text/javascript" src="anytimec.js"></script></wicket:link>
-  
+ <link rel="stylesheet" href="resource/blueprint-1.0/timepicker.css"/>
+ 
+ 
+ 		
+
+ 
 </head>
 <body>
 	<wicket:extend>
+		
+		
 			
 		<p><hr></hr></p>
 		<h2>Create Event</h2>	
@@ -23,19 +39,12 @@
 		<label wicket:id='startLabel'>[[ date ]]</label><br/>
         <input id="date" wicket:id='start' type='text'/><br/>
 
-        <label wicket:id='bandLabel'>[[ band ]]</label><br/>
-        <input wicket:id='band' type='text'/><br/>
+        <label wicket:id='performerLabel'>[[ band ]]</label><br/>
+        <input wicket:id='performer' type='text'/><br/>
  
         <label wicket:id='genreLabel'>[[ genre ]]</label><br/>
         <input wicket:id='genre' type='text'/><br/>
 
-		<script>
-            $(function() {
-                $('input[id=date]').datepicker();
-            })
-        </script>
-        
-        
         <input wicket:message='value:submit' type="submit" value="[[ create ]]"/>
     </form>
 		
