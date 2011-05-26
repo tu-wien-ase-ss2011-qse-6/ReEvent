@@ -47,9 +47,9 @@
 	</natures>
 	<linkedResources>
 		<link>
-			<name>generated-sources</name>
+			<name>QueryDSL Generated</name>
 			<type>2</type>
-			<location>/home/metin/Desktop/ReEvent/target/generated-sources</location>
+			<location>/Users/paty/university/workspaces/eclipse/ReEvent/target/generated-sources/java</location>
 		</link>
 	</linkedResources>
 </projectDescription>
