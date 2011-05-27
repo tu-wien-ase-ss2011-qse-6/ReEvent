@@ -25,7 +25,7 @@ public class User extends EntityBase {
 	Date dayOfBirth;
     
 
-    @ElementCollection
+    @ElementCollection(fetch = FetchType.EAGER)
     @Enumerated(EnumType.STRING)
     Set<UserRole> roles = Collections.singleton(UserRole.USER);
 
