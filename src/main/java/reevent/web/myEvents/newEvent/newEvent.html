@@ -22,6 +22,12 @@
 
 
 	<link rel="stylesheet" href="resource/blueprint-1.0/timepicker.css"/>
+	
+	<style type="text/css">
+	button.left {float:left;}
+	</style>
+	
+	
     </wicket:head>
 
 
@@ -52,18 +58,28 @@
         <label wicket:id='locationNameLabel'>[[ locationName ]]</label><br/>
         <input wicket:id='locationName' type='text'/><br/>
 
-        <label wicket:id='locationAddressLabel'>[[ locationAddress ]]</label><br/>
-        <input wicket:id='locationAddress' type='text' class="locationAddress"/><br/>
-
-        <button type="button" onclick="newLocation.showAddress()">Find!</button>
-
+<table>
+<tr>
+<td>
+	<label wicket:id='locationAddressLabel'>[[ locationAddress ]]</label><br/>
+    <input wicket:id='locationAddress' type='text' class="locationAddress"/>
+</td>
+<td>
+	<button class="left" type="button" onclick="newLocation.showAddress()">Find!</button>
+</td>
+</tr>
+</table>       
+        
+        
         <input type='hidden' class='lat'/>
         <input type='hidden' class='lng'/>
 
-        <input wicket:message='value:submit' type="submit" value="[[ create ]]"/>
+        <input wicket:message='value:submit' type="submit" value="[[ Create Event ]]"/>
     </form>
 
-
+	<br/>
+	<br/>
+	
     <div id="map_canvas" style="width: 600px; height: 400px"></div>
 
 

@@ -15,7 +15,6 @@ import reevent.domain.Event;
 import reevent.service.EventService;
 import reevent.web.ReEventSession;
 import reevent.web.myEvents.myEvents;
-import reevent.web.myEvents.newLocation.newLocation;
 
 import java.util.List;
 
