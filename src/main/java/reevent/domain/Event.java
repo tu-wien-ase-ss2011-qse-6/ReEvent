@@ -29,7 +29,7 @@ public class Event extends EntityBase {
     @Embedded
     Location location = new Location();
 
-    @ManyToOne
+    @ManyToOne(optional = false)
     User createdBy;
 
     @OneToMany(mappedBy = "event")

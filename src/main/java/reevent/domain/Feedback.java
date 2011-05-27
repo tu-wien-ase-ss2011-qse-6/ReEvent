@@ -6,7 +6,7 @@ import javax.persistence.*;
 
 @Entity
 public class Feedback extends EntityBase {
-    @ManyToOne
+    @ManyToOne(optional = false)
     User createdBy;
 
     String title;
@@ -18,7 +18,7 @@ public class Feedback extends EntityBase {
     @Column(nullable = false)
     Rating rating;
 
-    @ManyToOne
+    @ManyToOne(optional = false)
     Event event;
 
     public Feedback() {
