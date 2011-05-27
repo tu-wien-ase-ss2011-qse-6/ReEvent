@@ -4,12 +4,13 @@ import org.apache.commons.lang.builder.ToStringBuilder;
 
 import javax.persistence.Embeddable;
 import javax.persistence.Transient;
+import java.io.Serializable;
 
 @Embeddable
 /**
  * A location for users and events.
  */
-public class Location {
+public class Location implements Serializable {
     /**
      * A human-readable locationName for this location.
      *
