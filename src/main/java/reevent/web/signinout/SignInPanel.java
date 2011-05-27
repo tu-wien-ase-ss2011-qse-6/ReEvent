@@ -9,6 +9,8 @@ import org.apache.wicket.markup.html.panel.ComponentFeedbackPanel;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.Model;
+import org.apache.wicket.request.cycle.RequestCycle;
+import reevent.web.HomePage;
 import reevent.web.ReEventSession;
 
 public class SignInPanel extends Panel {
@@ -29,12 +31,17 @@ public class SignInPanel extends Panel {
         add(signInForm = new Form("signInForm") {
             @Override
             protected void onSubmit() {
+                // handle sign in
                 super.onSubmit();
                 ReEventSession session = ReEventSession.get();
                 if (!session.signIn(
                         username.getModelObject(),
                         password.getModelObject())) {
                     self.error(self.getString("invalid.username.or.password"));
+                } else {
+                    if (getPage() instanceof SignUpPage) {
+                        RequestCycle.get().setResponsePage(HomePage.class);
+                    }
                 }
             }
         });
