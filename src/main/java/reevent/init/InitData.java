@@ -57,9 +57,9 @@ public class InitData {
         txTemplate.execute(new TransactionCallbackWithoutResult() {
             @Override
             protected void doInTransactionWithoutResult(TransactionStatus status) {
-                initEvents();
                 initUsers();
                 initMedia();
+                initEvents();
             }
         });
     }
@@ -114,9 +114,18 @@ public class InitData {
 
         Location loc = new Location();
         log().debug(String.format("initEvents()"));
-        eventDao.save(new Event("event 1", new Date()));
-        eventDao.save(new Event("event 2", new Date()));
-        eventDao.save(new Event("event 3", new Date()));
+
+        Event e1 = new Event("event 1", new Date());
+        e1.setCreatedBy(userDao.findByUsername("user1"));
+        eventDao.save(e1);
+
+        Event e2 = new Event("event 2", new Date());
+        e2.setCreatedBy(userDao.findByUsername("user2"));
+        eventDao.save(e2);
+
+        Event e3 = new Event("event 3", new Date());
+        e3.setCreatedBy(userDao.findByUsername("user3"));
+        eventDao.save(e3);
     }
 
     private void initMedia() {
