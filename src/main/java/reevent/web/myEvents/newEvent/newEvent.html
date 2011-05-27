@@ -1,82 +1,72 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd"
-	xml:lang="en" lang="en">
+      xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd"
+      xml:lang="en" lang="en">
 <head>
 
-	<wicket:head>
-	
+    <wicket:head>
+
+        <!--
 	<script type="text/javascript" src="resource/jquery-ui-timepicker-addon.js"></script>
  		<script>
             $(function() {
                 $('input[id=date]').datetimepicker();
             })
         </script>
-        
+        -->
+
         <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAnfs7bKE82qgb3Zc2YyS-oBT2yXp_ZAY8_ufC3CFXhHIE1NvwkxSySz_REpPq-4WZA27OwgbtyR3VcA"
                 type="text/javascript"></script>
-    
-            <script type="text/javascript" src="resource/newLocation.js"></script>
-        
-	
-	<link rel="stylesheet" href="resource/blueprint-1.0/timepicker.css"/>
- </wicket:head>
- 
- 
- 		
 
- 
+        <script type="text/javascript" src="resource/newLocation.js"></script>
+
+
+	<link rel="stylesheet" href="resource/blueprint-1.0/timepicker.css"/>
+    </wicket:head>
+
+
 </head>
 <body>
-	<wicket:extend>
-		
-		
-			
-		<p><hr></hr></p>
-		<h2>Create Event</h2>	
-		<form wicket:id='newEventForm'>
-		
+<wicket:extend>
+
+
+    <p>
+    <hr></hr>
+    </p>
+    <h2>Create Event</h2>
+
+    <form wicket:id='newEventForm' class='newEventForm'>
+
         <label wicket:id='nameLabel'>[[ name ]]</label><br/>
         <input wicket:id='name' type='text'/><br/>
 
-		<label wicket:id='startLabel'>[[ date ]]</label><br/>
+        <label wicket:id='startLabel'>[[ date ]]</label><br/>
         <input id="date" wicket:id='start' type='text'/><br/>
 
         <label wicket:id='performerLabel'>[[ band ]]</label><br/>
         <input wicket:id='performer' type='text'/><br/>
- 
+
         <label wicket:id='genreLabel'>[[ genre ]]</label><br/>
         <input wicket:id='genre' type='text'/><br/>
-        
+
         <label wicket:id='locationNameLabel'>[[ locationName ]]</label><br/>
         <input wicket:id='locationName' type='text'/><br/>
-        
+
         <label wicket:id='locationAddressLabel'>[[ locationAddress ]]</label><br/>
-        <input wicket:id='locationAddress' type='text'/><br/>
+        <input wicket:id='locationAddress' type='text' class="locationAddress"/><br/>
+
+        <button type="button" onclick="newLocation.showAddress()">Find!</button>
+
+        <input type='hidden' class='lat'/>
+        <input type='hidden' class='lng'/>
 
         <input wicket:message='value:submit' type="submit" value="[[ create ]]"/>
     </form>
-    
-    
-    <form action="#" onsubmit="newLocation.showAddress(this.address.value); return false">
-        <p>
-            <br/>
-            <br/>
-            Enter an address, and then drag the marker to tweak the location.
-            <br/>
-            The latitude/longitude will appear in the infowindow after each geocode/drag.
-        </p>
 
-        <p>
-            <input type="text" style="width:350px" name="address" value="Karlsplatz 13, Vienna, Austria"/>
-            <input type="submit" value="Go!"/>
-        </p>
 
-        <div id="map_canvas" style="width: 600px; height: 400px"></div>
-    </form>
-		
-				
-	</wicket:extend>
+    <div id="map_canvas" style="width: 600px; height: 400px"></div>
+
+
+</wicket:extend>
 </body>
 </html>

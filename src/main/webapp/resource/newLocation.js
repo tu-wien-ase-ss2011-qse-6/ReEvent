@@ -1,5 +1,6 @@
 var map = null;
 var geocoder = null;
+var marker;
 
 newLocation = {
     initialize: function initialize() {
@@ -13,7 +14,8 @@ newLocation = {
         }
     },
 
-    showAddress: function showAddress(address) {
+    showAddress: function showAddress() {
+        var address = $('.locationAddress').val()
         if (geocoder) {
             geocoder.getLatLng(
                     address,
@@ -22,7 +24,7 @@ newLocation = {
                             alert(address + " not found");
                         } else {
                             map.setCenter(point, 15);
-                            var marker = new GMarker(point, {draggable: true});
+                            marker = new GMarker(point, {draggable: true});
                             map.addOverlay(marker);
                             GEvent.addListener(marker, "dragend", function() {
                                 marker.openInfoWindowHtml(marker.getLatLng().toUrlValue(6));
@@ -31,6 +33,8 @@ newLocation = {
                                 marker.openInfoWindowHtml(marker.getLatLng().toUrlValue(6));
                             });
                             GEvent.trigger(marker, "click");
+                            $('.newEventForm .lat').val(point.lat())
+                            $('.newEventForm .lng').val(point.lng())
                         }
                     }
                     );
