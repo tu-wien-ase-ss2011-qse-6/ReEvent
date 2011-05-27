@@ -1,14 +1,14 @@
 package reevent.web.account;
 
-import org.apache.wicket.Session;
+import org.apache.wicket.authroles.authorization.strategies.role.annotations.AuthorizeInstantiation;
 import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.form.Form;
-
 import reevent.service.UserService;
 import reevent.web.ReEventApplication;
 import reevent.web.ReEventSession;
 import reevent.web.Template;
 
+@AuthorizeInstantiation("USER")
 public class DeleteAccount extends Template {
 
 	UserService users;

@@ -1,16 +1,15 @@
 package reevent.web.myEvents;
 
+import org.apache.wicket.authroles.authorization.strategies.role.annotations.AuthorizeInstantiation;
 import org.apache.wicket.markup.html.link.BookmarkablePageLink;
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.list.ListView;
-
 import reevent.domain.Event;
 import reevent.web.Template;
-import reevent.web.myEvents.newEvent.detailEvent;
 import reevent.web.myEvents.newEvent.editEvent;
 import reevent.web.myEvents.newEvent.newEvent;
-import reevent.web.signinout.SignUpPage;
 
+@AuthorizeInstantiation("USER")
 public class myEvents extends Template{
 	
 	

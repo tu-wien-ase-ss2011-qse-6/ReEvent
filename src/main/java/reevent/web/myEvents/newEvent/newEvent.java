@@ -1,6 +1,7 @@
 
 package reevent.web.myEvents.newEvent;
 
+import org.apache.wicket.authroles.authorization.strategies.role.annotations.AuthorizeInstantiation;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.FormComponent;
 import org.apache.wicket.markup.html.form.TextField;
@@ -16,12 +17,11 @@ import reevent.web.ReEventSession;
 import reevent.web.myEvents.myEvents;
 import reevent.web.myEvents.newLocation.newLocation;
 
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import static java.util.Arrays.asList;
 
+@AuthorizeInstantiation("USER")
 public class newEvent extends myEvents{
 
 	Form<Event> newEventForm;

@@ -1,16 +1,13 @@
 package reevent.web.account;
 
+import org.apache.wicket.authroles.authorization.strategies.role.annotations.AuthorizeInstantiation;
 import org.apache.wicket.markup.html.basic.Label;
-import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.link.BookmarkablePageLink;
 import org.apache.wicket.model.StringResourceModel;
-
-import reevent.web.ReEventApplication;
 import reevent.web.ReEventSession;
 import reevent.web.Template;
-import reevent.web.signinout.SignUpPage;
 
-
+@AuthorizeInstantiation("USER")
 public class myAccount extends Template {;
 
 	public myAccount(){

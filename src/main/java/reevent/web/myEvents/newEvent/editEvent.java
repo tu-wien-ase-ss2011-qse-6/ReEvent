@@ -1,17 +1,13 @@
 package reevent.web.myEvents.newEvent;
 
-import java.text.DateFormat;
-import java.util.Date;
-
+import org.apache.wicket.authroles.authorization.strategies.role.annotations.AuthorizeInstantiation;
 import org.apache.wicket.markup.html.basic.Label;
-import org.apache.wicket.markup.html.link.BookmarkablePageLink;
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.apache.wicket.util.convert.IConverter;
-
 import reevent.domain.Event;
 import reevent.domain.User;
 import reevent.service.EventService;
@@ -19,6 +15,10 @@ import reevent.web.ReEventSession;
 import reevent.web.convert.DateTimeConverter;
 import reevent.web.myEvents.myEvents;
 
+import java.text.DateFormat;
+import java.util.Date;
+
+@AuthorizeInstantiation("USER")
 public class editEvent extends myEvents {
 
 	ListView<Event> myEventList;

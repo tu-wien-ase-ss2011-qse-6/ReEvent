@@ -1,9 +1,6 @@
 package reevent.web.account;
 
-import static java.util.Arrays.asList;
-
-import java.util.List;
-
+import org.apache.wicket.authroles.authorization.strategies.role.annotations.AuthorizeInstantiation;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.FormComponent;
 import org.apache.wicket.markup.html.form.PasswordTextField;
@@ -12,13 +9,16 @@ import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.validation.IValidatable;
 import org.apache.wicket.validation.validator.AbstractValidator;
-
 import reevent.domain.User;
 import reevent.service.UserService;
 import reevent.web.ReEventApplication;
-import reevent.web.ReEventSession;
 import reevent.web.Template;
 
+import java.util.List;
+
+import static java.util.Arrays.asList;
+
+@AuthorizeInstantiation("USER")
 public class changeAccount extends Template {
 	
 	Form<User> changeUserForm;

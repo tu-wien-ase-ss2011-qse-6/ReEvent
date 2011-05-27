@@ -1,5 +1,6 @@
 package reevent.web.signinout;
 
+import org.apache.wicket.authroles.authorization.strategies.role.annotations.AuthorizeAction;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.link.BookmarkablePageLink;
@@ -10,9 +11,10 @@ import org.apache.wicket.model.StringResourceModel;
 import reevent.web.HomePage;
 import reevent.web.ReEventSession;
 import reevent.web.account.myAccount;
-import reevent.web.myEvents.myEvents;
 import reevent.web.adminPanel.adminPanel;
+import reevent.web.myEvents.myEvents;
 
+@AuthorizeAction(action="RENDER", roles="USER")
 public class SignOutPanel extends Panel {
     Label userSignedInLabel;
     Form<?> signOutForm;
