@@ -33,6 +33,8 @@ public class HomePage extends Template {
                         return (IConverter<C>) DateTimeConverter.both(DateFormat.SHORT, DateFormat.SHORT);
                     }
                 });
+                item.add(new Label("eventGenre", new PropertyModel(item.getModel(), "genre")));
+                item.add(new Label("locationName", new PropertyModel(item.getModel(), "locationName")));
             }
         });
         

@@ -16,14 +16,14 @@ public class Location implements Serializable {
      *
      * Optional / unused for a user's home location.
      */
-    String locationName;
+    String locationName = "";
 
     /**
      * A street address for this location.
      *
      * Optional / unused for a user's home location.
      */
-    String locationAddress;
+    String locationAddress = "";
 
     /**
      * GPS coordinates of this location.
@@ -33,17 +33,37 @@ public class Location implements Serializable {
      *
      * @see #isEmpty
      */
-    Double latitude;
+    Double latitude = 0.0;
 
     /**
      * @see #latitude
      */
-    Double longitude;
+    Double longitude = 0.0;
 
     public Location() {
+    	this.locationName = "";
+    	this.locationAddress = "";
+    	this.latitude = 0.0;
+    	this.longitude = 0.0;
+    }
+    
+    public Location(String locationName) {
+    	this.locationName = locationName;
+    	this.locationAddress = "";
+    	this.latitude = 0.0;
+    	this.longitude = 0.0;
+    }
+    
+    public Location(String locationName, String locationAddress) {
+    	this.locationName = locationName;
+    	this.locationAddress = locationAddress;
+    	this.latitude = 0.0;
+    	this.longitude = 0.0;
     }
 
     public Location(double latitude, double longitude) {
+    	this.locationName = "";
+    	this.locationAddress = "";
         this.latitude = latitude;
         this.longitude = longitude;
     }
@@ -57,7 +77,7 @@ public class Location implements Serializable {
 
 
     public String getLocationAddress() {
-        return locationAddress;
+        return this.locationAddress;
     }
 
     public void setLocationAddress(String address) {
@@ -65,7 +85,7 @@ public class Location implements Serializable {
     }
 
     public Double getLatitude() {
-        return latitude;
+        return this.latitude;
     }
 
     public void setLatitude(Double latitude) {
@@ -73,7 +93,7 @@ public class Location implements Serializable {
     }
 
     public Double getLongitude() {
-        return longitude;
+        return this.longitude;
     }
 
     public void setLongitude(Double longitude) {
@@ -81,7 +101,7 @@ public class Location implements Serializable {
     }
 
     public String getLocationName() {
-        return locationName;
+        return this.locationName;
     }
 
     public void setLocationName(String locationName) {

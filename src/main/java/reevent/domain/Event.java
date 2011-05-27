@@ -46,11 +46,17 @@ public class Event extends EntityBase {
         this.name = name;
         this.start = start;
     }
-
-    public Event(String name, Date start, Location location) {
+    
+    public Event(String name, Date start, String locationName) {
         this.name = name;
         this.start = start;
-        setLocation(location);
+        this.location = new Location(locationName);
+    }
+    
+    public Event(String name, Date start, String locationName, String locationAddress) {
+        this.name = name;
+        this.start = start;
+        this.location = new Location(locationName, locationAddress);
     }
 
     @Override
@@ -130,48 +136,45 @@ public class Event extends EntityBase {
         this.performer = performer;
     }
 
-    public Location getLocation() {
-        return location;
-    }
-
     public void setLocation(Location location) {
         this.location = location;
     }
     
     public String getLocationAddress() {
-        return location.getLocationAddress();
+    	System.out.println("HERE");
+        return this.location.getLocationAddress();
     }
 
     public Double getLatitude() {
-        return location.getLatitude();
+        return this.location.getLatitude();
     }
 
     public String getLocationName() {
-        return location.getLocationName();
+        return this.location.getLocationName();
     }
     
 
     public void setLocationAddress(String address) {
-        location.setLocationAddress(address);
+    	this.location.setLocationAddress(address);
     }
 
     public void setLatitude(Double latitude) {
-        location.setLatitude(latitude);
+    	this.location.setLatitude(latitude);
     }
 
     public void setLocationName(String locationName) {
-        location.setLocationName(locationName);
+    	this.location.setLocationName(locationName);
     }
 
     public void setLongitude(Double longitude) {
-        location.setLongitude(longitude);
+    	this.location.setLongitude(longitude);
     }
 
     public Double getLongitude() {
-        return location.getLongitude();
+        return this.location.getLongitude();
     }
 
     public boolean isLocationEmpty() {
-        return location.isEmpty();
+        return this.location.isEmpty();
     }
 }

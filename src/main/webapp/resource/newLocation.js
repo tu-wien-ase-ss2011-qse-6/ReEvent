@@ -33,8 +33,8 @@ newLocation = {
                                 marker.openInfoWindowHtml(marker.getLatLng().toUrlValue(6));
                             });
                             GEvent.trigger(marker, "click");
-                            $('.newEventForm .lat').val(point.lat())
-                            $('.newEventForm .lng').val(point.lng())
+                            $('.newEventForm .latitude').val(point.lat())
+                            $('.newEventForm .longitude').val(point.lng())
                         }
                     }
                     );
