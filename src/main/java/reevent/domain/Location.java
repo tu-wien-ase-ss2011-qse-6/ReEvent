@@ -23,7 +23,7 @@ public class Location implements Serializable {
      *
      * Optional / unused for a user's home location.
      */
-    String address;
+    String locationAddress;
 
     /**
      * GPS coordinates of this location.
@@ -52,16 +52,16 @@ public class Location implements Serializable {
         this.latitude = latitude;
         this.longitude = longitude;
         this.locationName = name;
-        this.address = address;
+        this.locationAddress = address;
     }
 
 
-    public String getAddress() {
-        return address;
+    public String getLocationAddress() {
+        return locationAddress;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setLocationAddress(String address) {
+        this.locationAddress = address;
     }
 
     public Double getLatitude() {
@@ -107,7 +107,7 @@ public class Location implements Serializable {
                 append("latitude", latitude).
                 append("longitude", longitude).
                 append("locationName", locationName).
-                append("address", address).
+                append("locationAddress", locationAddress).
                 toString();
     }
 }

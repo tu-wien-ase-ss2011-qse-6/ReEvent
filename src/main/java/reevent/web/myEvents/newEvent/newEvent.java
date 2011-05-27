@@ -28,9 +28,10 @@ public class newEvent extends myEvents{
     
 	TextField<String> genre;
     TextField<String> performer;
-    TextField<String> location;
     TextField<String> name;
     TextField<String> start;
+    TextField<String> locationName;
+    TextField<String> locationAddress;
 
     List<Event> myEvents;
     @SpringBean
@@ -42,8 +43,6 @@ public class newEvent extends myEvents{
 	public newEvent(){
 		
 		CompoundPropertyModel<Event> formModel = new CompoundPropertyModel<Event>(new Event());
-		
-		add(newLocationLink = new BookmarkablePageLink("newLocationLink", newLocation.class));
 		
         add(newEventForm = new Form<Event>("newEventForm", formModel) {
         
@@ -75,13 +74,14 @@ public class newEvent extends myEvents{
         
         newEventForm.add(performer = new TextField<String>("performer", formModel.<String>bind("performer")));
         
-        //newEventForm.add(location = new TextField<String>("location", formModel.<String>bind("location")));
-        
-        
         newEventForm.add(genre = new TextField<String>("genre", formModel.<String>bind("genre")));
         
+        newEventForm.add(locationName = new TextField<String>("locationName", formModel.<String>bind("locationName")));
+        
+        newEventForm.add(locationAddress = new TextField<String>("locationAddress", formModel.<String>bind("locationAddress")));
+        
         // required fields
-        List<TextField<String>> fields = asList(name, performer,start, genre);
+        List<TextField<String>> fields = asList(name, performer,start, genre, locationName, locationAddress);
         addLabels(fields);
        
         for (FormComponent fc : fields) {

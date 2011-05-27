@@ -12,9 +12,9 @@ public class QLocation extends BeanPath<Location> {
 
     private static final long serialVersionUID = 766245400;
 
-    public final StringPath address = createString("address");
-
     public final NumberPath<Double> latitude = createNumber("latitude", Double.class);
+
+    public final StringPath locationAddress = createString("locationAddress");
 
     public final StringPath locationName = createString("locationName");
 

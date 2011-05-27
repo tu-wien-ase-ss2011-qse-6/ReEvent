@@ -13,11 +13,15 @@
                 $('input[id=date]').datetimepicker();
             })
         </script>
-	</wicket:head>
+        
+        <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAnfs7bKE82qgb3Zc2YyS-oBT2yXp_ZAY8_ufC3CFXhHIE1NvwkxSySz_REpPq-4WZA27OwgbtyR3VcA"
+                type="text/javascript"></script>
+    
+            <script type="text/javascript" src="resource/newLocation.js"></script>
+        
 	
- <script type="text/javascript" src="resource/jquery-1.4.4.min.js"></script>
- <script type="text/javascript" src="resource/jquery-ui-1.8.11/jquery-ui-1.8.11.custom.min.js"></script>
- <link rel="stylesheet" href="resource/blueprint-1.0/timepicker.css"/>
+	<link rel="stylesheet" href="resource/blueprint-1.0/timepicker.css"/>
+ </wicket:head>
  
  
  		
@@ -44,11 +48,34 @@
  
         <label wicket:id='genreLabel'>[[ genre ]]</label><br/>
         <input wicket:id='genre' type='text'/><br/>
+        
+        <label wicket:id='locationNameLabel'>[[ locationName ]]</label><br/>
+        <input wicket:id='locationName' type='text'/><br/>
+        
+        <label wicket:id='locationAddressLabel'>[[ locationAddress ]]</label><br/>
+        <input wicket:id='locationAddress' type='text'/><br/>
 
         <input wicket:message='value:submit' type="submit" value="[[ create ]]"/>
     </form>
+    
+    
+    <form action="#" onsubmit="newLocation.showAddress(this.address.value); return false">
+        <p>
+            <br/>
+            <br/>
+            Enter an address, and then drag the marker to tweak the location.
+            <br/>
+            The latitude/longitude will appear in the infowindow after each geocode/drag.
+        </p>
+
+        <p>
+            <input type="text" style="width:350px" name="address" value="Karlsplatz 13, Vienna, Austria"/>
+            <input type="submit" value="Go!"/>
+        </p>
+
+        <div id="map_canvas" style="width: 600px; height: 400px"></div>
+    </form>
 		
-		<a wicket:id='newLocationLink'>new Location</a><br/>
 				
 	</wicket:extend>
 </body>

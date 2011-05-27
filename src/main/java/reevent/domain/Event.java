@@ -137,9 +137,9 @@ public class Event extends EntityBase {
     public void setLocation(Location location) {
         this.location = location;
     }
-
-    public String getAddress() {
-        return location.getAddress();
+    
+    public String getLocationAddress() {
+        return location.getLocationAddress();
     }
 
     public Double getLatitude() {
@@ -149,9 +149,10 @@ public class Event extends EntityBase {
     public String getLocationName() {
         return location.getLocationName();
     }
+    
 
-    public void setAddress(String address) {
-        location.setAddress(address);
+    public void setLocationAddress(String address) {
+        location.setLocationAddress(address);
     }
 
     public void setLatitude(Double latitude) {
