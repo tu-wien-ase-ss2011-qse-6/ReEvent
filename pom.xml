@@ -357,6 +357,11 @@
         <!--<artifactId>hibernate-jpamodelgen</artifactId>-->
         <!--<version>1.1.1.Final</version>-->
         <!--</dependency>-->
+        <dependency>
+            <groupId>com.mortennobel</groupId>
+            <artifactId>java-image-scaling</artifactId>
+            <version>0.8.5</version>
+        </dependency>
     </dependencies>
 
     <build>
