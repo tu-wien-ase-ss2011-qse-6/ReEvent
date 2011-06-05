@@ -35,6 +35,9 @@ public class Event extends EntityBase {
     @OneToMany(mappedBy = "event")
     Set<Feedback> feedbacks = new LinkedHashSet<Feedback>();
 
+    @ManyToOne
+    MediaBase mainPicture;
+
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinTable
     Set<MediaBase> media = new LinkedHashSet<MediaBase>();
@@ -176,5 +179,13 @@ public class Event extends EntityBase {
 
     public boolean isLocationEmpty() {
         return this.location.isEmpty();
+    }
+
+    public MediaBase getMainPicture() {
+        return mainPicture;
+    }
+
+    public void setMainPicture(MediaBase mainPicture) {
+        this.mainPicture = mainPicture;
     }
 }

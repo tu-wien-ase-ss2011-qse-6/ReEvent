@@ -62,12 +62,12 @@ public abstract class EntityDaoBase<T extends EntityBase> implements EntityDao<T
     }
 
     @Override
-    public T update(T entity) {
+    public <U extends T> U update(U entity) {
         return em.merge(entity);
     }
 
     @Override
-    public T save(T entity) {
+    public <U extends T>  U save(U entity) {
         em.persist(entity);
         return entity;
     }

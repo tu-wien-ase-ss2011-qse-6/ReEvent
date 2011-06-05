@@ -15,7 +15,8 @@ import reevent.domain.Event;
 import reevent.domain.Location;
 import reevent.domain.User;
 import reevent.domain.UserRole;
-import reevent.domain.media.ExternalImage;
+import reevent.domain.media.MediaBase;
+import reevent.service.MediaService;
 import reevent.service.UserService;
 
 import javax.annotation.PostConstruct;
@@ -24,7 +25,6 @@ import javax.persistence.PersistenceContext;
 import java.util.Date;
 import java.util.LinkedHashSet;
 import java.util.Set;
-import java.util.UUID;
 
 
 public class InitData {
@@ -44,7 +44,12 @@ public class InitData {
 
     @Autowired
     MediaDao mediaDao;
-    
+
+    @Autowired
+    MediaService mediaService;
+    private MediaBase kittens;
+    private User admin;
+
     @PostConstruct
     public void initData() {
 //        if (ReEventApplication.get().getConfigurationType() != RuntimeConfigurationType.DEVELOPMENT) {
@@ -103,7 +108,7 @@ public class InitData {
         adminRoles.add(UserRole.USER);
         adminRoles.add(UserRole.ADMIN);
         user.setRoles(adminRoles);
-        userService.register(user, "admin");
+        admin = userService.register(user, "admin");
     }
 
     private void initEvents() {
@@ -141,9 +146,7 @@ public class InitData {
             return;
         }
 
-        ExternalImage kittywig = new ExternalImage("http://www.kittywigs.com/img/pink2.jpg");
-        kittywig.setId(new UUID(0, 0));
-        mediaDao.save(kittywig);
+        kittens = mediaService.create("http://kittensforever.files.wordpress.com/2008/11/kittens4blog1.jpg", admin);
     }
 
     private Logger _log = LoggerFactory.getLogger(this.getClass());

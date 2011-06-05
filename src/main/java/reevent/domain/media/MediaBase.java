@@ -12,4 +12,12 @@ import javax.persistence.ManyToOne;
 public abstract class MediaBase extends EntityBase {
     @ManyToOne
     User addedBy;
+
+    public User getAddedBy() {
+        return addedBy;
+    }
+
+    public void setAddedBy(User addedBy) {
+        this.addedBy = addedBy;
+    }
 }

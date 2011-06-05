@@ -35,6 +35,8 @@ public class QEvent extends EntityPathBase<Event> {
 
     public final QLocation location;
 
+    public final reevent.domain.media.QMediaBase mainPicture;
+
     public final SetPath<reevent.domain.media.MediaBase, reevent.domain.media.QMediaBase> media = this.<reevent.domain.media.MediaBase, reevent.domain.media.QMediaBase>createSet("media", reevent.domain.media.MediaBase.class, reevent.domain.media.QMediaBase.class);
 
     public final StringPath name = createString("name");
@@ -62,6 +64,7 @@ public class QEvent extends EntityPathBase<Event> {
         super(type, metadata, inits);
         this.createdBy = inits.isInitialized("createdBy") ? new QUser(forProperty("createdBy")) : null;
         this.location = inits.isInitialized("location") ? new QLocation(forProperty("location")) : null;
+        this.mainPicture = inits.isInitialized("mainPicture") ? new reevent.domain.media.QMediaBase(forProperty("mainPicture"), inits.get("mainPicture")) : null;
     }
 
 }
