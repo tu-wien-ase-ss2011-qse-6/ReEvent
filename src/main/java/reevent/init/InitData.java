@@ -123,21 +123,25 @@ public class InitData {
         Event e1 = new Event("Rock Festival", new Date(), "Karlsplatz Park", "Karlsplatz 12, Vienna");
         e1.setCreatedBy(userDao.findByUsername("user1"));
         e1.setGenre("Hard Rock");
+        e1.setMainPicture(kittens);
         eventDao.save(e1);
 
         Event e2 = new Event("Technoparty", new Date(), "Riverdog", "Operngasse 1, Vienna");
         e2.setCreatedBy(userDao.findByUsername("user2"));
         e2.setGenre("Techno");
+        e1.setMainPicture(kittens);
         eventDao.save(e2);
 
         Event e3 = new Event("Bruce is Back!", new Date(), "Donauinsel", "Donauinsel 1, 1220 Wien, Austria");
         e3.setCreatedBy(userDao.findByUsername("user3"));
         e3.setGenre("Rock");
+        e1.setMainPicture(kittens);
         eventDao.save(e3);
         
         Event e4 = new Event("Neil Young Concert", new Date(), "Los Angeles Concert Hall 123", "Concert Park Drive, Los Angeles, CA");
         e4.setCreatedBy(userDao.findByUsername("user3"));
         e4.setGenre("Rock");
+        e1.setMainPicture(kittens);
         eventDao.save(e4);
     }
 
