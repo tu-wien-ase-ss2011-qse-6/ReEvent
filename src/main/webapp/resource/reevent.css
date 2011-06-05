@@ -1,0 +1,13 @@
+.event-summary .image-wrapper {
+    width: 320px;
+    float: left;
+}
+
+.event-summary .event-info {
+    width: 350px;
+    float: right;
+}
+
+.upcoming-events {
+    clear: both;
+}

@@ -24,7 +24,7 @@ public class InternalImageDisplay extends Panel {
 
         final InternalImage imageData = (InternalImage) mediaDao.load(mediaId);
 
-        Image img = new Image("img", new ByteArrayResource("image/jpeg", imageData.getData())) {
+        Image img = new Image("image", new ByteArrayResource("image/jpeg", imageData.getData())) {
             @Override
             protected void onComponentTag(ComponentTag tag) {
                 super.onComponentTag(tag);

@@ -5,7 +5,6 @@ import org.apache.wicket.authroles.authorization.strategies.role.annotations.Aut
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.FormComponent;
 import org.apache.wicket.markup.html.form.TextField;
-import org.apache.wicket.markup.html.link.BookmarkablePageLink;
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
@@ -81,7 +80,7 @@ public class newEvent extends myEvents{
         
         // required fields
         List<TextField<String>> fields = asList(name, performer,start, genre, locationName, locationAddress);
-        addLabels(fields);
+        addFormLabels(fields);
        
         for (FormComponent fc : fields) {
             fc.setRequired(true);

@@ -75,6 +75,7 @@ public class InitData {
 
     private void initUsers() {
         if (!isEmpty(userDao)) {
+            admin = userDao.findByUsername("admin");
             return;
         }
 
@@ -129,24 +130,25 @@ public class InitData {
         Event e2 = new Event("Technoparty", new Date(), "Riverdog", "Operngasse 1, Vienna");
         e2.setCreatedBy(userDao.findByUsername("user2"));
         e2.setGenre("Techno");
-        e1.setMainPicture(kittens);
+        e2.setMainPicture(kittens);
         eventDao.save(e2);
 
         Event e3 = new Event("Bruce is Back!", new Date(), "Donauinsel", "Donauinsel 1, 1220 Wien, Austria");
         e3.setCreatedBy(userDao.findByUsername("user3"));
         e3.setGenre("Rock");
-        e1.setMainPicture(kittens);
+        e3.setMainPicture(kittens);
         eventDao.save(e3);
         
         Event e4 = new Event("Neil Young Concert", new Date(), "Los Angeles Concert Hall 123", "Concert Park Drive, Los Angeles, CA");
         e4.setCreatedBy(userDao.findByUsername("user3"));
         e4.setGenre("Rock");
-        e1.setMainPicture(kittens);
+        e4.setMainPicture(kittens);
         eventDao.save(e4);
     }
 
     private void initMedia() {
         if (!isEmpty(mediaDao)) {
+            kittens = mediaDao.findAll(0, 1).get(0);
             return;
         }
 

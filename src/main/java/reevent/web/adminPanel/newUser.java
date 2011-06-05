@@ -41,7 +41,7 @@
 //		newUserForm.add(firstName = new TextField<String>("firstName", formModel.<String>bind("firstName")));
 //		
 //		 List<TextField<String>> fields = asList(firstName);
-//	        addLabels(fields);
+//	        addFormLabels(fields);
 //	       
 //	        for (FormComponent fc : fields) {
 //	            fc.setRequired(true);

@@ -16,7 +16,7 @@ public class Template extends WebPage {
     FeedbackPanel feedback;
     Panel signInOutPanel;
 
-    public static void addLabels(Iterable<? extends FormComponent<?>> fields) {
+    public static void addFormLabels(Iterable<? extends FormComponent<?>> fields) {
         for (FormComponent field : fields) {
             field.setLabel(new ResourceModel(field.getId()));
             String labelId = field.getId() + "Label";

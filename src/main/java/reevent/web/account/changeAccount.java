@@ -71,7 +71,7 @@ public class changeAccount extends Template {
 
         // required fields
         List<TextField<String>> fields = asList(username, password, passwordVerify, firstName, lastName);
-        addLabels(fields);
+        addFormLabels(fields);
         for (FormComponent fc : fields) {
             fc.setRequired(true);
         }

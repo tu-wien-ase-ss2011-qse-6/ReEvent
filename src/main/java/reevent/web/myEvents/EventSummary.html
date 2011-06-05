@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd"
+      xml:lang="en" lang="en">
+<head>
+</head>
+<body>
+<wicket:panel>
+    <div class='image-wrapper'>
+        <img wicket:id='mainPicture'/>
+    </div>
+    <div class='event-info'>
+        <table>
+            <thead>
+            <tr>
+                <th colspan="2">
+                    <span wicket:id="name">[[ event name ]]</span>
+                </th>
+            </tr>
+            </thead>
+
+            <tr>
+                <th><wicket:message key="locationName">[[ location ]]</wicket:message></th>
+                <th><span wicket:id="locationName">[[ event location ]]</span></th>
+            </tr>
+            <tr>
+                <th><wicket:message key="eventStart">[[ start date ]]</wicket:message></th>
+                <th><span wicket:id="start">[[ event start ]]</span></th>
+            </tr><tr>
+            <th><wicket:message key="eventGenre">[[ genre ]]</wicket:message></th>
+            <th><span wicket:id="genre">[[ event name ]]</span></th>
+        </tr>
+        </table>
+    </div>
+</wicket:panel>
+</body>
+</html>

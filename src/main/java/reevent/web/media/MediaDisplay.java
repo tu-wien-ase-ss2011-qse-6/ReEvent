@@ -18,7 +18,6 @@ public class MediaDisplay extends Panel {
             = new ClassHandlerResolver<MediaBase, Class<? extends Component>>();
     static List<? extends Class<? extends Component>> FACTORIES = asList(
             InternalImageDisplay.class);
-    private UUID mediaId;
 
     static {
         for (Class<? extends Component> factoryClass : FACTORIES) {
@@ -33,11 +32,10 @@ public class MediaDisplay extends Panel {
     public MediaDisplay(String id, UUID mediaId) {
         super(id);
         this.setRenderBodyOnly(true);
-        this.mediaId = mediaId;
 
-        Class<? extends Component> factory = factories.resolve(mediaDao.get(mediaId));
+        Class<? extends Component> factory = factories.resolve(mediaDao.load(mediaId));
         try {
-            Component displayComponent = factory.getConstructor(String.class, UUID.class).newInstance(id, mediaId);
+            Component displayComponent = factory.getConstructor(String.class, UUID.class).newInstance("displayComponent", mediaId);
             this.add(displayComponent);
         } catch (InstantiationException e) {
             throw new RuntimeException(e);

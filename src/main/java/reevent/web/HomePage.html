@@ -10,10 +10,10 @@
     </h2>
     <hr/>
     <div class="span-17">
-        <table>
-            <caption>
-                <wicket:message key="upcoming.events">[[ upcoming events ]]</wicket:message>
-            </caption>
+        <h3>
+            <wicket:message key="upcoming.events">[[ upcoming events ]]</wicket:message>
+        </h3>
+            <!--
             <thead>
                 <tr>
                     <th><wicket:message key="event.name">[[ event name ]]</wicket:message></th>
@@ -22,15 +22,12 @@
                     <th><wicket:message key="event.location.locationName">[[ Location Name ]]</wicket:message></th>                 
                 </tr>
             </thead>
-            <tbody>
-                <tr wicket:id="upcomingEventList">
-                    <td wicket:id="eventName">[[ event 1 ]]</td>
-                    <td wicket:id="eventGenre">[[ Rock ]]</td>
-                    <td wicket:id="eventStart">[[ 1.1.2011 18:00 ]]</td>    
-                    <td wicket:id="locationName">[[ Charlie P ]]</td>                 
-                </tr>
-            </tbody>
-        </table>
+            -->
+        <div wicket:id="upcomingEventList" class="upcoming-events">
+            <div wicket:id="summary">
+                [[ event summary ]]
+            </div>
+        </div>
     </div>
 </wicket:extend>
 </body>
