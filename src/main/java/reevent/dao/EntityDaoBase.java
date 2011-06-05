@@ -6,12 +6,11 @@ import com.mysema.query.types.EntityPath;
 import com.mysema.query.types.path.EntityPathBase;
 import org.springframework.transaction.annotation.Transactional;
 import reevent.domain.EntityBase;
+import reevent.util.SuperTypeTokenUtil;
 
 import javax.annotation.PostConstruct;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import java.lang.reflect.ParameterizedType;
-import java.lang.reflect.Type;
 import java.util.List;
 import java.util.UUID;
 
@@ -21,20 +20,7 @@ public abstract class EntityDaoBase<T extends EntityBase> implements EntityDao<T
     protected EntityPathBase<T> root;
 
     public EntityDaoBase() {
-        entityClass = getSuperTypeToken();
-    }
-
-    @SuppressWarnings("unchecked")
-    private Class<T> getSuperTypeToken() {
-        Type superclass = getClass().getGenericSuperclass();
-        if (superclass instanceof Class) {
-            throw new RuntimeException("Missing type parameter.");
-        }
-        Type entityType = ((ParameterizedType) superclass).getActualTypeArguments()[0];
-        if (!(entityType instanceof Class)) {
-            throw new RuntimeException("Entity type not a class.");
-        }
-        return (Class<T>) entityType;
+        entityClass = SuperTypeTokenUtil.findToken(this.getClass(), 0);
     }
 
     public EntityDaoBase(Class<T> entityClass) {

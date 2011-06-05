@@ -5,7 +5,7 @@ import org.apache.commons.lang.NotImplementedException;
 import java.math.BigDecimal;
 import java.util.*;
 
-public class ClassResolver<K, V> {
+public class ClassHandlerResolver<K, V> {
     Map<Class<? extends K>, V> handlers = new HashMap<Class<? extends K>, V>();
     List<Map.Entry<Class<? extends K>, V>> orderedHandlers;
 
@@ -29,7 +29,7 @@ public class ClassResolver<K, V> {
     }
 
     /**
-     * Returns handlers ordered from most to least specific
+     * Returns handlers ordered from most to least specific.
      * @return
      */
     private synchronized List<Map.Entry<Class<? extends K>, V>> getOrderedHandlers() {
@@ -56,7 +56,7 @@ public class ClassResolver<K, V> {
     }
 
     public static void main(String[] args) {
-        ClassResolver<Object, String> resolver = new ClassResolver<Object, String>();
+        ClassHandlerResolver<Object, String> resolver = new ClassHandlerResolver<Object, String>();
         resolver.register(Object.class, "object");
         resolver.register(Number.class, "number");
         resolver.register(Exception.class, "exception");
