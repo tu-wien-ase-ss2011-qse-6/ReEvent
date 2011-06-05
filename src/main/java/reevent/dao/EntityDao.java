@@ -8,8 +8,8 @@ import java.util.UUID;
 public interface EntityDao<T extends EntityBase> {
     T load(UUID id);
     T get(UUID id);
-    T update(T entity);
-    T save(T entity);
+    <U extends T> U update(U entity);
+    <U extends T> U save(U entity);
     void delete(UUID id);
     List<T> findAll(int first, int max);
 }
