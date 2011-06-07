@@ -61,7 +61,7 @@ public class editEvent extends myEvents {
             
             
             item.add(new Label("eventPerformer", new PropertyModel(item.getModel(), "performer")));
-            item.add(new Label("eventLocation", new PropertyModel(item.getModel(), "location")));
+            item.add(new Label("eventLocationName", new PropertyModel(item.getModel(), "locationName")));
             
         }
     });

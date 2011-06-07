@@ -26,6 +26,7 @@ public class EventSummary extends StyledPanel {
         this.add(mainPicture = new MediaDisplay("mainPicture", event.getObject().getMainPicture().getId()));
         this.add(new Label("name"));
         this.add(new Label("locationName"));
+        this.add(new Label("performer"));
         this.add(new Label("start") {
             @SuppressWarnings("unchecked")
             @Override
