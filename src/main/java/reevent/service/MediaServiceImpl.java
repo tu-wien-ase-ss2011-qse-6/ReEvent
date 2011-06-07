@@ -11,6 +11,7 @@ import reevent.domain.media.InternalImage;
 import reevent.domain.media.MediaBase;
 
 import javax.imageio.ImageIO;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -65,7 +66,12 @@ public class MediaServiceImpl implements MediaService {
     @Override
     public InternalImage getPlaceholder() {
         if (placeholder == null) {
-            BufferedImage blank = new BufferedImage(MAX_WIDTH, MAX_HEIGHT, BufferedImage.TYPE_USHORT_GRAY);
+            BufferedImage blank = new BufferedImage(MAX_WIDTH, MAX_HEIGHT, BufferedImage.TYPE_INT_RGB);
+
+            Graphics2D g = blank.createGraphics();
+            g.setColor(Color.white);
+            g.fillRect(0, 0, MAX_WIDTH, MAX_HEIGHT);
+            g.dispose();
             ByteArrayOutputStream buffer = new ByteArrayOutputStream();
             try {
                 ImageIO.write(blank, "jpg", buffer);

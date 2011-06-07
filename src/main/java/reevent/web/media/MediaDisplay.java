@@ -37,7 +37,10 @@ public class MediaDisplay extends Panel {
         super(id);
         this.setRenderBodyOnly(true);
 
-        MediaBase media = mediaDao.load(mediaId);
+        MediaBase media = null;
+        if (mediaId != null) {
+            media = mediaDao.load(mediaId);
+        }
         if (media != null) {
             display(mediaId, media);
         } else {

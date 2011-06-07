@@ -5,6 +5,7 @@ import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.util.convert.IConverter;
 import reevent.domain.Event;
+import reevent.domain.media.MediaBase;
 import reevent.web.StyledPanel;
 import reevent.web.convert.DateTimeConverter;
 import reevent.web.media.MediaDisplay;
@@ -23,7 +24,8 @@ public class EventSummary extends StyledPanel {
 
     public EventSummary(String id, IModel<Event> event) {
         super(id, new CompoundPropertyModel<Event>(event));
-        this.add(mainPicture = new MediaDisplay("mainPicture", event.getObject().getMainPicture().getId()));
+        MediaBase media = event.getObject().getMainPicture();
+        this.add(mainPicture = new MediaDisplay("mainPicture", media == null ? null : media.getId()));
         this.add(new Label("name"));
         this.add(new Label("locationName"));
         this.add(new Label("performer"));
