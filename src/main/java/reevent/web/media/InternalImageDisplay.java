@@ -17,14 +17,25 @@ public class InternalImageDisplay extends Panel {
     @SpringBean
     MediaDao mediaDao;
 
+    {
+        this.setRenderBodyOnly(true);
+    }
+    public InternalImageDisplay(String id, InternalImage imageData) {
+        super(id);
+        display(imageData);
+    }
+
     public InternalImageDisplay(String id, UUID mediaId) {
         super(id);
-        this.setRenderBodyOnly(true);
-        this.mediaId = mediaId;
 
+        this.mediaId = mediaId;
         final InternalImage imageData = (InternalImage) mediaDao.load(mediaId);
 
-        Image img = new Image("image", new ByteArrayResource("image/jpeg", imageData.getData())) {
+        display(imageData);
+    }
+
+    private void display(final InternalImage imageData) {
+        Image image = new Image("image", new ByteArrayResource("image/jpeg", imageData.getData())) {
             @Override
             protected void onComponentTag(ComponentTag tag) {
                 super.onComponentTag(tag);
@@ -32,6 +43,6 @@ public class InternalImageDisplay extends Panel {
                 tag.put("height", imageData.getHeight());
             }
         };
-        this.add(img);
+        this.add(image);
     }
 }

@@ -5,6 +5,7 @@ import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 import reevent.dao.MediaDao;
 import reevent.domain.media.MediaBase;
+import reevent.service.MediaService;
 import reevent.util.ClassHandlerResolver;
 
 import java.lang.reflect.InvocationTargetException;
@@ -29,11 +30,27 @@ public class MediaDisplay extends Panel {
     @SpringBean
     MediaDao mediaDao;
 
+    @SpringBean
+    MediaService mediaService;
+
     public MediaDisplay(String id, UUID mediaId) {
         super(id);
         this.setRenderBodyOnly(true);
 
-        Class<? extends Component> factory = factories.resolve(mediaDao.load(mediaId));
+        MediaBase media = mediaDao.load(mediaId);
+        if (media != null) {
+            display(mediaId, media);
+        } else {
+            displayDefault();
+        }
+    }
+
+    private void displayDefault() {
+        this.add(new InternalImageDisplay("displayComponent", mediaService.getPlaceholder()));
+    }
+
+    private void display(UUID mediaId, MediaBase media) {
+        Class<? extends Component> factory = factories.resolve(media);
         try {
             Component displayComponent = factory.getConstructor(String.class, UUID.class).newInstance("displayComponent", mediaId);
             this.add(displayComponent);

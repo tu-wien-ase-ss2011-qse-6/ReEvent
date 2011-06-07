@@ -60,6 +60,26 @@ public class MediaServiceImpl implements MediaService {
         }
     }
 
+    static InternalImage placeholder;
+
+    @Override
+    public InternalImage getPlaceholder() {
+        if (placeholder == null) {
+            BufferedImage blank = new BufferedImage(MAX_WIDTH, MAX_HEIGHT, BufferedImage.TYPE_USHORT_GRAY);
+            ByteArrayOutputStream buffer = new ByteArrayOutputStream();
+            try {
+                ImageIO.write(blank, "jpg", buffer);
+            } catch (IOException e) {
+                throw new RuntimeException(e); // should never happen
+            }
+            placeholder = new InternalImage();
+            placeholder.setHeight(MAX_HEIGHT);
+            placeholder.setWidth(MAX_WIDTH);
+            placeholder.setData(buffer.toByteArray());
+        }
+        return placeholder;
+    }
+
     final int MAX_WIDTH=320;
     final int MAX_HEIGHT=240;
 
