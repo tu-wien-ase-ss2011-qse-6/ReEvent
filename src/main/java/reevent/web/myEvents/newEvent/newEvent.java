@@ -5,6 +5,7 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.wicket.authroles.authorization.strategies.role.annotations.AuthorizeInstantiation;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.FormComponent;
+import org.apache.wicket.markup.html.form.HiddenField;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.html.form.upload.FileUpload;
 import org.apache.wicket.markup.html.form.upload.FileUploadField;
@@ -41,6 +42,10 @@ public class newEvent extends myEvents{
     TextField<String> start;
     TextField<String> locationName;
     TextField<String> locationAddress;
+    
+    // hidden fields to store the location of the marker on the map
+    HiddenField<String> latitude;
+    HiddenField<String> longitude;
 
     TextField<String> pictureUrl;
     FileUploadField pictureFile;
@@ -113,10 +118,15 @@ public class newEvent extends myEvents{
 
         newEventForm.add(locationAddress = new TextField<String>("locationAddress"));
 
+        // add the location hidden fields to the form
+        newEventForm.add(latitude = new HiddenField<String>("latitude"));
+        newEventForm.add(longitude = new HiddenField<String>("longitude"));
+        
         newEventForm.add(pictureUrl = new TextField<String>("pictureUrl", new Model()));
         pictureUrl.add(new UrlValidator());
-
+        
         newEventForm.add(pictureFile = new FileUploadField("pictureFile", new Model()));
+
 
         // required fields
         List<? extends FormComponent<?>> fields = asList(

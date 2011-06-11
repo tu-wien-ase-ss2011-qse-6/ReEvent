@@ -144,7 +144,6 @@ public class Event extends EntityBase {
     }
     
     public String getLocationAddress() {
-    	System.out.println("HERE");
         return this.location.getLocationAddress();
     }
 

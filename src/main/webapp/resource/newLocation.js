@@ -28,13 +28,18 @@ newLocation = {
                             map.addOverlay(marker);
                             GEvent.addListener(marker, "dragend", function() {
                                 marker.openInfoWindowHtml(marker.getLatLng().toUrlValue(6));
+                                $('.newEventForm .latitude').val(marker.getLatLng().lat())
+                                $('.newEventForm .longitude').val(marker.getLatLng().lng())
                             });
                             GEvent.addListener(marker, "click", function() {
                                 marker.openInfoWindowHtml(marker.getLatLng().toUrlValue(6));
+                                $('.newEventForm .latitude').val(marker.getLatLng().lat())
+                                $('.newEventForm .longitude').val(marker.getLatLng().lng())
                             });
                             GEvent.trigger(marker, "click");
                             $('.newEventForm .latitude').val(point.lat())
                             $('.newEventForm .longitude').val(point.lng())
+                            
                         }
                     }
                     );
