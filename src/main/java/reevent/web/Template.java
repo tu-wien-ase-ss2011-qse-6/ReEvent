@@ -12,6 +12,8 @@ import org.apache.wicket.model.ResourceModel;
 import reevent.web.signinout.SignInPanel;
 import reevent.web.signinout.SignOutPanel;
 
+import java.util.Arrays;
+
 public class Template extends WebPage {
     FeedbackPanel feedback;
     Panel signInOutPanel;
@@ -22,6 +24,10 @@ public class Template extends WebPage {
             String labelId = field.getId() + "Label";
             field.getParent().add(new SimpleFormComponentLabel(labelId, field));
         }
+    }
+
+    public static void addFormLabels(FormComponent<?>... fields) {
+        addFormLabels(Arrays.asList(fields));
     }
 
     {
