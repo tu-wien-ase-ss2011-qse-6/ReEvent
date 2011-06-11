@@ -10,6 +10,7 @@ import org.apache.wicket.markup.html.form.upload.FileUpload;
 import org.apache.wicket.markup.html.form.upload.FileUploadField;
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.model.CompoundPropertyModel;
+import org.apache.wicket.model.Model;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.apache.wicket.validation.IValidatable;
 import org.apache.wicket.validation.validator.AbstractValidator;
@@ -89,9 +90,9 @@ public class newEvent extends myEvents{
             }
         });
 
-        newEventForm.add(name = new TextField<String>("name", formModel.<String>bind("name")));
+        newEventForm.add(name = new TextField<String>("name"));
 
-        newEventForm.add(start = new TextField("start", formModel.<String>bind("start")));
+        newEventForm.add(start = new TextField<String>("start"));
 
         name.add(new AbstractValidator<String>(){
 
@@ -104,21 +105,25 @@ public class newEvent extends myEvents{
 
         });
 
-        newEventForm.add(performer = new TextField<String>("performer", formModel.<String>bind("performer")));
+        newEventForm.add(performer = new TextField<String>("performer"));
 
-        newEventForm.add(genre = new TextField<String>("genre", formModel.<String>bind("genre")));
+        newEventForm.add(genre = new TextField<String>("genre"));
 
-        newEventForm.add(locationName = new TextField<String>("locationName", formModel.<String>bind("locationName")));
+        newEventForm.add(locationName = new TextField<String>("locationName"));
 
-        newEventForm.add(locationAddress = new TextField<String>("locationAddress", formModel.<String>bind("locationAddress")));
+        newEventForm.add(locationAddress = new TextField<String>("locationAddress"));
 
-        newEventForm.add(pictureUrl = new TextField<String>("pictureUrl"));
+        newEventForm.add(pictureUrl = new TextField<String>("pictureUrl", new Model()));
         pictureUrl.add(new UrlValidator());
 
-        newEventForm.add(pictureFile = new FileUploadField("pictureFile"));
+        newEventForm.add(pictureFile = new FileUploadField("pictureFile", new Model()));
 
         // required fields
-        List<TextField<String>> fields = asList(name, performer,start, genre, locationName, locationAddress);
+        List<? extends FormComponent<?>> fields = asList(
+                name, performer, start, genre,
+                locationName, locationAddress);
+        addFormLabels(pictureUrl,  pictureFile); // add nonrequired labels
+        
         addFormLabels(fields);
 
         for (FormComponent fc : fields) {
