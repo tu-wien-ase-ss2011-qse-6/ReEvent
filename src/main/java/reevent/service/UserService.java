@@ -22,7 +22,7 @@ public interface UserService {
      * @return The hash code as a hex string.
      */
     
-    User update (User newUser, String passwort);
+    User update(User newUser, String passwort);
         
     
     String hashPassword(String salt, String password);

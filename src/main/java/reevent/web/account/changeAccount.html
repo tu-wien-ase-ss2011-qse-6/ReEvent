@@ -1,18 +1,23 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd"
-	xml:lang="en" lang="en">
+      xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd"
+      xml:lang="en" lang="en">
 <head></head>
 <body>
-	<wicket:extend>
-			<h1>
-				<wicket:message key="changeAccount">[[ account ]]</wicket:message>
-			</h1>
-			
-			<form wicket:id='changeUserForm'>
-        <label wicket:id='usernameLabel'>[[ username ]]</label><br/>
-        <input wicket:id='username' type='text'/><br/>
+<wicket:extend>
+    <h1>
+        <wicket:message key="changeAccount">[[ account ]]</wicket:message>
+    </h1>
+
+    <form wicket:id='changeUserForm'>
+        <h2 wicket:id='username'>[[ username ]]</h2><br/>
+
+        <label wicket:id='firstNameLabel'>[[ first name ]]</label><br/>
+        <input wicket:id='firstName' type='text'/><br/>
+
+        <label wicket:id='lastNameLabel'>[[ Last name ]]</label><br/>
+        <input wicket:id='lastName' type='text'/><br/>
 
         <label wicket:id='passwordLabel'>[[ password ]]</label><br/>
         <input wicket:id='password' type='password'/><br/>
@@ -20,15 +25,11 @@
         <label wicket:id='passwordVerifyLabel'>[[ verify password ]]</label><br/>
         <input wicket:id='passwordVerify' type='password'/><br/>
 
-        <label wicket:id='firstNameLabel'>[[ first name ]]</label><br/>
-        <input wicket:id='firstName' type='text'/><br/>
-
-        <label wicket:id='lastNameLabel'>[[ Last name ]]</label><br/>
-        <input wicket:id='lastName' type='text'/><br/>
-        
- <!--  <input wicket:message='value:submit' type="submit" value="[[ change ]]"/>  -->
+        <button type="submit">
+            <wicket:message key="submit">Update</wicket:message>
+        </button>
     </form>
 
-	</wicket:extend>
+</wicket:extend>
 </body>
 </html>

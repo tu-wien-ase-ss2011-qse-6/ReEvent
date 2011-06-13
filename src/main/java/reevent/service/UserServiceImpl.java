@@ -1,5 +1,6 @@
 package reevent.service;
 
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -64,7 +65,12 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public User update(User user, String password) {
-        user.setPasswordHash(hashPassword(user, password));
+        String oldPassword = dao.load(user.getId()).getPasswordHash();
+        if (!StringUtils.isEmpty(password)) {
+            user.setPasswordHash(hashPassword(user, password));
+        } else {
+            user.setPasswordHash(oldPassword);
+        }
         return dao.update(user);
 	}
 
