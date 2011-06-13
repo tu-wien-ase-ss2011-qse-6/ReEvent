@@ -50,6 +50,8 @@ public class newEvent extends myEvents{
     TextField<String> pictureUrl;
     FileUploadField pictureFile;
 
+    List<Event> myEvents;
+
     @SpringBean
     EventService events;
     Event event;
@@ -127,15 +129,14 @@ public class newEvent extends myEvents{
 
 
         // required fields
-        List<? extends FormComponent<?>> required = asList(
+        List<? extends FormComponent<?>> fields = asList(
                 name, performer, start, genre,
                 locationName, locationAddress);
-        List<? extends FormComponent<?>> optional = asList(pictureUrl,  pictureFile);
+        addFormLabels(pictureUrl,  pictureFile); // add nonrequired labels
+        
+        addFormLabels(fields);
 
-        addFormLabels(optional);
-        addFormLabels(required);
-
-        for (FormComponent fc : required) {
+        for (FormComponent fc : fields) {
             fc.setRequired(true);
         }
 
