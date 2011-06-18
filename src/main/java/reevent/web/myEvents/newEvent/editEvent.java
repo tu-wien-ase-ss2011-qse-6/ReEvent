@@ -30,10 +30,8 @@ public class editEvent extends myEvents {
 	 
 	public editEvent(){
 		
-    User user = ReEventSession.get().getUserSignedIn();
+    User user = ReEventSession.get().getModUserSignedIn().getObject();
     
-    
-   
     add(myEventList = new ListView<Event>("myEventList", events.getByUser(user)) {
         @Override
         protected void populateItem(ListItem<Event> item) {

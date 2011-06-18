@@ -31,17 +31,20 @@ public class changeAccount extends Template {
     UserService users;
 
 	public changeAccount(){
-		CompoundPropertyModel<User> formModel = new CompoundPropertyModel<User>(new User());
+        CompoundPropertyModel<User> formModel = new CompoundPropertyModel<User>(ReEventSession.get().getModUserSignedIn());
 		
         add(changeUserForm = new Form<User>("changeUserForm", formModel) {
             @Override
             protected void onSubmit() {
-                users.update(changeUserForm.getModelObject(), password.getModelObject());
+                if (!getModelObject().getId().equals(ReEventSession.get().getUserSignedIn())) {
+                    throw new IllegalStateException("Tried to edit details of another user");
+                }
+                users.update(getModelObject(), password.getModelObject());
                 setResponsePage(ReEventApplication.get().getAccount());
             }
         });
 
-        changeUserForm.add(username = new TextField<String>("username", formModel.<String>bind("username"), String.class));
+        changeUserForm.add(username = new Label("username", formModel.<String>bind("username")));
         username.add(new AbstractValidator<String>() {
             @Override
             protected void onValidate(IValidatable<String> field) {
@@ -65,15 +68,20 @@ public class changeAccount extends Template {
             }
         });
 
-        changeUserForm.add(firstName = new TextField<String>("firstName", formModel.<String>bind("firstName")));
+        changeUserForm.add(firstName = new TextField<String>("firstName"));
         
-        changeUserForm.add(lastName = new TextField<String>("lastName", formModel.<String>bind("lastName")));
+        changeUserForm.add(lastName = new TextField<String>("lastName"));
 
         // required fields
-        List<TextField<String>> fields = asList(username, password, passwordVerify, firstName, lastName);
-        addFormLabels(fields);
-        for (FormComponent fc : fields) {
+        List<TextField<String>> required = asList(firstName, lastName);
+        List<TextField<String>> optional = asList(password, passwordVerify);
+        addFormLabels(required);
+        addFormLabels(optional);
+        for (FormComponent fc : required) {
             fc.setRequired(true);
+        }
+        for (TextField<String> fc : optional) {
+            fc.setRequired(false);
         }
     }
 }

@@ -5,23 +5,28 @@ import org.apache.wicket.Session;
 import org.apache.wicket.authroles.authentication.AuthenticatedWebSession;
 import org.apache.wicket.authroles.authorization.strategies.role.Roles;
 import org.apache.wicket.injection.Injector;
-import org.apache.wicket.model.AbstractReadOnlyModel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.request.Request;
 import org.apache.wicket.spring.injection.annot.SpringBean;
-
+import reevent.dao.UserDao;
 import reevent.domain.User;
 import reevent.domain.UserRole;
 import reevent.service.UserService;
+import reevent.web.model.DaoIdModel;
+
+import java.util.UUID;
 
 public class ReEventSession extends AuthenticatedWebSession {
     /**
      * Profile of the currently signed in user.
      */
-    User userSignedIn;
+    UUID userSignedIn;
 
     @SpringBean
     UserService userService;
+
+    @SpringBean
+    UserDao userDao;
 
     {
         Injector.get().inject(this);
@@ -43,8 +48,9 @@ public class ReEventSession extends AuthenticatedWebSession {
         } else {
             Validate.notNull(userSignedIn);
 
+
             Roles roles = new Roles();
-            for (UserRole role : userSignedIn.getRoles()) {
+            for (UserRole role : userDao.load(userSignedIn).getRoles()) {
                 roles.add(role.name());
             }
             return roles;
@@ -53,7 +59,7 @@ public class ReEventSession extends AuthenticatedWebSession {
 
     @Override
     public boolean authenticate(String username, String password) {
-        userSignedIn = userService.authenticate(username, password);
+        userSignedIn = userService.authenticate(username, password).getId();
         return userSignedIn != null;
     }
 
@@ -63,19 +69,16 @@ public class ReEventSession extends AuthenticatedWebSession {
         super.signOut();    //To change body of overridden methods use File | Settings | File Templates.
     }
 
-    public User getUserSignedIn() {
+    public UUID getUserSignedIn() {
         return userSignedIn;
     }
 
-    public static IModel<User> userSignedInModel = new AbstractReadOnlyModel<User>() {
-        @Override
-        public User getObject() {
-            return ReEventSession.get().getUserSignedIn();
-        }
-    };
+    public IModel<User> getModUserSignedIn() {
+        return new DaoIdModel<User>(userDao, userSignedIn);
+    }
 
 	public void delete() {
-		userService.delete(userSignedIn.getId());
+		userService.delete(userSignedIn);
 		userSignedIn = null;
 	}
 

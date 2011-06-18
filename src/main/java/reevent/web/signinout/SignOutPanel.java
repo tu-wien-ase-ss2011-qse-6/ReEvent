@@ -25,7 +25,7 @@ public class SignOutPanel extends Panel {
     public SignOutPanel(String id) {
         super(id);
 
-        PropertyModel<String> firstNameModel = new PropertyModel<String>(ReEventSession.userSignedInModel, "firstName");
+        PropertyModel<String> firstNameModel = new PropertyModel<String>(ReEventSession.get().getModUserSignedIn(), "firstName");
         StringResourceModel realNameMessage =
                 new StringResourceModel("you.are.logged.in.as.user", firstNameModel);
         add(userSignedInLabel = new Label("userSignedInLabel", realNameMessage));
