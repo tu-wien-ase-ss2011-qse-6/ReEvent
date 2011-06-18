@@ -22,5 +22,6 @@ public interface EntityDao<T extends EntityBase> {
     <U extends T> U update(U entity);
     <U extends T> U save(U entity);
     void delete(UUID id);
+    void refresh(T entity);
     List<T> findAll(int first, int max);
 }

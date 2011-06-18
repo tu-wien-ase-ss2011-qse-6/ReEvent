@@ -8,25 +8,26 @@ import reevent.web.ReEventSession;
 import reevent.web.Template;
 
 @AuthorizeInstantiation("USER")
-public class myAccount extends Template {;
+public class myAccount extends Template {
+    private BookmarkablePageLink changeAccountLink;
+    private BookmarkablePageLink deleteAccountLink;
+    ;
 
 	public myAccount(){
-		
-		BookmarkablePageLink changeAccountLink;
-		BookmarkablePageLink deleteAccountLink;
-		
-		StringResourceModel firstNameMessage =
-			new StringResourceModel("you.are.logged.in.as.user.firstName", ReEventSession.userSignedInModel);
+
+        setDefaultModel(ReEventSession.get().getModUserSignedIn());
+        StringResourceModel firstNameMessage =
+			new StringResourceModel("you.are.logged.in.as.user.firstName", getDefaultModel());
 		
 		add(new Label("userSignedInLabelFirst", firstNameMessage));
 		
 		StringResourceModel lastNameMessage =
-			new StringResourceModel("you.are.logged.in.as.user.lastName", ReEventSession.userSignedInModel);
+			new StringResourceModel("you.are.logged.in.as.user.lastName", getDefaultModel());
 		
 		add(new Label("userSignedInLabelLast", lastNameMessage));
 		
 		StringResourceModel nickNameMessage =
-			new StringResourceModel("you.are.logged.in.as.user.username", ReEventSession.userSignedInModel);
+			new StringResourceModel("you.are.logged.in.as.user.username", getDefaultModel());
 		
 		add(new Label("userSignedInLabelNick", nickNameMessage));
 		

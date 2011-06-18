@@ -64,6 +64,11 @@ public abstract class EntityDaoBase<T extends EntityBase> implements EntityDao<T
         em.remove(ref);
     }
 
+    @Override
+    public void refresh(T entity) {
+        em.refresh(entity);
+    }
+
     protected JPQLQuery query() {
         return new JPAQuery(em);
     }

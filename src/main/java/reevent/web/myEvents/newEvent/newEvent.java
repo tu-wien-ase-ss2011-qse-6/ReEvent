@@ -70,7 +70,7 @@ public class newEvent extends myEvents{
             protected void onSubmit() {
 
                 event = newEventForm.getModelObject();
-                User user = ReEventSession.userSignedInModel.getObject();
+                User user = ReEventSession.get().getModUserSignedIn().getObject();
 
                 MediaBase mainPicture = null;
                 try {
