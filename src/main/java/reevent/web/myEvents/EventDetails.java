@@ -17,16 +17,14 @@ import java.text.DateFormat;
 /**
  * A block that shows the main picture and basic data about an event.
  */
-public class EventSummary extends StyledPanel {
+public class EventDetails extends StyledPanel {
     MediaDisplay mainPicture;
     Label name;
     Label locationName;
     Label start;
     Label genre;
     
-    Link detailEvent;
-
-    public EventSummary(String id, IModel<Event> event) {
+    public EventDetails(String id, IModel<Event> event) {
         super(id, new CompoundPropertyModel<Event>(event));
         MediaBase media = event.getObject().getMainPicture();
         this.add(mainPicture = new MediaDisplay("mainPicture", media == null ? null : media.getId()));
@@ -41,13 +39,8 @@ public class EventSummary extends StyledPanel {
             }
         });
         this.add(new Label("genre"));
-        this.add(detailEvent = new Link("detailEvent"){
-        	public void onClick() {
-        		
-        		Event obj = (Event) getModelObject();
-                setResponsePage(new detailEvent(obj));
-        		
-        	}
-        });
+        this.add(new Label("latitude"));
+        this.add(new Label("longitude"));
+        
     }
 }

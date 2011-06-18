@@ -47,7 +47,7 @@ public class InitData {
 
     @Autowired
     MediaService mediaService;
-    private MediaBase kittens;
+    private MediaBase eventImage;
     private User admin;
 
     @PostConstruct
@@ -125,38 +125,47 @@ public class InitData {
         e1.setCreatedBy(userDao.findByUsername("user1"));
         e1.setGenre("Hard Rock");
         e1.setPerformer("AC/DC");
-        e1.setMainPicture(kittens);
+        e1.setMainPicture(mediaService.create("http://www.zmemusic.com/wp-content/uploads/2009/06/2.jpg", admin));
+        e1.setLatitude(48.19898);
+        e1.setLongitude(16.369904);
         eventDao.save(e1);
 
         Event e2 = new Event("Technoparty", new Date(), "Riverdog", "Operngasse 1, Vienna");
-        e2.setCreatedBy(userDao.findByUsername("user2"));
+        e2.setCreatedBy(userDao.findByUsername("user1"));
         e2.setGenre("Techno");
         e2.setPerformer("Scooter");
-        e2.setMainPicture(kittens);
+        e2.setMainPicture(mediaService.create("http://images.wikia.com/lyricwiki/images/9/9b/Scooter_-_The_Stadium_Techno_Experience.jpg", admin));
+        e2.setLatitude(48.203385);
+        e2.setLongitude(16.368557);
         eventDao.save(e2);
 
         Event e3 = new Event("Bruce is Back!", new Date(), "Donauinsel", "Donauinsel 1, 1220 Wien, Austria");
-        e3.setCreatedBy(userDao.findByUsername("user3"));
+        e3.setCreatedBy(userDao.findByUsername("user1"));
         e3.setGenre("Rock");
         e3.setPerformer("Bruce Springsteen & the E-Street Band");
-        e3.setMainPicture(kittens);
+        e3.setMainPicture(mediaService.create("http://www.popstarsplus.com/images/BruceSpringsteenPicture.jpg", admin));
+        e3.setLatitude(48.228215);
+        e3.setLongitude(16.409154);
         eventDao.save(e3);
         
         Event e4 = new Event("Neil Young Concert", new Date(), "Los Angeles Concert Hall 123", "Concert Park Drive, Los Angeles, CA");
-        e4.setCreatedBy(userDao.findByUsername("user3"));
+        e4.setCreatedBy(userDao.findByUsername("user2"));
         e4.setGenre("Rock");
         e4.setPerformer("Neil Young");
-        e4.setMainPicture(kittens);
+        e4.setMainPicture(mediaService.create("http://www.aquariumdrunkard.com/wp-content/uploads/2007/10/neil-young.jpg", admin));
+        e4.setLatitude(33.974552);
+        e4.setLongitude(-118.424176);
         eventDao.save(e4);
     }
 
     private void initMedia() {
         if (!isEmpty(mediaDao)) {
-            kittens = mediaDao.findAll(0, 1).get(0);
+            eventImage = mediaDao.findAll(0, 1).get(0);
             return;
         }
 
-        kittens = mediaService.create("http://kittensforever.files.wordpress.com/2008/11/kittens4blog1.jpg", admin);
+        eventImage = mediaService.create("http://kittensforever.files.wordpress.com/2008/11/kittens4blog1.jpg", admin);
+        
     }
 
     private Logger _log = LoggerFactory.getLogger(this.getClass());

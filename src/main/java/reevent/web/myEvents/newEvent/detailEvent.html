@@ -1,16 +1,31 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd"
-	xml:lang="en" lang="en">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd"
+      xml:lang="en" lang="en">
 <head></head>
 <body>
-	<wicket:extend>
-			
-		<h2>Detail Event</h2>
-		<div>
-		
-		</div>	
-	</wicket:extend>
+<wicket:extend>
+    <hr/>
+    <div class="span-17">
+        <h3>
+            <wicket:message key="detail.event">[[ detail event ]]</wicket:message>
+        </h3>
+            <!--
+            <thead>
+                <tr>
+                    <th><wicket:message key="event.name">[[ event name ]]</wicket:message></th>
+                    <th><wicket:message key="event.genre">[[ event genre ]]</wicket:message></th>
+                    <th><wicket:message key="event.date">[[ event date ]]</wicket:message></th>   
+                    <th><wicket:message key="event.location.locationName">[[ Location Name ]]</wicket:message></th>                 
+                </tr>
+            </thead>
+            -->
+        <div wicket:id="detailEvent" class="detail-event">
+            <div wicket:id="details">
+                [[ event details ]]
+            </div>
+        </div>
+    </div>
+</wicket:extend>
 </body>
 </html>

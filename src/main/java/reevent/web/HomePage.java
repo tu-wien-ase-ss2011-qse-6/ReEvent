@@ -14,7 +14,7 @@ public class HomePage extends Template {
     EventDao eventDao;
 
     public HomePage() {
-        add(upcomingEventList = new ListView<Event>("upcomingEventList", eventDao.findAll(0, 10)) {
+        add(upcomingEventList = new ListView<Event>("upcomingEventList", eventDao.findAll(0, 50)) {
             @Override
             protected void populateItem(ListItem<Event> item) {
                 /*
