@@ -68,9 +68,9 @@ public class changeAccount extends Template {
             }
         });
 
-        changeUserForm.add(firstName = new TextField<String>("firstName", formModel.<String>bind("firstName")));
+        changeUserForm.add(firstName = new TextField<String>("firstName"));
         
-        changeUserForm.add(lastName = new TextField<String>("lastName", formModel.<String>bind("lastName")));
+        changeUserForm.add(lastName = new TextField<String>("lastName"));
 
         // required fields
         List<TextField<String>> required = asList(firstName, lastName);
