@@ -39,12 +39,15 @@ public class changeAccount extends Template {
     UserDao userDao;
 
 	public changeAccount(){
-		CompoundPropertyModel<User> formModel = new CompoundPropertyModel<User>(ReEventSession.userSignedInModel);
+        CompoundPropertyModel<User> formModel = new CompoundPropertyModel<User>(ReEventSession.get().getModUserSignedIn());
 		
         add(changeUserForm = new Form<User>("changeUserForm", formModel) {
             @Override
             protected void onSubmit() {
-                users.update(changeUserForm.getModelObject(), password.getModelObject());
+                if (!getModelObject().getId().equals(ReEventSession.get().getUserSignedIn())) {
+                    throw new IllegalStateException("Tried to edit details of another user");
+                }
+                users.update(getModelObject(), password.getModelObject());
                 setResponsePage(ReEventApplication.get().getAccount());
             }
         });
