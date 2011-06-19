@@ -17,20 +17,6 @@ public class HomePage extends Template {
         add(upcomingEventList = new ListView<Event>("upcomingEventList", eventDao.findAll(0, 50)) {
             @Override
             protected void populateItem(ListItem<Event> item) {
-                /*
-                item.add(new Label("eventName", new PropertyModel(item.getModel(), "name")));
-                item.add(new Label("eventStart", new PropertyModel(item.getModel(), "start")) {
-                    @Override
-                    public <C> IConverter<C> getConverter(Class<C> type) {
-                        if (!Date.class.isAssignableFrom(type)) {
-                            throw new IllegalArgumentException("Can't convert from types other than Date");
-                        }
-                        return (IConverter) DateTimeConverter.both(DateFormat.SHORT, DateFormat.SHORT);
-                    }
-                });
-                item.add(new Label("eventGenre", new PropertyModel(item.getModel(), "genre")));
-                item.add(new Label("locationName", new PropertyModel(item.getModel(), "locationName")));
-                */
                 item.add(new EventSummary("summary", item.getModel()));
             }
         });
