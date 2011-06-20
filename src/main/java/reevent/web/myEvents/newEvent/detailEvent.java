@@ -8,10 +8,11 @@ import org.apache.wicket.spring.injection.annot.SpringBean;
 
 import reevent.dao.EventDao;
 import reevent.domain.Event;
+import reevent.web.Template;
 import reevent.web.myEvents.EventDetails;
 import reevent.web.myEvents.myEvents;
 
-public class detailEvent extends myEvents {
+public class detailEvent extends Template {
 	ListView<Event> detailEvent;
 
     @SpringBean

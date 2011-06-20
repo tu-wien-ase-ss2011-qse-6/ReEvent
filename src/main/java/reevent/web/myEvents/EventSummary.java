@@ -4,6 +4,7 @@ import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.IModel;
+import org.apache.wicket.model.Model;
 import org.apache.wicket.util.convert.IConverter;
 import reevent.domain.Event;
 import reevent.domain.media.MediaBase;
@@ -26,7 +27,7 @@ public class EventSummary extends StyledPanel {
     
     Link detailEvent;
 
-    public EventSummary(String id, IModel<Event> event) {
+    public EventSummary(String id, final IModel<Event> event) {
         super(id, new CompoundPropertyModel<Event>(event));
         MediaBase media = event.getObject().getMainPicture();
         this.add(mainPicture = new MediaDisplay("mainPicture", media == null ? null : media.getId()));
@@ -41,11 +42,10 @@ public class EventSummary extends StyledPanel {
             }
         });
         this.add(new Label("genre"));
-        this.add(detailEvent = new Link("detailEvent"){
+        this.add(detailEvent = new Link("detailEvent", new Model()){
         	public void onClick() {
         		
-        		Event obj = (Event) getModelObject();
-                setResponsePage(new detailEvent(obj));
+                setResponsePage(new detailEvent(event.getObject()));
         		
         	}
         });
