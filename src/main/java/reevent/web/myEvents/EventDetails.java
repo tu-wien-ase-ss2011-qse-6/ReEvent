@@ -1,5 +1,6 @@
 package reevent.web.myEvents;
 
+import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.model.CompoundPropertyModel;
@@ -39,8 +40,19 @@ public class EventDetails extends StyledPanel {
             }
         });
         this.add(new Label("genre"));
-        this.add(new Label("latitude"));
-        this.add(new Label("longitude"));
         
     }
+
+	@Override
+	protected void onComponentTag(ComponentTag tag) {
+		// TODO Auto-generated method stub
+		super.onComponentTag(tag);
+		Event e = (Event) getDefaultModelObject();
+		tag.append("class", "event-location", " ");
+		tag.put("data-lat", Double.toString(e.getLatitude()));
+		tag.put("data-lng", Double.toString(e.getLongitude()));
+	}
+    
+    
+    
 }

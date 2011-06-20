@@ -15,7 +15,7 @@
                 <tr>
                     <th><wicket:message key="event.name">[[ event name ]]</wicket:message></th>
                     <th><wicket:message key="event.genre">[[ event genre ]]</wicket:message></th>
-                    <th><wicket:message key="event.date">[[ event date ]]</wicket:message></th>   
+                    <th><wicket:message key="event.dat	e">[[ event date ]]</wicket:message></th>   
                     <th><wicket:message key="event.location.locationName">[[ Location Name ]]</wicket:message></th>                 
                 </tr>
             </thead>
@@ -24,7 +24,17 @@
             <div wicket:id="details">
                 [[ event details ]]
             </div>
-        </div>
+            
+            
+            <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAnfs7bKE82qgb3Zc2YyS-oBT2yXp_ZAY8_ufC3CFXhHIE1NvwkxSySz_REpPq-4WZA27OwgbtyR3VcA"
+                type="text/javascript"></script>
+
+        <script type="text/javascript" src="resource/detailLocation.js"></script>
+
+		<div id="map_canvas" style="width: 600px; height: 400px"></div>
+		
+
+		</div>
 </wicket:extend>
 </body>
 </html>
