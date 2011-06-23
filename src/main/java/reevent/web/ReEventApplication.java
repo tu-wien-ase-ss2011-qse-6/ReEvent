@@ -13,6 +13,7 @@ import org.slf4j.LoggerFactory;
 
 import reevent.web.account.changeAccount;
 import reevent.web.account.myAccount;
+import reevent.web.myEvents.newEvent.editEvent;
 
 public class ReEventApplication extends AuthenticatedWebApplication {
     private Logger _log = LoggerFactory.getLogger(this.getClass());
@@ -60,4 +61,10 @@ public class ReEventApplication extends AuthenticatedWebApplication {
     public Class<? extends Page> getAccount() {
         return myAccount.class;
     }
+    
+    public Class<? extends Page> getEditEvent() {
+    	return editEvent.class;
+    }
+    
+    
 }

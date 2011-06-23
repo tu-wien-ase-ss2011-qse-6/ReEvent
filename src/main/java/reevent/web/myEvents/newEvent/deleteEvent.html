@@ -5,10 +5,16 @@
 	xml:lang="en" lang="en">
 <head></head>
 <body>
-	<wicket:extend>
+<wicket:extend>
+		<h2>
+			<wicket:message key="delete">[[ delete event ]]</wicket:message>
+		</h2>
+		
+		<form wicket:id="deleteForm">
+			<input wicket:id="yes" type="submit" value="yes" />
+			<input wicket:id="no" type="submit" value="no" />
 			
-		<h2>Delete Event</h2>
-				
-	</wicket:extend>
+</form>
+</wicket:extend>
 </body>
 </html>

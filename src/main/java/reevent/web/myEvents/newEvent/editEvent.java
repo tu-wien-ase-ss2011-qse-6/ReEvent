@@ -24,6 +24,7 @@ public class editEvent extends myEvents {
 	ListView<Event> myEventList;
 	
 	Link detailEvent;
+	Link deleteEvent;
 	
 	@SpringBean
 	EventService events;
@@ -43,6 +44,15 @@ public class editEvent extends myEvents {
             		
             		Event obj = (Event) getModelObject();
                     setResponsePage(new detailEvent(obj));
+            		
+            	}
+            });
+            
+            item.add(deleteEvent = new Link("deleteEvent"){
+            	public void onClick() {
+            		
+            		Event obj = (Event) getModelObject();
+                    setResponsePage(new deleteEvent(obj));
             		
             	}
             });
