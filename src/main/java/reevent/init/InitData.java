@@ -123,25 +123,25 @@ public class InitData {
 
         Event e1 = new Event("Rock Festival", new Date(), "Karlsplatz Park", "Karlsplatz 12, Vienna");
         e1.setCreatedBy(userDao.findByUsername("user1"));
-        e1.setGenre("Hard Rock");
+        e1.setGenre("Festivals");
         e1.setPerformer("AC/DC");
         e1.setMainPicture(mediaService.create("http://www.zmemusic.com/wp-content/uploads/2009/06/2.jpg", admin));
         e1.setLatitude(48.19898);
         e1.setLongitude(16.369904);
         eventDao.save(e1);
 
-        Event e2 = new Event("Technoparty", new Date(), "Riverdog", "Operngasse 1, Vienna");
+        Event e2 = new Event("Concerts in Mozart's House", new Date("23/06/11 7:30 PM"), "Mozarthaus", "Singerstrasse 7 Vienna, 9  Austria");
         e2.setCreatedBy(userDao.findByUsername("user1"));
-        e2.setGenre("Techno");
-        e2.setPerformer("Scooter");
-        e2.setMainPicture(mediaService.create("http://images.wikia.com/lyricwiki/images/9/9b/Scooter_-_The_Stadium_Techno_Experience.jpg", admin));
-        e2.setLatitude(48.203385);
-        e2.setLongitude(16.368557);
+        e2.setGenre("Concerts and Tour Dates");
+        e2.setPerformer("Different bands");
+        e2.setMainPicture(mediaService.create("http://static.eventful.com/images/edpborder500/I0-001/003/739/078-6.jpeg", admin));
+        e2.setLatitude(48.207493);
+        e2.setLongitude(16.373515);
         eventDao.save(e2);
 
         Event e3 = new Event("Bruce is Back!", new Date(), "Donauinsel", "Donauinsel 1, 1220 Wien, Austria");
         e3.setCreatedBy(userDao.findByUsername("user1"));
-        e3.setGenre("Rock");
+        e3.setGenre("Concerts and Tour Dates");
         e3.setPerformer("Bruce Springsteen & the E-Street Band");
         e3.setMainPicture(mediaService.create("http://www.popstarsplus.com/images/BruceSpringsteenPicture.jpg", admin));
         e3.setLatitude(48.228215);
@@ -150,12 +150,68 @@ public class InitData {
         
         Event e4 = new Event("Neil Young Concert", new Date(), "Los Angeles Concert Hall 123", "Concert Park Drive, Los Angeles, CA");
         e4.setCreatedBy(userDao.findByUsername("user2"));
-        e4.setGenre("Rock");
+        e4.setGenre("Concerts and Tour Dates");
         e4.setPerformer("Neil Young");
         e4.setMainPicture(mediaService.create("http://www.aquariumdrunkard.com/wp-content/uploads/2007/10/neil-young.jpg", admin));
         e4.setLatitude(33.974552);
         e4.setLongitude(-118.424176);
         eventDao.save(e4);
+        
+        Event e5 = new Event("Bon Jovi", new Date("22/06/11 8:00 PM"), "Ernst Happel Stadium", "Meiereistrasse Vienna, 9  Austria");
+        e5.setCreatedBy(userDao.findByUsername("user1"));
+        e5.setGenre("Concerts and Tour Dates");
+        e5.setPerformer("Bon Jovi");
+        e5.setMainPicture(mediaService.create("http://static.eventful.com/images/edpborder500/I0-001/003/860/890-1.jpeg", admin));
+        e5.setLatitude(48.20787);
+        e5.setLongitude(16.418331);
+        eventDao.save(e5);
+        
+        Event e6 = new Event("30 Seconds To Mars", new Date("02/07/11"), "Volt Festival", "Sopron, Lővér campsite Sopron, GS  Hungary");
+        e6.setCreatedBy(userDao.findByUsername("user1"));
+        e6.setGenre("Festivals");
+        e6.setPerformer("30 Seconds To Mars");
+        e6.setMainPicture(mediaService.create("http://static.eventful.com/images/edpborder500/I0-001/001/178/940-3.png", admin));
+        e6.setLatitude(47.684898);
+        e6.setLongitude(16.583053);
+        eventDao.save(e6);
+        
+        Event e7 = new Event("Maroon 5", new Date("13/12/11 8:00 PM"), "Gasometer", "Guglgasse 8 Vienna, 9  Austria");
+        e7.setCreatedBy(userDao.findByUsername("user2"));
+        e7.setGenre("Festivals");
+        e7.setPerformer("Maroon 5");
+        e7.setMainPicture(mediaService.create("http://static.eventful.com/images/edpborder500/I0-001/003/310/001-5.jpeg", admin));
+        e7.setLatitude(48.185483);
+        e7.setLongitude(16.419468);
+        eventDao.save(e7);
+        
+        Event e8 = new Event("Modellbau Messe", new Date("26/10/11"), "Messe Wien Exhibition & Congress Center", "Messe Wien Exhibition Congress Center, Wien");
+        e8.setCreatedBy(userDao.findByUsername("user2"));
+        e8.setGenre("Conferences and Tradeshows");
+        e8.setPerformer("Modellbau Messe Wien");
+        e8.setMainPicture(mediaService.create("http://www.kunstforum.com/forum/vbcms_areas/vbcms_custom_content/images/original_images/316messe_wien_foto_intercolor.jpg", admin));
+        e8.setLatitude(48.208174);
+        e8.setLongitude(16.373819);
+        eventDao.save(e8);
+        
+        Event e9 = new Event("Modellbau Messe", new Date("23/06/11"), "Wiener Hofburg", "Heldenplatz 1 Vienna, 9  Austria");
+        e9.setCreatedBy(userDao.findByUsername("user2"));
+        e9.setGenre("Fundraising and Charity");
+        e9.setPerformer("Wiener Hofburg Orchester");
+        e9.setMainPicture(mediaService.create("http://static.eventful.com/images/edpborder500/I0-001/003/739/110-1.jpeg", admin));
+        e9.setLatitude(48.206135);
+        e9.setLongitude(16.363296);
+        eventDao.save(e9);
+        
+        Event e10 = new Event("19th Annual International Conference on Intelligent Systems", new Date("19/07/11"), "Austria Center Vienna", "Bruno-Kreisky-Platz 1 A-1220 Vienna, Austria");
+        e10.setCreatedBy(userDao.findByUsername("user2"));
+        e10.setGenre("Technology");
+        e10.setPerformer("Annual international conference on Intelligent Systems for Molecular Biology Participants");
+        e10.setMainPicture(mediaService.create("http://static.eventful.com/store/skin/no_image/categories/250x250/technology.jpg", admin));
+        e10.setLatitude(48.234902);
+        e10.setLongitude(16.413756);
+        eventDao.save(e10);
+        
+        
     }
 
     private void initMedia() {

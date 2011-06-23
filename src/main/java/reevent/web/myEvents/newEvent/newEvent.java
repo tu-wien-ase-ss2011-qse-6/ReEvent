@@ -3,6 +3,7 @@ package reevent.web.myEvents.newEvent;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.wicket.authroles.authorization.strategies.role.annotations.AuthorizeInstantiation;
+import org.apache.wicket.markup.html.form.DropDownChoice;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.FormComponent;
 import org.apache.wicket.markup.html.form.HiddenField;
@@ -26,6 +27,7 @@ import reevent.web.HomePage;
 import reevent.web.ReEventSession;
 import reevent.web.myEvents.myEvents;
 
+import java.util.Arrays;
 import java.util.List;
 
 import static java.util.Arrays.asList;
@@ -33,10 +35,12 @@ import static reevent.util.WicketErrorUtil.getError;
 
 @AuthorizeInstantiation("USER")
 public class newEvent extends myEvents{
+	
+	private static final List GENRES = Arrays.asList(new String[] {"Concerts and Tour Dates", "Conferences and Tradeshows", "Education", "Kids and Family", "Festivals", "Film", "Food and Wine", "Fundraising and Charity", "Art Galleries and Exhibits", "Health and Wellness", "Literary and Books", "Museums and Attractions", "Neighborhood", "Business and Networking", "Nightlife and Singles", "University and Alumni", "Organizations and Meetups", "Outdoors and Recreation", "Performing Arts", "Pets", "Politics and Activism", "Sales and Retail", "Science", "Religion and Spirituality", "Sports", "Technology", "Other and Miscellaneous" });
 
     Form<Event> newEventForm;
 
-    TextField<String> genre;
+    DropDownChoice<String> genre;
     TextField<String> performer;
     TextField<String> name;
     TextField<String> start;
@@ -112,7 +116,7 @@ public class newEvent extends myEvents{
 
         newEventForm.add(performer = new TextField<String>("performer"));
 
-        newEventForm.add(genre = new TextField<String>("genre"));
+        newEventForm.add(genre = new DropDownChoice<String>("genre", GENRES));
 
         newEventForm.add(locationName = new TextField<String>("locationName"));
 
