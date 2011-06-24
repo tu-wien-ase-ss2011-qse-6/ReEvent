@@ -10,7 +10,12 @@ import reevent.domain.QEvent;
 import reevent.domain.User;
 import reevent.util.LocationUtil;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+
+import static java.lang.Math.max;
+import static java.lang.Math.min;
 
 @Transactional
 @Repository
@@ -37,13 +42,46 @@ public class EventDaoJpa extends EntityDaoBase<Event> implements EventDao {
 
     @Override
     public List<Event> findNear(Location origin, double distance, int first, int count) {
+        JPQLQuery q = query($, first, count);
+
+        return near(q, origin, distance).list($);
+    }
+
+    JPQLQuery near(JPQLQuery q, Location origin, double distance) {
         Location[] b = LocationUtil.bounds(origin, distance);
-        return query($, first, count).where(
-                $.location.longitude.goe(b[0].getLongitude()),
-                $.location.longitude.loe(b[1].getLongitude()),
-                $.location.latitude.goe(b[0].getLatitude()),
-                $.location.latitude.goe(b[1].getLatitude()))
-                .list($);
+
+        Double lng0 = b[0].getLongitude();
+        Double lng1 = b[1].getLongitude();
+        Double lat0 = b[0].getLatitude();
+        Double lat1 = b[1].getLatitude();
+
+        return q.where(
+                $.location.longitude.goe(min(lng0, lng1)),
+                $.location.longitude.loe(max(lng0, lng1)),
+                $.location.latitude.goe(min(lat0, lat1)),
+                $.location.latitude.loe(max(lat0, lat1)));
+    }
+
+    JPQLQuery nextWeek(JPQLQuery q) {
+        Date start = new Date();
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(start);
+        cal.add(Calendar.DATE, 7);
+        Date end = cal.getTime();
+
+        return q.where($.start.gt(start), $.start.lt(end));
+    }
+
+    static double DISTANCE = 50.0;
+
+    @Override
+    public List<? extends Event> findUpcoming(Location location, int first, int count) {
+        JPQLQuery q = query($, first, count);
+        if (location != null) {
+            q = near(q, location, DISTANCE);
+        }
+        q = nextWeek(q);
+        return q.list($);
     }
 
     private JPQLQuery queryByEventname(String eventname) {

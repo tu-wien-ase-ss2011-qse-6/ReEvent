@@ -2,27 +2,50 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd"
       xml:lang="en" lang="en">
-<head></head>
+<head>
+    <wicket:head>
+        <script type="text/javascript" src='http://maps.google.com/maps/api/js?sensor=false'></script>
+        <wicket:link>
+            <script type="text/javascript" src='HomePage.js'></script>
+        </wicket:link>
+    </wicket:head>
+</head>
 <body>
 <wicket:extend>
     <h2>
         <wicket:message key="welcome">[[ welcome ]]</wicket:message>
     </h2>
     <hr/>
+    <div class="span-17" id='near-me' wicket:id="nearMe">
+        <form wicket:id="nearMeForm">
+            <input type="hidden" wicket:id="latitude" class="lat"/>
+            <input type="hidden" wicket:id="longitude" class="lng"/>
+        </form>
+
+        Find events <span class="geolocate"><a class="geolocate" href="javascript:void(0)">near me</a></span>
+        <span class="or">or</span>
+        <span class="geocode">near <input type=text class='address' />
+        <button type="button" class="geocode">Find</button></span>
+    </div>
+    <div class="span-17" wicket:id="everywhere">
+        Find events <a wicket:id="everywhereLink">everywhere</a>.
+    </div>
+
+
     <div class="span-17">
         <h3>
             <wicket:message key="upcoming.events">[[ upcoming events ]]</wicket:message>
         </h3>
-            <!--
-            <thead>
-                <tr>
-                    <th><wicket:message key="event.name">[[ event name ]]</wicket:message></th>
-                    <th><wicket:message key="event.genre">[[ event genre ]]</wicket:message></th>
-                    <th><wicket:message key="event.date">[[ event date ]]</wicket:message></th>   
-                    <th><wicket:message key="event.location.locationName">[[ Location Name ]]</wicket:message></th>                 
-                </tr>
-            </thead>
-            -->
+        <!--
+        <thead>
+            <tr>
+                <th><wicket:message key="event.name">[[ event name ]]</wicket:message></th>
+                <th><wicket:message key="event.genre">[[ event genre ]]</wicket:message></th>
+                <th><wicket:message key="event.date">[[ event date ]]</wicket:message></th>
+                <th><wicket:message key="event.location.locationName">[[ Location Name ]]</wicket:message></th>
+            </tr>
+        </thead>
+        -->
         <div wicket:id="upcomingEventList" class="upcoming-events">
             <div wicket:id="summary">
                 [[ event summary ]]

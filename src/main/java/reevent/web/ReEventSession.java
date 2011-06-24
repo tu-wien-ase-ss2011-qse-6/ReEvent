@@ -9,6 +9,7 @@ import org.apache.wicket.model.IModel;
 import org.apache.wicket.request.Request;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 import reevent.dao.UserDao;
+import reevent.domain.Location;
 import reevent.domain.User;
 import reevent.domain.UserRole;
 import reevent.service.UserService;
@@ -82,6 +83,13 @@ public class ReEventSession extends AuthenticatedWebSession {
 		userSignedIn = null;
 	}
 
-    
+    Location location;
 
+    public Location getLocation() {
+        return location;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
+    }
 }

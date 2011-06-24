@@ -11,3 +11,9 @@
 .upcoming-events {
     clear: both;
 }
+
+#near-me button {
+    float: none;
+    display: inline;
+    margin-left: 1em;
+}

@@ -20,4 +20,6 @@ public interface EventDao extends EntityDao<Event> {
      * @return
      */
     List<Event> findNear(Location origin, double distance, int first, int count);
+
+    List<? extends Event> findUpcoming(Location location, int first, int count);
 }
