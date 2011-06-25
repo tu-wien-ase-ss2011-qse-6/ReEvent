@@ -1,7 +1,7 @@
 jQuery(function($) {
     function find_near(lat, lng) {
         $nearMe.find(':input.lat').val(lat)
-        $nearMe.find(':input.lng').val(lat)
+        $nearMe.find(':input.lng').val(lng)
         $nearMe.find('form')[0].submit()
     }
 

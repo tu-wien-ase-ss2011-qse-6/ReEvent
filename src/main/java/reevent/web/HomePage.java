@@ -48,6 +48,7 @@ public class HomePage extends Template {
             @Override
             public void onClick() {
                 ReEventSession.get().setLocation(null);
+                HomePage.this.setResponsePage(HomePage.class);
             }
         });
 
@@ -56,6 +57,7 @@ public class HomePage extends Template {
             @Override
             protected void onSubmit() {
                 ReEventSession.get().setLocation(getModelObject());
+                HomePage.this.setResponsePage(HomePage.class);
             }
         });
 
