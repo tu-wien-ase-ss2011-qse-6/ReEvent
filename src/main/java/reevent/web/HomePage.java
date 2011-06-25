@@ -64,7 +64,6 @@ public class HomePage extends Template {
         nearMeForm.add(latitude = new HiddenField<Double>("latitude", Double.class));
         nearMeForm.add(longitude = new HiddenField<Double>("longitude", Double.class));
 
-
     }
 
 
