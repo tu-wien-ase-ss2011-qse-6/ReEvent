@@ -38,12 +38,12 @@ jQuery(function($) {
     }
 
     if (window.google && google.maps) {
-        var geocoder = google.maps.Geocoder()
+        var geocoder = new google.maps.Geocoder()
         $nearMe.find('button.geocode').click(function() {
             var address = $nearMe.find('input.address').val()
-            var req = new google.maps.GeocoderRequest();
-            req.address = address
-            geocoder.geocode(req, on_geocode)
+            geocoder.geocode({
+                    address: address
+                }, on_geocode)
         })
     } else {
         $nearMe.find('span.geocode').hide()
