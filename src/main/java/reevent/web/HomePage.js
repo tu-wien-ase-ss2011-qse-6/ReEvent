@@ -39,11 +39,12 @@ jQuery(function($) {
 
     if (window.google && google.maps) {
         var geocoder = new google.maps.Geocoder()
-        $nearMe.find('button.geocode').click(function() {
+        $nearMe.find('span.geocode form').submit(function(evt) {
             var address = $nearMe.find('input.address').val()
             geocoder.geocode({
                     address: address
                 }, on_geocode)
+            evt.preventDefault()
         })
     } else {
         $nearMe.find('span.geocode').hide()

@@ -60,7 +60,8 @@ public class ReEventSession extends AuthenticatedWebSession {
 
     @Override
     public boolean authenticate(String username, String password) {
-        userSignedIn = userService.authenticate(username, password).getId();
+        User user = userService.authenticate(username, password);
+        userSignedIn = user != null ? user.getId() : null;
         return userSignedIn != null;
     }
 
@@ -77,11 +78,6 @@ public class ReEventSession extends AuthenticatedWebSession {
     public IModel<User> getModUserSignedIn() {
         return new DaoIdModel<User>(userDao, userSignedIn);
     }
-
-	public void delete() {
-		userService.delete(userSignedIn);
-		userSignedIn = null;
-	}
 
     Location location;
 

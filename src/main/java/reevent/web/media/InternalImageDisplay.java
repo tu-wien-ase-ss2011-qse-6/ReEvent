@@ -35,7 +35,13 @@ public class InternalImageDisplay extends Panel {
     }
 
     private void display(final InternalImage imageData) {
-        Image image = new Image("image", new ByteArrayResource("image/jpeg", imageData.getData())) {
+        ByteArrayResource imageResource = new ByteArrayResource("image/jpeg", imageData.getData()) {
+            @Override
+            protected void configureResponse(ResourceResponse response, Attributes attributes) {
+                response.disableCaching();
+            }
+        };
+        Image image = new Image("image", imageResource) {
             @Override
             protected void onComponentTag(ComponentTag tag) {
                 super.onComponentTag(tag);

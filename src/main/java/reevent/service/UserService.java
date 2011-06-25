@@ -45,5 +45,5 @@ public interface UserService {
      */
     boolean isAvailable(String username);
 
-	void delete(UUID id);
+	void disable(UUID id);
 }
