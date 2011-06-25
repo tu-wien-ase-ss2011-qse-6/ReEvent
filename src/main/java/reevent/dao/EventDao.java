@@ -6,6 +6,8 @@ import reevent.domain.User;
 
 import java.util.List;
 
+import com.mysema.query.jpa.JPQLQuery;
+
 public interface EventDao extends EntityDao<Event> {
 
 	boolean eventNameExists(String eventname);
@@ -22,4 +24,7 @@ public interface EventDao extends EntityDao<Event> {
     List<Event> findNear(Location origin, double distance, int first, int count);
 
     List<? extends Event> findUpcoming(Location location, int first, int count);
+
+	List<Event> queryByEventgenre(String eventgenre);
+
 }

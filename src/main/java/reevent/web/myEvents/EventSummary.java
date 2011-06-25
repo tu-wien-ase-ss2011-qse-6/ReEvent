@@ -5,6 +5,7 @@ import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
+import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.util.convert.IConverter;
 import reevent.domain.Event;
 import reevent.domain.media.MediaBase;
@@ -12,6 +13,7 @@ import reevent.web.StyledPanel;
 import reevent.web.convert.DateTimeConverter;
 import reevent.web.media.MediaDisplay;
 import reevent.web.myEvents.newEvent.detailEvent;
+import reevent.web.myEvents.newEvent.genreEvent;
 
 import java.text.DateFormat;
 
@@ -26,6 +28,7 @@ public class EventSummary extends StyledPanel {
     Label genre;
     
     Link detailEvent;
+    Link genreEvent;
 
     public EventSummary(String id, final IModel<Event> event) {
         super(id, new CompoundPropertyModel<Event>(event));
@@ -41,7 +44,16 @@ public class EventSummary extends StyledPanel {
                 return DateTimeConverter.both(DateFormat.SHORT, DateFormat.SHORT);
             }
         });
-        this.add(new Label("genre"));
+        this.add(genreEvent = new Link("genreEvent", new Model()){
+        	public void onClick() {
+        		
+                setResponsePage(new genreEvent(event.getObject().getGenre()));
+        		
+        	}
+        });
+        
+        genreEvent.setBody(new PropertyModel<Event>(event, "genre"));
+        
         this.add(detailEvent = new Link("detailEvent", new Model()){
         	public void onClick() {
         		

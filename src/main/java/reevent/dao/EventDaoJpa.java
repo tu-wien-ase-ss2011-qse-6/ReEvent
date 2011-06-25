@@ -91,4 +91,9 @@ public class EventDaoJpa extends EntityDaoBase<Event> implements EventDao {
     private JPQLQuery queryByEventname(String eventname) {
         return query().from($).where($.name.eq(eventname));
     }
+    
+    @Override
+	public List<Event> queryByEventgenre(String eventgenre) {
+        return query().from($).where($.genre.eq(eventgenre)).list($);
+    }
 }
