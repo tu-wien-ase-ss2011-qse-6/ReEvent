@@ -82,7 +82,7 @@ public class EventDaoJpa extends EntityDaoBase<Event> implements EventDao {
         if (location != null) {
             q = near(q, location, DISTANCE);
         }
-        q = nextDays(q,30);
+        q = nextDays(q,500);
         return q.list($);
     }
 
