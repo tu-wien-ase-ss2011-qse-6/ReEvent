@@ -24,7 +24,7 @@ public class User extends EntityBase {
 	
 	Date dayOfBirth;
 
-    boolean enabled;
+    boolean enabled = true;
 
     @ElementCollection(fetch = FetchType.EAGER)
     @Enumerated(EnumType.STRING)
