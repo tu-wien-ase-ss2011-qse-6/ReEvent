@@ -20,7 +20,7 @@ import static java.lang.Math.min;
 @Transactional
 @Repository
 public class EventDaoJpa extends EntityDaoBase<Event> implements EventDao {
-	QEvent $ = QEvent.event;
+    QEvent $ = QEvent.event;
 
     @Autowired
     UserDao userDao;
@@ -75,6 +75,7 @@ public class EventDaoJpa extends EntityDaoBase<Event> implements EventDao {
     }
 
     static double DISTANCE = 50.0;
+    static int UPCOMING_DAYS = 30;
 
     @Override
     public List<? extends Event> findUpcoming(Location location, int first, int count) {
@@ -82,7 +83,8 @@ public class EventDaoJpa extends EntityDaoBase<Event> implements EventDao {
         if (location != null) {
             q = near(q, location, DISTANCE);
         }
-        q = nextDays(q,30);
+        q = nextDays(q, UPCOMING_DAYS);
+        q.orderBy($.start.asc());
         return q.list($);
     }
 
