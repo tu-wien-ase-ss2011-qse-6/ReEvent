@@ -62,12 +62,14 @@ public class EventDaoJpa extends EntityDaoBase<Event> implements EventDao {
                 $.location.latitude.loe(max(lat0, lat1)));
     }
 
-    JPQLQuery nextWeek(JPQLQuery q) {
+    JPQLQuery nextDays(JPQLQuery q, int days) {
         Date start = new Date();
+        System.out.println("start="+start);
         Calendar cal = Calendar.getInstance();
         cal.setTime(start);
-        cal.add(Calendar.DATE, 7);
+        cal.add(Calendar.DATE, days);
         Date end = cal.getTime();
+        System.out.println("end="+end);
 
         return q.where($.start.gt(start), $.start.lt(end));
     }
@@ -80,7 +82,7 @@ public class EventDaoJpa extends EntityDaoBase<Event> implements EventDao {
         if (location != null) {
             q = near(q, location, DISTANCE);
         }
-        q = nextWeek(q);
+        q = nextDays(q,30);
         return q.list($);
     }
 

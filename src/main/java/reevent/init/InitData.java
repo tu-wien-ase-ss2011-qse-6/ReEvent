@@ -22,6 +22,9 @@ import reevent.service.UserService;
 import javax.annotation.PostConstruct;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.LinkedHashSet;
 import java.util.Set;
@@ -130,7 +133,7 @@ public class InitData {
         e1.setLongitude(16.369904);
         eventDao.save(e1);
 
-        Event e2 = new Event("Concerts in Mozart's House", new Date("23/06/11 7:30 PM"), "Mozarthaus", "Singerstrasse 7 Vienna, 9  Austria");
+        Event e2 = new Event("Concerts in Mozart's House", new Date(111, 6, 23, 7, 30), "Mozarthaus", "Singerstrasse 7 Vienna, 9  Austria");
         e2.setCreatedBy(userDao.findByUsername("user1"));
         e2.setGenre("Concerts and Tour Dates");
         e2.setPerformer("Different bands");
@@ -157,7 +160,7 @@ public class InitData {
         e4.setLongitude(-118.424176);
         eventDao.save(e4);
         
-        Event e5 = new Event("Bon Jovi", new Date("22/06/11 8:00 PM"), "Ernst Happel Stadium", "Meiereistrasse Vienna, 9  Austria");
+        Event e5 = new Event("Bon Jovi", new Date(111, 6, 22, 20, 0), "Ernst Happel Stadium", "Meiereistrasse Vienna, 9  Austria");
         e5.setCreatedBy(userDao.findByUsername("user1"));
         e5.setGenre("Concerts and Tour Dates");
         e5.setPerformer("Bon Jovi");
@@ -166,7 +169,7 @@ public class InitData {
         e5.setLongitude(16.418331);
         eventDao.save(e5);
         
-        Event e6 = new Event("30 Seconds To Mars", new Date("02/07/11"), "Volt Festival", "Sopron, Lővér campsite Sopron, GS  Hungary");
+        Event e6 = new Event("30 Seconds To Mars", new Date(111, 7, 2), "Volt Festival", "Sopron, Lővér campsite Sopron, GS  Hungary");
         e6.setCreatedBy(userDao.findByUsername("user1"));
         e6.setGenre("Festivals");
         e6.setPerformer("30 Seconds To Mars");
@@ -175,7 +178,7 @@ public class InitData {
         e6.setLongitude(16.583053);
         eventDao.save(e6);
         
-        Event e7 = new Event("Maroon 5", new Date("13/12/11 8:00 PM"), "Gasometer", "Guglgasse 8 Vienna, 9  Austria");
+        Event e7 = new Event("Maroon 5", new Date(111, 12, 13, 20, 0), "Gasometer", "Guglgasse 8 Vienna, 9  Austria");
         e7.setCreatedBy(userDao.findByUsername("user2"));
         e7.setGenre("Festivals");
         e7.setPerformer("Maroon 5");
@@ -184,7 +187,7 @@ public class InitData {
         e7.setLongitude(16.419468);
         eventDao.save(e7);
         
-        Event e8 = new Event("Modellbau Messe", new Date("26/10/11"), "Messe Wien Exhibition & Congress Center", "Messe Wien Exhibition Congress Center, Wien");
+        Event e8 = new Event("Modellbau Messe", new Date(111, 10, 26), "Messe Wien Exhibition & Congress Center", "Messe Wien Exhibition Congress Center, Wien");
         e8.setCreatedBy(userDao.findByUsername("user2"));
         e8.setGenre("Conferences and Tradeshows");
         e8.setPerformer("Modellbau Messe Wien");
@@ -193,7 +196,7 @@ public class InitData {
         e8.setLongitude(16.373819);
         eventDao.save(e8);
         
-        Event e9 = new Event("Modellbau Messe", new Date("23/06/11"), "Wiener Hofburg", "Heldenplatz 1 Vienna, 9  Austria");
+        Event e9 = new Event("Modellbau Messe", new Date(111, 6, 23), "Wiener Hofburg", "Heldenplatz 1 Vienna, 9  Austria");
         e9.setCreatedBy(userDao.findByUsername("user2"));
         e9.setGenre("Fundraising and Charity");
         e9.setPerformer("Wiener Hofburg Orchester");
@@ -202,7 +205,7 @@ public class InitData {
         e9.setLongitude(16.363296);
         eventDao.save(e9);
         
-        Event e10 = new Event("19th Annual International Conference on Intelligent Systems", new Date("19/07/11"), "Austria Center Vienna", "Bruno-Kreisky-Platz 1 A-1220 Vienna, Austria");
+        Event e10 = new Event("19th Annual International Conference on Intelligent Systems", new Date(111, 7, 19), "Austria Center Vienna", "Bruno-Kreisky-Platz 1 A-1220 Vienna, Austria");
         e10.setCreatedBy(userDao.findByUsername("user2"));
         e10.setGenre("Technology");
         e10.setPerformer("Annual international conference on Intelligent Systems for Molecular Biology Participants");

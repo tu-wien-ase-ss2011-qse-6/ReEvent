@@ -35,14 +35,14 @@ public class editEvent extends myEvents {
     
     add(myEventList = new ListView<Event>("myEventList", events.getByUser(user)) {
         @Override
-        protected void populateItem(ListItem<Event> item) {
+        protected void populateItem(final ListItem<Event> item) {
         	
             item.add(new Label("eventName", new PropertyModel(item.getModel(), "name")));
             
             item.add(detailEvent = new Link("detailEvent"){
             	public void onClick() {
-            		
-            		Event obj = (Event) getModelObject();
+                    
+                    Event obj = (Event) item.getModelObject();
                     setResponsePage(new detailEvent(obj));
             		
             	}
@@ -51,7 +51,7 @@ public class editEvent extends myEvents {
             item.add(deleteEvent = new Link("deleteEvent"){
             	public void onClick() {
             		
-            		Event obj = (Event) getModelObject();
+            		Event obj = (Event) item.getModelObject();
                     setResponsePage(new deleteEvent(obj));
             		
             	}

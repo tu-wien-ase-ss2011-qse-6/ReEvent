@@ -42,7 +42,7 @@ public class HomePage extends Template {
         add(everywhere = new WebMarkupContainer("everywhere"));
 
         nearMe.setVisible(session.getLocation() == null);
-        everywhere.setVisible(true);
+        everywhere.setVisible(session.getLocation() != null);
 
         everywhere.add(everywhereLink = new Link("everywhereLink") {
             @Override
