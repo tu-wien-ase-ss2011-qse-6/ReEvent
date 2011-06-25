@@ -6,11 +6,8 @@
 </head>
 <body>
 <wicket:panel>
-
-    <div class='feedback-display'>
-        <table>
-
-            <tr>
+    <table class='feedback-display'>
+        <tr>
                 <th><wicket:message key="feedbackUser">[[ feedback user ]]</wicket:message></th>
                 <td><span wicket:id="createdBy">[[ createdBy ]]</span></td>
             </tr>
@@ -22,12 +19,10 @@
                 <th><wicket:message key="feedbackTitle">[[ feedback title ]]</wicket:message></th>
                 <td><span wicket:id="title">[[ title ]]</span></td>
             </tr>
-            <tr>
-            	<th><wicket:message key="feedbackText">[[ feedback text ]]</wicket:message></th>
-            	<td><span wicket:id="text">[[ text ]]</span></td>
-            </tr>
-        </table>
-    </div>
+        <tr>
+            <td colspan="2" wicket:id="text">[[ feedback text ]]</td>
+        </tr>
+    </table>
 </wicket:panel>
 </body>
 </html>

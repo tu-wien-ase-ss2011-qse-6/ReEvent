@@ -96,6 +96,10 @@ public class User extends EntityBase {
 		this.lastName = lastName;
 	}
 
+    public String getFullName() {
+        return firstName + " " + lastName;
+    }
+
     public boolean isEnabled() {
         return enabled;
     }
