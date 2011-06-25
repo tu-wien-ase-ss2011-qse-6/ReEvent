@@ -3,7 +3,7 @@
 .idea/
 
 /target/*
-!/target/generated-sources/
+#!/target/generated-sources/
 
 
 .DS_Store
