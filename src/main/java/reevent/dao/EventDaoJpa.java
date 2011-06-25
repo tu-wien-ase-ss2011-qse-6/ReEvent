@@ -75,7 +75,7 @@ public class EventDaoJpa extends EntityDaoBase<Event> implements EventDao {
     }
 
     static double DISTANCE = 50.0;
-    static int UPCOMING_DAYS = 30;
+    static int UPCOMING_DAYS = 500;
 
     @Override
     public List<? extends Event> findUpcoming(Location location, int first, int count) {
