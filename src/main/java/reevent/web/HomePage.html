@@ -15,14 +15,14 @@
     <h2>
         <wicket:message key="welcome">[[ welcome ]]</wicket:message>
     </h2>
-    <hr/>
+    
     <div class="span-17" id='near-me' wicket:id="nearMe">
         <form wicket:id="nearMeForm">
             <input type="hidden" wicket:id="latitude" class="lat"/>
             <input type="hidden" wicket:id="longitude" class="lng"/>
         </form>
-
-        Find events <span class="geolocate"><a class="geolocate" href="javascript:void(0)">near me</a></span>
+		Hi and welcome to ReEvent, we connect consumers with entertainment and live events.<br/>
+        See what's happening <span class="geolocate"><a class="geolocate" href="javascript:void(0)">near you</a></span>!
         <span class="or">or</span>
         <span class="geocode">near <input type=text class='address' />
         <button type="button" class="geocode">Find</button></span>
@@ -30,7 +30,7 @@
     <div class="span-17" wicket:id="everywhere">
         Or find events <a wicket:id="everywhereLink">everywhere</a>.
     </div>
-
+	<hr/>
     <div class="span-17">
     	<br/>
         <h3>

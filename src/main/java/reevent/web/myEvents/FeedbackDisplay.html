@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd"
+      xml:lang="en" lang="en">
+<head>
+</head>
+<body>
+<wicket:panel>
+
+    <div class='feedback-display'>
+        <table>
+
+            <tr>
+                <th><wicket:message key="feedbackTitle">[[ feedback title ]]</wicket:message></th>
+                <td><span wicket:id="user">[[ event location ]]</span></td>
+            </tr>
+            <tr>
+                <th><wicket:message key="feedbackRating">[[ feedback rating ]]</wicket:message></th>
+                <td><span wicket:id="rating">[[ performer ]]</span></td>
+            </tr>
+            <tr>
+                <th><wicket:message key="feedbackTitle">[[ feedback title ]]</wicket:message></th>
+                <td><span wicket:id="title">[[ event start ]]</span></td>
+            </tr>
+            <tr>
+            	<th><wicket:message key="feedbackText">[[ feedback text ]]</wicket:message></th>
+            	<td><a wicket:id="text"/></td>
+            </tr>
+        </table>
+    </div>
+</wicket:panel>
+</body>
+</html>

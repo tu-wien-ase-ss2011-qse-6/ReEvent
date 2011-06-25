@@ -3,10 +3,17 @@ package reevent.web.myEvents;
 import org.apache.wicket.markup.ComponentTag;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.link.Link;
+import org.apache.wicket.markup.html.list.ListItem;
+import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.IModel;
+import org.apache.wicket.model.PropertyModel;
+import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.apache.wicket.util.convert.IConverter;
+
+import reevent.dao.FeedbackDao;
 import reevent.domain.Event;
+import reevent.domain.Feedback;
 import reevent.domain.media.MediaBase;
 import reevent.web.StyledPanel;
 import reevent.web.convert.DateTimeConverter;
@@ -14,6 +21,7 @@ import reevent.web.media.MediaDisplay;
 import reevent.web.myEvents.newEvent.detailEvent;
 
 import java.text.DateFormat;
+import java.util.Date;
 
 /**
  * A block that shows the main picture and basic data about an event.
@@ -24,6 +32,11 @@ public class EventDetails extends StyledPanel {
     Label locationName;
     Label start;
     Label genre;
+    
+    ListView<Feedback> feedbackList;
+    
+    @SpringBean
+    FeedbackDao feedbackDao;
     
     public EventDetails(String id, IModel<Event> event) {
         super(id, new CompoundPropertyModel<Event>(event));
@@ -40,6 +53,15 @@ public class EventDetails extends StyledPanel {
             }
         });
         this.add(new Label("genre"));
+        
+        add(feedbackList = new ListView<Feedback>("feedbackList", feedbackDao.findForEvent(event.getObject())) {
+            @Override
+            protected void populateItem(final ListItem<Feedback> item) {
+            	
+            	item.add(new FeedbackDisplay("displayFeedback", item.getModel()));
+                
+            }
+        });
         
     }
 
