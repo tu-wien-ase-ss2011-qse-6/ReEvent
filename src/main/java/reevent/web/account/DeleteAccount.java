@@ -19,7 +19,6 @@ public class DeleteAccount extends Template {
 
 		Button yesButton = new Button("yes") {
 			public void onSubmit() {
-				ReEventSession.get().delete();
 				ReEventSession.get().signOut();
 				setResponsePage(ReEventApplication.get().getHomePage());	
 			}
@@ -28,7 +27,7 @@ public class DeleteAccount extends Template {
 
 		Button noButton = new Button("no") {
 			public void onSubmit() {
-				setResponsePage(ReEventApplication.get().getAccount());
+				setResponsePage(myAccount.class);
 			}
 		};
 		noButton.setDefaultFormProcessing(false);

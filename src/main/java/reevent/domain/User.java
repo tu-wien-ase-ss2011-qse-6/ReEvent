@@ -23,7 +23,8 @@ public class User extends EntityBase {
 	String lastName;
 	
 	Date dayOfBirth;
-    
+
+    boolean enabled;
 
     @ElementCollection(fetch = FetchType.EAGER)
     @Enumerated(EnumType.STRING)
@@ -95,6 +96,13 @@ public class User extends EntityBase {
 		this.lastName = lastName;
 	}
 
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
 
     @Override
     public String toString() {

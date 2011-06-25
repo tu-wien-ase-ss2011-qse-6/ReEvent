@@ -49,7 +49,7 @@ public class UserServiceImpl implements UserService {
             return null;
         }
         String pwHash = hashPassword(user, password);
-        if (user.getPasswordHash().equals(pwHash)) {
+        if (user.getPasswordHash().equals(pwHash) && user.isEnabled()) {
             return user;
         } else {
             // invalid password
@@ -69,7 +69,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public void delete(UUID id) {
-		dao.delete(id);
+	public void disable(UUID id) {
+        dao.load(id).setEnabled(false);
 	}
 }

@@ -78,11 +78,6 @@ public class ReEventSession extends AuthenticatedWebSession {
         return new DaoIdModel<User>(userDao, userSignedIn);
     }
 
-	public void delete() {
-		userService.delete(userSignedIn);
-		userSignedIn = null;
-	}
-
     Location location;
 
     public Location getLocation() {
