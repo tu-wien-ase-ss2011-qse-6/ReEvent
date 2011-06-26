@@ -9,15 +9,22 @@
 			
 		<h2>Admin Panel</h2>
 		
-		<div id="admin_menu">
-			<a wicket:id='editUserLink'>edit Users</a> | 
-			<a wicket:id='deleteUserLink'>delete Users</a>
-		</div>
-				
-				
-			<div id="users">
-			<wicket:child />
-			</div>	
+		<table>
+            
+            <thead>
+                <tr>
+                    <th><wicket:message key="userNameLable">[[ user name ]]</wicket:message></th>
+                    <th><wicket:message key="deleteUserLable">[[ delete user ]]</wicket:message></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr wicket:id="myUserList">
+                    <td wicket:id="userName"></td>
+                    <td><a wicket:id="deleteUser">delete</a></td>
+                </tr>
+            </tbody>
+        </table>
+		
 	</wicket:extend>
 </body>
 </html>
