@@ -1,3 +1,5 @@
+newLocation = {}
+
 $(function() {
     var map = null;
     var geocoder = null;
@@ -34,6 +36,7 @@ $(function() {
             geocoder.getLatLng(address, replaceMarker);
         }
     }
+    newLocation.showAddress = showAddress
 
 
     if (GBrowserIsCompatible()) {
@@ -41,20 +44,18 @@ $(function() {
         map = new GMap2(document.getElementById("map_canvas"));
         console.debug(map);
 
-        var lat = $lat.val()
-        var lng = $lng.val()
+        var lat = Number($lat.val())
+        var lng = Number($lng.val())
 
+        map.setUIToDefault();
         if (lat && lng) {
-            lat = Number(lat)
-            lng = Number(lng)
             var point = new GLatLng(lat, lng)
             map.setCenter(point, 1)
             replaceMarker(point)
         } else {
             map.setCenter(new GLatLng(37.4419, -122.1419), 1);
         }
-
-        map.setUIToDefault();
+        
         geocoder = new GClientGeocoder();
     }
 
