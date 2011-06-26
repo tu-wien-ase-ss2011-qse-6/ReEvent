@@ -6,7 +6,10 @@ import org.apache.wicket.model.ComponentPropertyModel;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
+import org.apache.wicket.spring.injection.annot.SpringBean;
 
+import reevent.dao.EventDao;
+import reevent.dao.FeedbackDao;
 import reevent.domain.Feedback;
 import reevent.web.ReEventApplication;
 import reevent.web.ReEventSession;
@@ -23,6 +26,9 @@ public class FeedbackDisplay extends StyledPanel {
     Label createdBy;
     
     Link deleteFeedback;
+    
+    @SpringBean
+    FeedbackDao feedbackDao;
 
     public FeedbackDisplay(String id, final IModel<Feedback> feedback) {
         super(id, new CompoundPropertyModel<Feedback>(feedback));
@@ -34,20 +40,23 @@ public class FeedbackDisplay extends StyledPanel {
         this.add(deleteFeedback = new Link("deleteFeedback", new Model()){
         	public void onClick() {
         		
-                setResponsePage(this.getPage());
+        		feedbackDao.delete(feedback.getObject().getId());
+        		
+                setResponsePage(new detailEvent(feedback.getObject().getEvent()));
+                
+                
         		
         	}
         });
         
+        // display Delete Feedback link only on user that is logged in and the creator of the shown feedback
         if (ReEventSession.get().getUserSignedIn() == null) {
         	deleteFeedback.setVisible(false);
-        }
-        
-        
-        if (ReEventSession.get().getUserSignedIn() != null){
-        	System.out.println("USER LOGGED IN!");
+        } else if (ReEventSession.get().getUserSignedIn() != null){
         	deleteFeedback.setVisible(ReEventSession.get().getUserSignedIn().equals(feedback.getObject().getCreatedBy().getId()));
         }
+        
+        
         
     }
 }
