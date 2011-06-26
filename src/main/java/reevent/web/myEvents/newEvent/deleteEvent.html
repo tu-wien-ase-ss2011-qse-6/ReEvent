@@ -11,8 +11,12 @@
     </h2>
 
     <form wicket:id="deleteForm">
-        <button wicket:id="yes" class="positive" type="submit"/>
-        <button wicket:id="no" class="negative" type="submit"/>
+        <button wicket:id="yes" class="positive" type="submit">
+            <wicket:message key="yes"/>
+        </button>
+        <button wicket:id="no" class="negative" type="submit" value="no">
+            <wicket:message key="no"/>
+        </button>
     </form>
 </wicket:extend>
 </body>
