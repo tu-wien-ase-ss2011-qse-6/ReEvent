@@ -32,7 +32,7 @@ public class Event extends EntityBase {
     @ManyToOne(optional = false)
     User createdBy;
 
-    @OneToMany(mappedBy = "event")
+    @OneToMany(mappedBy = "event", cascade = CascadeType.ALL)
     Set<Feedback> feedbacks = new LinkedHashSet<Feedback>();
 
     @ManyToOne
