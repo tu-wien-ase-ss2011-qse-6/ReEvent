@@ -24,6 +24,8 @@ public class viewEvent extends myEvents {
 	ListView<Event> myEventList;
 	
 	Link detailEvent;
+	Link deleteEvent;
+	Link editEvent;
 	
 	@SpringBean
 	EventService events;
@@ -31,7 +33,7 @@ public class viewEvent extends myEvents {
 	public viewEvent(){
 		
     User user = ReEventSession.get().getModUserSignedIn().getObject();
-   
+    
     add(myEventList = new ListView<Event>("myEventList", events.getByUser(user)) {
         @Override
         protected void populateItem(final ListItem<Event> item) {
@@ -40,9 +42,27 @@ public class viewEvent extends myEvents {
             
             item.add(detailEvent = new Link("detailEvent"){
             	public void onClick() {
+                    
+                    Event obj = (Event) item.getModelObject();
+                    setResponsePage(new detailEvent(obj));
+            		
+            	}
+            });
+            
+            item.add(deleteEvent = new Link("deleteEvent"){
+            	public void onClick() {
             		
             		Event obj = (Event) item.getModelObject();
-                    setResponsePage(new detailEvent(obj));
+                    setResponsePage(new deleteEvent(obj));
+            		
+            	}
+            });
+            
+            item.add(editEvent = new Link("editEvent"){
+            	public void onClick() {
+            		
+            		Event obj = (Event) item.getModelObject();
+                    //TO DO: setResponsePage(new editEvent(obj));
             		
             	}
             });

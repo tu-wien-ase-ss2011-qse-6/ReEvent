@@ -12,7 +12,7 @@
 	<wicket:extend>
 				 
 		<p><hr></hr></p>	
-		<h2>View Event</h2>
+		<h2>View, Edit and Delete Event</h2>
 		<div>
         <table>
             <caption>
@@ -25,7 +25,8 @@
                     <th><wicket:message key="myevent.performer">[[ event details ]]</wicket:message></th>
                     <th><wicket:message key="myevent.locationName">[[ event details ]]</wicket:message></th>
                     <th><wicket:message key="myevent.detail">[[ event details ]]</wicket:message></th>
-                    
+                    <th><wicket:message key="myevent.delete">[[ event details ]]</wicket:message></th>
+                    <th><wicket:message key="myevent.edit">[[ event edit ]]</wicket:message></th>
                 </tr>
             </thead>
             <tbody>
@@ -34,7 +35,9 @@
                     <td wicket:id="eventStart"> [[ start ]]</td>
                     <td wicket:id="eventPerformer"> [[ performer ]]</td>
                     <td wicket:id="eventLocationName"> [[ location ]]</td>
-                    <td><a wicket:id="detailEvent">detail</a></td>                    
+                    <td><a wicket:id="detailEvent">detail</a></td>
+                    <td><a wicket:id="deleteEvent">delete</a></td>
+                    <td><a wicket:id="editEvent">edit</a></td>
                 </tr>
             </tbody>
         </table>

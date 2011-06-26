@@ -34,14 +34,14 @@ public class deleteEvent extends myEvents {
 				// TO DO: DELETE EVENT HERE!
 				eventDao.delete(oID);
 				
-				setResponsePage(ReEventApplication.get().getEditEvent());
+				setResponsePage(ReEventApplication.get().getViewEvent());
 			}
 		};
 		deleteForm.add(yesButton);
 
 		Button noButton = new Button("no") {
 			public void onSubmit() {
-				setResponsePage(ReEventApplication.get().getEditEvent());
+				setResponsePage(ReEventApplication.get().getViewEvent());
 			}
 		};
 		noButton.setDefaultFormProcessing(false);
