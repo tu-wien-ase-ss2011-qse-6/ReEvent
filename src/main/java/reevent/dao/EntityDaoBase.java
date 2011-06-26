@@ -79,18 +79,28 @@ public abstract class EntityDaoBase<T extends EntityBase> implements EntityDao<T
 
     protected JPQLQuery query(EntityPath<?> from, Integer offset, Integer limit) {
         JPQLQuery q = query(from);
-        if (offset != null) {
-            q = q.offset(offset);
+        q = offsetLimit(q, offset, limit);
+        return q;
+    }
+
+    protected JPQLQuery offsetLimit(JPQLQuery q, Integer first, Integer max) {
+        if (first != null) {
+            q = q.offset(first);
         }
-        if (limit != null) {
-            q = q.limit(limit);
+        if (max != null) {
+            q = q.limit(max);
         }
         return q;
     }
-    
+
     @Override
-    public List<T> findAll(int first, int max) {
-        return query().from(root).offset(first).limit(max).list(root);
+    public List<T> findAll(Integer first, Integer max) {
+        return query(root, first, max).list(root);
+    }
+
+    @Override
+    public List<T> findAll() {
+        return query(root).list(root);
     }
 
 }
