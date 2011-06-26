@@ -1,10 +1,14 @@
 package reevent.web.myEvents;
 
 import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.markup.html.image.Image;
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.model.ComponentPropertyModel;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.IModel;
+import org.apache.wicket.request.resource.ContextRelativeResource;
+import org.apache.wicket.request.resource.IResource;
+import org.apache.wicket.request.resource.PackageResourceReference;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 import reevent.dao.FeedbackDao;
 import reevent.domain.Feedback;
@@ -47,7 +51,19 @@ public class FeedbackDisplay extends StyledPanel {
         }
         
         
+        ContextRelativeResource smilyReference = new ContextRelativeResource("resource/POSITIVE.gif");
         
+        if (feedback.getObject().getRating().name().equals("NEUTRAL")) {
+        	smilyReference = new ContextRelativeResource("resource/NEUTRAL.gif");
+        } else if (feedback.getObject().getRating().name().equals("NEGATIVE")) {
+        	smilyReference = new ContextRelativeResource("resource/NEGATIVE.gif");
+        }
+        
+        Image smilyImage = new Image("smilyImage", smilyReference);
+        
+        this.add(smilyImage);
+        
+     
     }
 
     protected void onFeedbackDeleted() {}
