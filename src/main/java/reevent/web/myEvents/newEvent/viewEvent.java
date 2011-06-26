@@ -62,7 +62,12 @@ public class viewEvent extends myEvents {
             	public void onClick() {
             		
             		Event obj = (Event) item.getModelObject();
-                    setResponsePage(new newEvent(item.getModel()));
+                    setResponsePage(new newEvent(item.getModel()) {
+                        @Override
+                        protected void onEventSaved() {
+                            setResponsePage(viewEvent.class);
+                        }
+                    });
             		
             	}
             });
