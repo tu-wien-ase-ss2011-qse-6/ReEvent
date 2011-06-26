@@ -12,6 +12,7 @@ import reevent.dao.FeedbackDao;
 import reevent.domain.Event;
 import reevent.domain.Feedback;
 import reevent.domain.media.MediaBase;
+import reevent.web.ReEventSession;
 import reevent.web.StyledPanel;
 import reevent.web.convert.DateTimeConverter;
 import reevent.web.media.MediaDisplay;
@@ -32,7 +33,8 @@ public class EventDetails extends StyledPanel {
     
     @SpringBean
     FeedbackDao feedbackDao;
-    
+    private NewFeedback newFeedback;
+
     public EventDetails(String id, IModel<Event> event) {
         super(id, new CompoundPropertyModel<Event>(event));
         MediaBase media = event.getObject().getMainPicture();
@@ -56,8 +58,10 @@ public class EventDetails extends StyledPanel {
         for (Feedback fb : feedbackDao.findForEvent(event.getObject())) {
             feedback.add(new FeedbackDisplay(feedback.newChildId(), Model.of(fb)));
         }
-        
-        this.add(new NewFeedback("newFeedback", new Model(event)));
+
+        newFeedback = new NewFeedback("newFeedback", new Model(event));
+        this.add(newFeedback);
+        newFeedback.setVisible(ReEventSession.get().getUserSignedIn() != null);
     }
 
 	@Override
