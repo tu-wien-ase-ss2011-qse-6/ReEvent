@@ -47,15 +47,7 @@ public class changeAccount extends Template {
         });
 
         changeUserForm.add(username = new Label("username", formModel.<String>bind("username")));
-        username.add(new AbstractValidator<String>() {
-            @Override
-            protected void onValidate(IValidatable<String> field) {
-                if (!users.isAvailable(field.getValue())) {
-                    this.error(field, "username.not.available");
-                }
-            }
-        });
-
+        
         changeUserForm.add(password = new PasswordTextField("password", Model.<String>of()));
 
         changeUserForm.add(passwordVerify = new PasswordTextField("passwordVerify", Model.<String>of()));
