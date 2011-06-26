@@ -1,20 +1,20 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd"
-	xml:lang="en" lang="en">
+      xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd"
+      xml:lang="en" lang="en">
 <head></head>
 <body>
 <wicket:extend>
-		<h2>
-			<wicket:message key="delete">[[ delete account ]]</wicket:message>
-		</h2>
-		
-		<form wicket:id="deleteForm">
-			<input wicket:id="yes" type="submit" value="yes" />
-			<input wicket:id="no" type="submit" value="no" />
-			
-</form>
+    <h2>
+        <wicket:message key="delete">[[ delete account ]]</wicket:message>
+    </h2>
+
+    <form wicket:id="deleteForm">
+        <button class="positive" type="submit" value="yes"/>
+        <button class="negative" type="submit" value="no"/>
+
+    </form>
 </wicket:extend>
 </body>
 </html>
