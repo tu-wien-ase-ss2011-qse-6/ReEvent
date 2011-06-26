@@ -8,6 +8,7 @@ import org.apache.wicket.markup.html.form.PasswordTextField;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.Model;
+import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.apache.wicket.validation.IValidatable;
 import org.apache.wicket.validation.validator.AbstractValidator;
 import reevent.domain.User;
@@ -30,6 +31,7 @@ public class changeAccount extends Template {
     TextField<String> firstName;
     TextField<String> lastName;
     
+    @SpringBean
     UserService users;
 
 	public changeAccount(){
