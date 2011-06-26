@@ -11,6 +11,7 @@ import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.spring.injection.annot.SpringBean;
+import org.apache.wicket.util.convert.IConverter;
 import org.apache.wicket.validation.IValidatable;
 import org.apache.wicket.validation.validator.AbstractValidator;
 import org.apache.wicket.validation.validator.UrlValidator;
@@ -23,9 +24,12 @@ import reevent.service.MediaService;
 import reevent.service.MediaUploadException;
 import reevent.web.HomePage;
 import reevent.web.ReEventSession;
+import reevent.web.convert.DateTimeConverter;
 import reevent.web.myEvents.myEvents;
 
+import java.text.DateFormat;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 import static java.util.Arrays.asList;
@@ -41,7 +45,7 @@ public class newEvent extends myEvents {
     DropDownChoice<String> genre;
     TextField<String> performer;
     TextField<String> name;
-    TextField<String> start;
+    TextField<Date> start;
     TextField<String> locationName;
     TextField<String> locationAddress;
     
@@ -107,15 +111,18 @@ public class newEvent extends myEvents {
 
                         ReEventSession.get().info(getString("success"));
 
-                        HomePage page = new HomePage();
-                        setResponsePage(page);
-
+                        onEventSaved();
                     }
                 });
 
                 newEventForm.add(name = new TextField<String>("name"));
 
-                newEventForm.add(start = new TextField<String>("start"));
+                newEventForm.add(start = new TextField<Date>("start", Date.class) {
+                    @Override
+                    public <C> IConverter<C> getConverter(Class<C> type) {
+                        return DateTimeConverter.both(DateFormat.SHORT, DateFormat.SHORT);
+                    }
+                });
 
                 name.add(new AbstractValidator<String>(){
 
@@ -158,5 +165,9 @@ public class newEvent extends myEvents {
                     fc.setRequired(true);
                 }
 
+    }
+
+    protected void onEventSaved() {
+        setResponsePage(new HomePage());
     }
 }
