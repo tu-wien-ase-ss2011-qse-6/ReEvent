@@ -33,7 +33,6 @@ public class FeedbackDisplay extends StyledPanel {
         super(id, new CompoundPropertyModel<Feedback>(feedback));
         this.add(title = new Label("title"));
         this.add(text = new Label("text"));
-        this.add(rating = new Label("rating"));
         this.add(createdBy = new Label("createdBy", new ComponentPropertyModel("createdBy.username")));
         
         this.add(deleteFeedback = new Link<Feedback>("deleteFeedback", feedback){
