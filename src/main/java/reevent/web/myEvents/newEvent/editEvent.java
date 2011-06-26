@@ -21,60 +21,53 @@ import java.util.Date;
 @AuthorizeInstantiation("USER")
 public class editEvent extends myEvents {
 
-	ListView<Event> myEventList;
-	
-	Link detailEvent;
-	Link deleteEvent;
-	
-	@SpringBean
-	EventService events;
-	 
-	public editEvent(){
-		
-    User user = ReEventSession.get().getModUserSignedIn().getObject();
-    
-    add(myEventList = new ListView<Event>("myEventList", events.getByUser(user)) {
-        @Override
-        protected void populateItem(final ListItem<Event> item) {
-        	
-            item.add(new Label("eventName", new PropertyModel(item.getModel(), "name")));
-            
-            item.add(detailEvent = new Link("detailEvent"){
-            	public void onClick() {
-                    
-                    Event obj = (Event) item.getModelObject();
-                    setResponsePage(new detailEvent(obj));
-            		
-            	}
-            });
-            
-            item.add(deleteEvent = new Link("deleteEvent"){
-            	public void onClick() {
-            		
-            		Event obj = (Event) item.getModelObject();
-                    setResponsePage(new deleteEvent(obj));
-            		
-            	}
-            });
-            
-            item.add(new Label("eventStart", new PropertyModel(item.getModel(), "start")) {
-                @Override
-                public <C> IConverter<C> getConverter(Class<C> type) {
-                    if (!Date.class.isAssignableFrom(type)) {
-                        throw new IllegalArgumentException("Can't convert from types other than Date");
+    ListView<Event> myEventList;
+
+    Link<Event> detailEvent;
+    Link<Event> deleteEvent;
+
+    @SpringBean
+    EventService events;
+
+    public editEvent() {
+
+        User user = ReEventSession.get().getModUserSignedIn().getObject();
+
+        add(myEventList = new ListView<Event>("myEventList", events.getByUser(user)) {
+            @Override
+            protected void populateItem(final ListItem<Event> item) {
+
+                item.add(new Label("eventName", new PropertyModel(item.getModel(), "name")));
+
+                item.add(detailEvent = new Link<Event>("detailEvent", item.getModel()) {
+                    public void onClick() {
+                        setResponsePage(new detailEvent(getModelObject()));
                     }
-                    return (IConverter<C>) DateTimeConverter.both(DateFormat.SHORT, DateFormat.SHORT);
-                }
-            });
-            
-            
-            item.add(new Label("eventPerformer", new PropertyModel(item.getModel(), "performer")));
-            item.add(new Label("eventLocationName", new PropertyModel(item.getModel(), "locationName")));
-            
-        }
-    });
-		
-	}
-	
-	
+                });
+
+                item.add(deleteEvent = new Link<Event>("deleteEvent", item.getModel()) {
+                    public void onClick() {
+                        setResponsePage(new deleteEvent(getModelObject()));
+                    }
+                });
+
+                item.add(new Label("eventStart", new PropertyModel(item.getModel(), "start")) {
+                    @Override
+                    public <C> IConverter<C> getConverter(Class<C> type) {
+                        if (!Date.class.isAssignableFrom(type)) {
+                            throw new IllegalArgumentException("Can't convert from types other than Date");
+                        }
+                        return (IConverter<C>) DateTimeConverter.both(DateFormat.SHORT, DateFormat.SHORT);
+                    }
+                });
+
+
+                item.add(new Label("eventPerformer", new PropertyModel(item.getModel(), "performer")));
+                item.add(new Label("eventLocationName", new PropertyModel(item.getModel(), "locationName")));
+            }
+        });
+
+    }
+
+
 }
