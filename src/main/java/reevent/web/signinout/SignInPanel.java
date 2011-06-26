@@ -39,9 +39,9 @@ public class SignInPanel extends Panel {
                         password.getModelObject())) {
                     self.error(self.getString("invalid.username.or.password"));
                 } else {
-                    if (getPage() instanceof SignUpPage) {
+//                    if (getPage() instanceof SignUpPage) {
                         RequestCycle.get().setResponsePage(HomePage.class);
-                    }
+//                    }
                 }
             }
         });
