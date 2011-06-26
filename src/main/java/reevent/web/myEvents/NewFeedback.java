@@ -4,7 +4,6 @@ import org.apache.wicket.markup.html.form.DropDownChoice;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.TextArea;
 import org.apache.wicket.markup.html.form.TextField;
-import org.apache.wicket.model.ComponentPropertyModel;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
@@ -40,7 +39,8 @@ public class NewFeedback extends StyledPanel {
     public NewFeedback(String id, IModel<Event> event) {
     	super(id, event);
 
-    	form = new Form<Feedback>("form", new CompoundPropertyModel<Feedback>(new Feedback())) {
+        CompoundPropertyModel<Feedback> formModel = new CompoundPropertyModel<Feedback>(new Feedback());
+        form = new Form<Feedback>("form", formModel) {
 			@Override
 			protected void onSubmit() {
                 User user = ReEventSession.get().getModUserSignedIn().getObject();
@@ -55,7 +55,7 @@ public class NewFeedback extends StyledPanel {
     	
     	form.add(rating = new DropDownChoice<Rating>("rating", Arrays.asList(Rating.values())));
     	
-    	form.add(title = new TextField<String>("feedbackTitle", new ComponentPropertyModel("title")));
+    	form.add(title = new TextField<String>("feedbackTitle", formModel.<String>bind("title")));
     	
     	form.add(text = new TextArea<String>("text"));
     	
