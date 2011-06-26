@@ -39,15 +39,17 @@ public class NewFeedback extends StyledPanel {
     public NewFeedback(String id, IModel<Event> event) {
     	super(id, event);
 
-        CompoundPropertyModel<Feedback> formModel = new CompoundPropertyModel<Feedback>(new Feedback());
+        Feedback fb = new Feedback();
+        fb.setEvent(event.getObject());
+        CompoundPropertyModel<Feedback> formModel = new CompoundPropertyModel<Feedback>(fb);
         form = new Form<Feedback>("form", formModel) {
 			@Override
 			protected void onSubmit() {
                 User user = ReEventSession.get().getModUserSignedIn().getObject();
                 Feedback fb = getModelObject();
                 fb.setCreatedBy(user);
-                fb.setEvent((Event) NewFeedback.this.getDefaultModelObject());
                 feedbackDao.save(fb);
+                onFeedbackSaved();
 			}
     	};
     	
@@ -62,6 +64,8 @@ public class NewFeedback extends StyledPanel {
     	Template.addFormLabels(title, rating, text);
     	
     }
+
+    protected void onFeedbackSaved() {}
 
     
     

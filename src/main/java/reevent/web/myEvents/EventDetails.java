@@ -56,15 +56,31 @@ public class EventDetails extends StyledPanel {
         add(feedback = new RepeatingView("feedback"));
 
         for (Feedback fb : feedbackDao.findForEvent(event.getObject())) {
-            feedback.add(new FeedbackDisplay(feedback.newChildId(), Model.of(fb)));
+            feedback.add(new FeedbackDisplay(feedback.newChildId(), Model.of(fb)) {
+                @Override
+                protected void onFeedbackDeleted() {
+                    EventDetails.this.onFeedbackDeleted();
+                }
+            });
         }
 
-        newFeedback = new NewFeedback("newFeedback", new Model(event));
+        newFeedback = new NewFeedback("newFeedback", event) {
+            @Override
+            protected void onFeedbackSaved() {
+                EventDetails.this.onFeedbackSaved();
+            }
+        };
         this.add(newFeedback);
         newFeedback.setVisible(ReEventSession.get().getUserSignedIn() != null);
     }
 
-	@Override
+    protected void onFeedbackSaved() {
+    }
+
+    protected void onFeedbackDeleted() {
+    }
+
+    @Override
 	protected void onComponentTag(ComponentTag tag) {
 		// TODO Auto-generated method stub
 		super.onComponentTag(tag);
