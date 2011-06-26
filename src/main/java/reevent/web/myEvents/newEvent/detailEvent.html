@@ -7,19 +7,9 @@
 <wicket:extend>
     <hr/>
     <div class="span-17">
-        <h3>
+        <h2>
             <wicket:message key="detail.event">[[ detail event ]]</wicket:message>
-        </h3>
-            <!--
-            <thead>
-                <tr>
-                    <th><wicket:message key="event.name">[[ event name ]]</wicket:message></th>
-                    <th><wicket:message key="event.genre">[[ event genre ]]</wicket:message></th>
-                    <th><wicket:message key="event.dat	e">[[ event date ]]</wicket:message></th>   
-                    <th><wicket:message key="event.location.locationName">[[ Location Name ]]</wicket:message></th>                 
-                </tr>
-            </thead>
-            -->
+        </h2>
         
             <div wicket:id="details">
                 [[ event details ]]
@@ -31,7 +21,11 @@
 
         <script type="text/javascript" src="resource/detailLocation.js"></script>
 
-		<div id="map_canvas" style="width: 600px; height: 400px"></div>
+		<hr/>
+		<h3>
+			<wicket:message key="event.location">[[ event location ]]</wicket:message>
+		</h3>
+    	<div id="map_canvas" style="width: 600px; height: 400px"></div>	
 		
 
 		</div>

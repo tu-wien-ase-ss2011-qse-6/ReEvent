@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd"
+      xml:lang="en" lang="en">
+<head>
+</head>
+<body>
+<wicket:panel>
+
+
+	<form wicket:id='form' class='form'>
+	
+		<hr/>
+		
+		<h3>Write Comment</h3>
+
+		<label wicket:id='feedbackTitleLabel'>[[ title ]]</label><br/>
+ 	    <input wicket:id='feedbackTitle' type='text'/><br/>
+ 	    
+ 	    <label wicket:id='ratingLabel'>[[ rating ]]</label><br/>
+ 	    <select wicket:id='rating'/><br/>
+ 	    
+ 	    <label wicket:id='textLabel'>[[ text ]]</label><br/>
+ 	    <textarea wicket:id='text'/><br/>
+ 	    
+ 	    <button type="submit">Submit comment!</button>
+
+</form>
+
+
+</wicket:panel>
+
+</body>
+
+</html>

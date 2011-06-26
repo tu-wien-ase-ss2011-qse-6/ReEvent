@@ -39,6 +39,7 @@ public class EventDetails extends StyledPanel {
         this.add(mainPicture = new MediaDisplay("mainPicture", media == null ? null : media.getId()));
         this.add(new Label("name"));
         this.add(new Label("locationName"));
+        this.add(new Label("locationAddress"));
         this.add(new Label("performer"));
         this.add(new Label("start") {
             @SuppressWarnings("unchecked")
@@ -55,6 +56,8 @@ public class EventDetails extends StyledPanel {
         for (Feedback fb : feedbackDao.findForEvent(event.getObject())) {
             feedback.add(new FeedbackDisplay(feedback.newChildId(), Model.of(fb)));
         }
+        
+        this.add(new NewFeedback("newFeedback", new Model(event)));
     }
 
 	@Override
