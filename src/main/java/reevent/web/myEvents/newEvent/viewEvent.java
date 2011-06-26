@@ -62,7 +62,7 @@ public class viewEvent extends myEvents {
             	public void onClick() {
             		
             		Event obj = (Event) item.getModelObject();
-                    //TO DO: setResponsePage(new editEvent(obj));
+                    setResponsePage(new newEvent(item.getModel()));
             		
             	}
             });
