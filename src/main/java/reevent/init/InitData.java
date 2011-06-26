@@ -94,21 +94,39 @@ public class InitData {
 
         user = new User();
         user.setUsername("user1");
-        user.setFirstName("User 1");
-        user.setLastName("Us");
+        user.setFirstName("User 1 First Name");
+        user.setLastName("User 1 Last Name");
         userService.register(user, "user1");
 
         user = new User();
         user.setUsername("user2");
-        user.setFirstName("User 2");
-        user.setLastName("Us");
+        user.setFirstName("User 2 First Name");
+        user.setLastName("User 2 Last Name");
         userService.register(user, "user2");
 
         user = new User();
         user.setUsername("user3");
-        user.setFirstName("User 3");
-        user.setLastName("Us");
+        user.setFirstName("User 3 First Name");
+        user.setLastName("User 3 Last Name");
         userService.register(user, "user3");
+        
+        user = new User();
+        user.setUsername("sometrash_user1");
+        user.setFirstName("sometrash_user1 first name");
+        user.setLastName("sometrash_user1 last name");
+        userService.register(user, "sometrash_user1");
+        
+        user = new User();
+        user.setUsername("sometrash_user2");
+        user.setFirstName("sometrash_user2 first name");
+        user.setLastName("sometrash_user2 last name");
+        userService.register(user, "sometrash_user2");
+        
+        user = new User();
+        user.setUsername("sometrash_user3");
+        user.setFirstName("sometrash_user3 first name");
+        user.setLastName("sometrash_user3 last name");
+        userService.register(user, "sometrash_user3");
 
         user = new User();
         user.setUsername("admin");
