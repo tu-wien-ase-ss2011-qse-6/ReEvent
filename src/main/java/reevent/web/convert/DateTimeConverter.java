@@ -1,6 +1,5 @@
 package reevent.web.convert;
 
-import org.apache.wicket.util.convert.IConverter;
 import org.apache.wicket.util.convert.converter.AbstractConverter;
 
 import java.text.DateFormat;
@@ -56,6 +55,7 @@ public class DateTimeConverter extends AbstractConverter<Date> {
     }
 
     private DateFormat makeFormat(Locale locale) {
+        locale = Locale.GERMAN; // ignore locale for demo
         if (dateStyle != null && timeStyle != null) {
             return DateFormat.getDateTimeInstance(dateStyle,  timeStyle,  locale);
         } else if (dateStyle != null) {

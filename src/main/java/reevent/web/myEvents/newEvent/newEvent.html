@@ -5,29 +5,32 @@
 <head>
 
     <wicket:head>
-
-        <!--
-	<script type="text/javascript" src="resource/jquery-ui-timepicker-addon.js"></script>
- 		<script>
-            $(function() {
-                $('input[id=date]').datetimepicker();
-            })
-        </script>
-        -->
-
+        <link href="resource/jquery-ui-1.8.11/jquery-ui-1.8.11.custom.css" rel="stylesheet"/>
         <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAnfs7bKE82qgb3Zc2YyS-oBT2yXp_ZAY8_ufC3CFXhHIE1NvwkxSySz_REpPq-4WZA27OwgbtyR3VcA"
                 type="text/javascript"></script>
 
         <script type="text/javascript" src="resource/newLocation.js"></script>
 
+        <style type="text/css">
+            button.left {
+                float: left;
+            }
+        </style>
 
-	<link rel="stylesheet" href="resource/blueprint-1.0/timepicker.css"/>
-	
-	<style type="text/css">
-	button.left {float:left;}
-	</style>
-	
-	
+        <script type="text/javascript" src="resource/jquery-1.4.4.min.js"></script>
+        <script type="text/javascript" src="resource/jquery-ui-1.8.11/jquery-ui-1.8.11.custom.min.js"></script>
+
+        <script type="text/javascript" src="resource/jquery-ui-timepicker-addon.min.js"></script>
+        <script>
+            $(function() {
+                $('input.datetime').datetimepicker({
+                        dateFormat: 'dd.mm.yy',
+                        timeFormat: 'hh:mm'
+                });
+            })
+        </script>
+
+
     </wicket:head>
 
 
@@ -47,7 +50,7 @@
         <input wicket:id='name' type='text'/><br/>
 
         <label wicket:id='startLabel'>[[ date ]]</label><br/>
-        <input id="date" wicket:id='start' type='text'/><br/>
+        <input wicket:id='start' type='text' class="datetime"/><br/>
 
         <label wicket:id='performerLabel'>[[ band ]]</label><br/>
         <input wicket:id='performer' type='text'/><br/>
@@ -61,33 +64,34 @@
         <label wicket:id='pictureUrlLabel'>[[ file url ]]</label><br/>
         <input wicket:id='pictureUrl' type='text'/><br/>
 
-        <wicket:message key="or">[[ or ]]</wicket:message><br/>
+        <wicket:message key="or">[[ or ]]</wicket:message>
+        <br/>
 
         <label wicket:id='pictureFileLabel'>[[ file upload ]]</label><br/>
         <input wicket:id='pictureFile' type='file'/><br/>
 
-<table>
-<tr>
-<td>
-	<label wicket:id='locationAddressLabel'>[[ locationAddress ]]</label><br/>
-    <input wicket:id='locationAddress' type='text' class="locationAddress"/>
-</td>
-<td>
-	<button class="left" type="button" onclick="newLocation.showAddress()">Find!</button>
-</td>
-</tr>
-</table>       
-        
-        
+        <table>
+            <tr>
+                <td>
+                    <label wicket:id='locationAddressLabel'>[[ locationAddress ]]</label><br/>
+                    <input wicket:id='locationAddress' type='text' class="locationAddress"/>
+                </td>
+                <td>
+                    <button class="left" type="button" onclick="newLocation.showAddress()">Find!</button>
+                </td>
+            </tr>
+        </table>
+
+
         <input wicket:id="latitude" type='hidden' class='latitude'/>
         <input wicket:id="longitude" type='hidden' class='longitude'/>
 
         <input wicket:message='value:submit' type="submit" value="[[ Create Event ]]"/>
     </form>
 
-	<br/>
-	<br/>
-	
+    <br/>
+    <br/>
+
     <div id="map_canvas" style="width: 600px; height: 400px"></div>
 
 

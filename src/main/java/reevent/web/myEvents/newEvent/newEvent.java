@@ -71,11 +71,11 @@ public class newEvent extends myEvents {
 
     Link newLocationLink;
 
-    boolean update = false;
+    boolean update = true   ;
 
     public newEvent(){
         this(Model.<Event>of(new Event()));
-        update = true;
+        update = false;
     }
     public newEvent(IModel<Event> model) {
         setDefaultModel(model);
@@ -119,8 +119,8 @@ public class newEvent extends myEvents {
 
                 newEventForm.add(start = new TextField<Date>("start", Date.class) {
                     @Override
-                    public <C> IConverter<C> getConverter(Class<C> type) {
-                        return DateTimeConverter.both(DateFormat.SHORT, DateFormat.SHORT);
+                    public IConverter getConverter(Class type) {
+                        return DateTimeConverter.both(DateFormat.MEDIUM, DateFormat.SHORT);
                     }
                 });
 
