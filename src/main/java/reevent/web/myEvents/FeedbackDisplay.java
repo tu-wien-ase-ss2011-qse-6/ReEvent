@@ -39,7 +39,13 @@ public class FeedbackDisplay extends StyledPanel {
         	}
         });
         
+        if (ReEventSession.get().getUserSignedIn() == null) {
+        	deleteFeedback.setVisible(false);
+        }
+        
+        
         if (ReEventSession.get().getUserSignedIn() != null){
+        	System.out.println("USER LOGGED IN!");
         	deleteFeedback.setVisible(ReEventSession.get().getUserSignedIn().equals(feedback.getObject().getCreatedBy().getId()));
         }
         

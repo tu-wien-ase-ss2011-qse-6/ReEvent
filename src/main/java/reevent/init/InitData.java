@@ -173,7 +173,7 @@ public class InitData {
         e4.setCreatedBy(userDao.findByUsername("user2"));
         e4.setGenre("Concerts and Tour Dates");
         e4.setPerformer("Neil Young");
-        e4.setMainPicture(mediaService.create("http://www.aquariumdrunkard.com/wp-content/uploads/2007/10/neil-young.jpg", admin));
+        e4.setMainPicture(mediaService.create("http://rockhall.com/media/assets/inductees/default/neil-young.jpg", admin));
         e4.setLatitude(33.974552);
         e4.setLongitude(-118.424176);
         eventDao.save(e4);
